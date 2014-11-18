@@ -40,7 +40,9 @@
                     array('label'=>'Carrera de Estudio', 'url'=>array('/Carreraestudio/admin')),
 					array('label'=>'Centros Penitenciarios', 'url'=>array('/Centropenitenciario/admin')),
 					array('label'=>'Comunidad Indigena', 'url'=>array('/comunidadindigena/admin')),
-					array('label'=>'Estado Civil', 'url'=>array('/estadocivil/admin')), 
+					array('label'=>'Estado Civil', 'url'=>array('/estadocivil/admin')),
+					array('label'=>'Motivos de Estudios', 'url'=>array('/motivoestudio/admin')),
+					array('label'=>'Nacionalidades', 'url'=>array('/Nacionalidades/admin')), 
                     /*array('label'=>'Sub 2', 
                       'items'=>array( 
                         array('label'=>'Sub sub 1', 'url'=>array('/site/page','view'=>'subsub1')), 
