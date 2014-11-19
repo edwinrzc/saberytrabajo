@@ -1,0 +1,109 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	border: none;
+	overflow: hidden;
+	border: 0px solid black;
+}
+
+.header-map
+{
+	width: 100%;
+	height: 100px;
+}
+
+.header-map
+{
+   	background: -moz-linear-gradient(top,  #1D9589, #1560ac);
+    background: -moz-linear-gradient(top,  #1D9589, #1560ac);/* F 3.6+ */
+    background: -ms-linear-gradient(top, #1D9589, #1560ac);/* IE 10+ */
+    background: -webkit-linear-gradient(top, #1D9589, #1560ac);/* FF 3.6+ */
+    background: -o-linear-gradient(top, #1D9589, #1560ac);/* Safari 5.1+, Chrome 10+ */
+    background: linear-gradient(top, #1D9589, #1560ac);/* ESTILO ESTANDAR */
+	margin: 0;
+	padding: 5px;
+	background-color:#25685D;
+	color:#FFFF;
+	text-align:right;
+} 
+
+.logo-nep
+{
+	width: 100%;	
+}
+
+.logo-nep img
+{
+	margin-left: 80px;
+	height: 90px;
+}
+
+#div-mapa
+{
+	background: #99b3cc;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	border: none;
+	overflow: hidden;
+}
+
+.boton-0, .boton-1, .boton-2
+{
+    cursor: pointer;    
+    background-image: url("../images/big_icons/n/capas.png");
+    background-repeat: no-repeat;    
+    height: 30px;
+    margin-left: 5px;
+}
+
+.boton-1
+{	
+    background-image: url("../images/big_icons/n/flech-1.png");
+    margin-top: 0px;
+}
+
+.tbl-capas
+{
+	width: 300px;
+}
+
+.contenedor-menu-botones
+{    
+    position: absolute;
+  	top: 40%; 
+  	right: 0;
+    text-align: center;
+    transition: width 0.15s ease-in-out 0;    
+    z-index: 100001;
+    text-indent: -9999em;    
+}
+
+.contenedor-menu-boton
+{
+	background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 4px 0 0 4px;
+    height: 40px;
+    margin-bottom: 3px;
+    width: 40px;    
+    z-index: 100001;
+    text-indent: -9999em;
+}
+

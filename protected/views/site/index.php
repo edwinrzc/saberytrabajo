@@ -45,6 +45,20 @@
     <?php 
     endif;
     ?>
+    
+    <?php 
+    if(!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('admin'))):?>
+    <div class="dashIcon span-3">
+        <a  href="<?php print Yii::app()->createUrl('/visualizador/index');?>">
+        	<img src="<?php echo $base; ?>/images/big_icons/icon-earth.png" alt="Visualizador" />
+        </a>
+        <div class="dashIconText">
+        	<a href="<?php print Yii::app()->createUrl('/visualizador/index');?>">Visualizador</a>
+        </div>
+    </div>
+    <?php 
+    endif;
+    ?>
     <!-- 
     <div class="dashIcon span-3">
         <a href="#"><img src="<?php echo $base; ?>/images/big_icons/icon-shopping-cart.png" alt="Order History" /></a>
