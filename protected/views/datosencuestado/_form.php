@@ -79,8 +79,8 @@ th {
 			                       array(
 			                           'ajax' => array(
 			                           'type' => 'POST',
-			                           'url' => CController::createUrl('proyecto/municipios'),
-			                           'update' => '#Proyecto_cod_mun'
+			                           'url' => CController::createUrl('datosencuestado/municipios'),
+			                           'update' => '#Datosencuestado_cod_mun'
 			                       ),'options'=>$sel,'prompt' => 'Seleccione un Estado...', 'style'=>'width:280px;'
 			                 )
 			             );
@@ -107,8 +107,8 @@ th {
 			                       array(
 			                           'ajax' => array(
 			                           'type' => 'POST',
-			                           'url' => CController::createUrl('proyecto/parroquia'),
-			                           'update' => '#Proyecto_cod_par'
+			                           'url' => CController::createUrl('datosencuestado/parroquia'),
+			                           'update' => '#Datosencuestado_cod_par'
 			                       ),'options'=>$sel,'prompt' => 'Seleccione un Municipio...', 'style'=>'width:280px;'
 			                   )
 			             );
@@ -215,7 +215,16 @@ th {
 					<?php echo $form->error($model,'ced_dp_enc'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo $form->textField($model,'cod_nac_enc'); ?>
+					<?php
+			             $naciona = new CDbCriteria;
+			             $naciona->order = 'nom_nac_enc ASC';
+			       ?>
+			       <?php
+			             echo $form->dropDownList($model,'cod_nac_enc',CHtml::listData(Nacionalidades::model()->findAll($naciona),'cod_nac_enc','nom_nac_enc'),
+			             						array('prompt' => 'Seleccione la nacionalidad...', 'style'=>'width:280px;'
+								)
+						);
+			       ?>
 					<?php echo $form->error($model,'cod_nac_enc'); ?>	
 				</td>
 			</tr>						
@@ -235,7 +244,32 @@ th {
 					<?php echo $form->error($model,'sit_leg_dp_enc'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo $form->textField($model,'fec_nac_dp_enc',array('size'=>40,'maxlength'=>12)); ?>
+					
+					<?php
+					$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+						'language'=>'es',
+					    'name'=>'Datosencuestado[fec_nac_dp_enc]',
+						'value'=>$model->fec_nac_dp_enc,
+					    // additional javascript options for the date picker plugin
+					    'options'=>array(
+					        'showAnim'=>'fold',
+							'dateFormat' => 'yy-mm-dd', // save to db format
+							//'changeYear' => 'true',
+							'showAnim'=>'slide',
+							'changeYear' => 'true',
+							'dateFormat' => 'yy-mm-dd', // save to db format
+							'altField' => '#fec_pla_ins',
+							'class'=>'desa-opcio',
+							//'minDate' => '1940-04-1',
+							'maxDate' => '+y',
+							'altField' => '#self_pointing_id',
+							
+					    ),
+					    'htmlOptions'=>array(
+							'class'=>'shadowdatepicker', 'style'=>'width:280px;'
+					    ),
+					));
+					?>
 					<?php echo $form->error($model,'fec_nac_dp_enc'); ?>
 				</td>
 			</tr>						
@@ -256,11 +290,15 @@ th {
 					<?php echo $form->error($model,'lug_nac_dp_enc'); ?>
 				</td>
 				<td>
-					<?php echo $form->textField($model,'par_nac_dp_enc',array('size'=>1,'maxlength'=>1)); ?>
+					<?php echo CHtml::dropDownList('Datosencuestado[par_nac_dp_enc]', $model, 
+              				array('S' => 'Si', 'N' => 'No'));
+					?>
 					<?php echo $form->error($model,'par_nac_dp_enc'); ?>
 				</td>
 				<td>
-					<?php echo $form->textField($model,'sex_dp_enc',array('size'=>1,'maxlength'=>1)); ?>
+					<?php echo CHtml::dropDownList('Datosencuestado[sex_dp_enc]', $model, 
+              				array('M' => 'Masculino', 'F' => 'Femenino'));
+					?>
 					<?php echo $form->error($model,'sex_dp_enc'); ?>
 				</td>
 			</tr>						
@@ -277,7 +315,9 @@ th {
 			</tr>						
 			<tr>
 				<td>
-					<?php echo $form->textField($model,'est_emb_dp_enc',array('size'=>1,'maxlength'=>1)); ?>
+					<?php echo CHtml::dropDownList('Datosencuestado[est_emb_dp_enc]', $model, 
+              				array('S' => 'Si', 'N' => 'No'));
+					?>
 					<?php echo $form->error($model,'est_emb_dp_enc'); ?>
 				</td>
 				<td>
@@ -285,7 +325,9 @@ th {
 					<?php echo $form->error($model,'sem_emb_dp_enc'); ?>
 				</td>
 				<td>
-					<?php echo $form->textField($model,'asi_ctrl_emb_dp_enc',array('size'=>1,'maxlength'=>1)); ?>
+					<?php echo CHtml::dropDownList('Datosencuestado[asi_ctrl_emb_dp_enc]', $model, 
+              				array('S' => 'Si', 'N' => 'No'));
+					?>
 					<?php echo $form->error($model,'asi_ctrl_emb_dp_enc'); ?>
 				</td>
 			</tr>						
@@ -302,15 +344,35 @@ th {
 			</tr>						
 			<tr>
 				<td>
-					<?php echo $form->textField($model,'cod_est_civ'); ?>
+					<?php
+			             $estadicivil = new CDbCriteria;
+			             $estadicivil->order = 'nom_est_civ ASC';
+			       ?>
+					<?php
+			             echo $form->dropDownList($model,'cod_est_civ',CHtml::listData(Estadocivil::model()->findAll($estadicivil),'cod_est_civ','nom_est_civ'),
+			             						array('prompt' => 'Estado civil...', 'style'=>'width:220px;'
+								)
+						);
+			       ?>
 					<?php echo $form->error($model,'cod_est_civ'); ?>
 				</td>
 				<td>
-					<?php echo $form->textField($model,'es_ind_dp_enc',array('size'=>1,'maxlength'=>1)); ?>
+					<?php echo CHtml::dropDownList('Datosencuestado[es_ind_dp_enc]', $model, 
+              				array('S' => 'Si', 'N' => 'No'));
+					?>
 					<?php echo $form->error($model,'es_ind_dp_enc'); ?>
 				</td>
-				<td>
-					<?php echo $form->textField($model,'cod_com_ind'); ?>
+				<td>					
+					<?php
+			             $estadicivil = new CDbCriteria;
+			             $estadicivil->order = 'nom_com_ind ASC';
+			       ?>
+					<?php
+			             echo $form->dropDownList($model,'cod_com_ind',CHtml::listData(Comunidadindigena::model()->findAll($estadicivil),'cod_com_ind','nom_com_ind'),
+			             						array('prompt' => 'Comunidad Indigena...', 'style'=>'width:200px;'
+								)
+						);
+			       ?>
 					<?php echo $form->error($model,'cod_com_ind'); ?>
 				</td>
 			</tr>			
@@ -349,7 +411,9 @@ th {
 					<?php echo $form->error($model,'tel_cel_dp_enc'); ?>
 				</td>
 				<td>
-					<?php echo $form->textField($model,'est_act_dp_enc',array('size'=>1,'maxlength'=>1)); ?>
+					<?php echo CHtml::dropDownList('Datosencuestado[est_act_dp_enc]', $model, 
+              				array('S' => 'Si', 'N' => 'No'));
+					?>
 					<?php echo $form->error($model,'est_act_dp_enc'); ?>
 				</td>
 				<td>
@@ -370,15 +434,45 @@ th {
 			</tr>			
 			<tr>
 				<td>
-					<?php echo $form->textField($model,'cod_mot_est'); ?>
+					<?php
+			             $motivo = new CDbCriteria;
+			             $motivo->order = 'nom_mot_est ASC';
+			       ?>
+					<?php
+			             echo $form->dropDownList($model,'cod_mot_est',CHtml::listData(Motivoestudio::model()->findAll($motivo),'cod_mot_est','nom_mot_est'),
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:200px;'
+								)
+						);
+			       ?>
 					<?php echo $form->error($model,'cod_mot_est'); ?>
 				</td>
 				<td>
-					<?php echo $form->textField($model,'cod_niv_ins'); ?>
+					<?php
+			             $nivel = new CDbCriteria;
+			             $nivel->order = 'nom_niv_ins ASC';
+			       ?>
+					<?php
+			             echo $form->dropDownList($model,'cod_niv_ins',CHtml::listData(Nivelinstruccion::model()->findAll($nivel),'cod_niv_ins','nom_niv_ins'),
+			             						array('prompt' => 'Nivel de Instruccion...', 'style'=>'width:200px;'
+								)
+						);
+			       ?>
 					<?php echo $form->error($model,'cod_niv_ins'); ?>
 				</td>
 				<td>
 					<?php echo $form->textField($model,'cod_car_est'); ?>
+					
+					
+					<?php
+			             $nivel = new CDbCriteria;
+			             $nivel->order = 'nom_car_est ASC';
+			       ?>
+					<?php
+			             echo $form->dropDownList($model,'cod_car_est',CHtml::listData(Carreraestudio::model()->findAll($nivel),'cod_car_est','nom_car_est'),
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:200px;'
+								)
+						);
+			       ?>
 					<?php echo $form->error($model,'cod_car_est'); ?>
 				</td>
 			</tr>			

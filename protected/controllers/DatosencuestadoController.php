@@ -14,8 +14,7 @@ class DatosencuestadoController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			array('CrugeAccessControlFilter'),
 		);
 	}
 
@@ -54,6 +53,41 @@ class DatosencuestadoController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
+	}
+	
+	
+	public function actionMunicipios()
+	{
+		$data = Municipal::model()->findAll('cod_estado=:parent_id',
+				array(':parent_id'=> $_POST['Datosencuestado']['cod_edo']));
+	
+	
+		$data = CHtml::listData($data,'ci_munici','municipio');
+		echo CHtml::tag('option',array('value' => ''),'Seleccione un municipio...',true);
+		foreach($data as $id => $value)
+		{
+			echo CHtml::tag('option',array('value' => $id),CHtml::encode($value),true);
+		}
+	
+	}
+	
+	
+	
+	public function actionParroquia()
+	{
+		$data = Parroquial::model()->findAll('ci_munici=:parent_id',
+				array(
+						':parent_id'=> $_POST['Datosencuestado']['cod_mun']
+				)
+		);
+	
+		$data = CHtml::listData($data,'ci_parroq','parroquia');
+		echo CHtml::tag('option',array('value' => ''),'Seleccione la parroquia...',true);
+		foreach($data as $id => $value)
+		{
+			echo CHtml::tag('option',array('value' => $id),CHtml::encode($value),true);
+		}
+		
 	}
 
 	/**
