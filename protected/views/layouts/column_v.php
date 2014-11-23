@@ -32,7 +32,7 @@
                 array('label'=>'Registro', 'url'=>array('#'), 
                   'items'=>array( 
                     array('label'=>'Proyectos','url'=>array('/Proyecto/admin')), 
-                    array('label'=>'Familias','url'=>'#'), 
+                    array('label'=>'Familias','url'=>array('/datosencuestado/admin')), 
                   ), 
                 ), 
                 array('label'=>'Configuracion', 
@@ -42,7 +42,11 @@
 					array('label'=>'Comunidad Indigena', 'url'=>array('/comunidadindigena/admin')),
 					array('label'=>'Estado Civil', 'url'=>array('/estadocivil/admin')),
 					array('label'=>'Motivos de Estudios', 'url'=>array('/motivoestudio/admin')),
-					array('label'=>'Nacionalidades', 'url'=>array('/Nacionalidades/admin')), 
+					array('label'=>'Nacionalidades', 'url'=>array('/Nacionalidades/admin')),
+					array('label'=>'Nivel de Instruccion', 'url'=>array('/nivelinstruccion/admin')),
+					array('label'=>'Parentesco Familiar', 'url'=>array('/parentescofamiliar/admin')),
+					array('label'=>'Mision Social', 'url'=>array('/misionsocial/admin')),
+					array('label'=>'Organizacion Social', 'url'=>array('/organizacionsocial/admin')), 
                     /*array('label'=>'Sub 2', 
                       'items'=>array( 
                         array('label'=>'Sub sub 1', 'url'=>array('/site/page','view'=>'subsub1')), 

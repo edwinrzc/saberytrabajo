@@ -1,6 +1,6 @@
 <?php
 
-class EstadocivilController extends Controller
+class ParentescofamiliarController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -14,7 +14,8 @@ class EstadocivilController extends Controller
 	public function filters()
 	{
 		return array(
-			array('CrugeAccessControlFilter'),
+			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -61,16 +62,16 @@ class EstadocivilController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Estadocivil;
+		$model=new Parentescofamiliar;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Estadocivil']))
+		if(isset($_POST['Parentescofamiliar']))
 		{
-			$model->attributes=$_POST['Estadocivil'];
+			$model->attributes=$_POST['Parentescofamiliar'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->cod_est_civ));
+				$this->redirect(array('view','id'=>$model->cod_par_fam));
 		}
 
 		$this->render('create',array(
@@ -90,11 +91,11 @@ class EstadocivilController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Estadocivil']))
+		if(isset($_POST['Parentescofamiliar']))
 		{
-			$model->attributes=$_POST['Estadocivil'];
+			$model->attributes=$_POST['Parentescofamiliar'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->cod_est_civ));
+				$this->redirect(array('view','id'=>$model->cod_par_fam));
 		}
 
 		$this->render('update',array(
@@ -121,7 +122,7 @@ class EstadocivilController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Estadocivil');
+		$dataProvider=new CActiveDataProvider('Parentescofamiliar');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -132,10 +133,10 @@ class EstadocivilController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Estadocivil('search');
+		$model=new Parentescofamiliar('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Estadocivil']))
-			$model->attributes=$_GET['Estadocivil'];
+		if(isset($_GET['Parentescofamiliar']))
+			$model->attributes=$_GET['Parentescofamiliar'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -146,12 +147,12 @@ class EstadocivilController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Estadocivil the loaded model
+	 * @return Parentescofamiliar the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Estadocivil::model()->findByPk($id);
+		$model=Parentescofamiliar::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -159,11 +160,11 @@ class EstadocivilController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Estadocivil $model the model to be validated
+	 * @param Parentescofamiliar $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='estadocivil-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='parentescofamiliar-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
