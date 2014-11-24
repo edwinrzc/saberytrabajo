@@ -42,6 +42,20 @@ $('.search-form form').submit(function(){
 		*/
 		array(
 			'class'=>'CButtonColumn',
+			'htmlOptions'=>array('class'=>'myCssClass','style'=>'width:80px'),
+			'template'=>'{view}{update}{delete}{print}',
+			'buttons'=>array(
+			//<------ BOTONES ------->//	
+			
+			'print' => array( //botón para la acción nueva
+		    'label'=>'Imprimir Asignación', // titulo del enlace del botón nuevo
+		    'imageUrl'=>Yii::app()->request->baseUrl.'/images/printer.png', //ruta icono para el botón
+		    //'url'=>'#', //url de la acción nueva
+		    'url'=>"CHtml::normalizeUrl(array('pdf', 'cod_pro'=>\$data->cod_pro))",
+			'options'=>array('target'=>'_blank'),
+		    ),
+
+		),
 		),
 	),
 )); ?>

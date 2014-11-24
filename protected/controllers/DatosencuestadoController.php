@@ -35,7 +35,7 @@ class DatosencuestadoController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','pdf'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -44,6 +44,45 @@ class DatosencuestadoController extends Controller
 		);
 	}
 
+	
+	public function actionPdf($cod_dp_enc)
+	{
+		// <-------------- Obtiene y trae el código de la persona -------------->> //
+		//print_r($model_cargo);die;
+	
+		$data=Datosencuestado::model()->findByPk($cod_dp_enc);
+	
+	
+		$model_organizacion = Organizacionsocial::model()->findByPk($data['cod_org_soc']);
+		$model_mision = Misionsocial::model()->findByPk($data['cod_mis_soc']);
+		$model_penitenciaria = Centropenitenciario::model()->findByPk($data['cod_cen_pen']);
+		$model_estadocivil = Estadocivil::model()->findByPk($data['cod_est_civ']);
+		$model_indigena = Comunidadindigena::model()->findByPk($data['cod_com_ind']);
+		$model_motivoestudio = Motivoestudio::model()->findByPk($data['cod_mot_est']);
+		$model_nivelestudio = Nivelinstruccion::model()->findByPk($data['cod_niv_ins']);
+		$model_carreraestudio = Carreraestudio::model()->findByPk($data['cod_car_est']);
+		$model_nacionalidad = Nacionalidades::model()->findByPk($data['cod_nac_enc']);
+		$model_parentesco = Parentescofamiliar::model()->findByPk($data['cod_par_fam']);
+	
+		//print_r($model_plan_corporativo);die;
+	
+		// <-------------- Llamado a los distintos modelos del sistema -------------->> //
+		$this->render('pdf',array('model'=>$this->loadModel($cod_dp_enc),
+				'model_organizacion'=>$model_organizacion,
+				'model_mision'=>$model_mision,
+				'model_penitenciaria'=>$model_penitenciaria,
+				'model_estadocivil'=>$model_estadocivil,
+				'model_indigena'=>$model_indigena,
+				'model_motivoestudio'=>$model_motivoestudio,
+				'model_nivelestudio'=>$model_nivelestudio,
+				'model_carreraestudio'=>$model_carreraestudio,
+				'model_nacionalidad'=>$model_nacionalidad,
+				'model_parentesco'=>$model_parentesco,
+	
+	
+				true
+		));
+	}
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -111,6 +150,44 @@ class DatosencuestadoController extends Controller
 		$this->render('crearencuesta',array(
 			'model'=>$model,
 		));
+	}
+	
+	
+	protected function validarForm($model)
+	{
+		$mod = CActiveForm::validate($model);
+		if($mod != '[]')
+		{
+			echo $mod;
+			Yii::app()->end();
+		}
+		
+	}
+	
+	
+	public function actionRegistrar()
+	{
+		header("Content-Type: application/json", true);
+		
+		switch ($_POST['action'])
+		{
+
+			case 'DP':
+				$model = new Datosencuestado;
+				$model->attributes = $_POST['Datosencuestado'];
+				$this->validarForm($model);
+				//$this->performAjaxValidation($model);
+				if($model->save())
+				{
+					$JSON['status'] = true;
+					$JSON['cod_dp_enc'] = $model->cod_dp_enc;
+					die(json_encode($JSON));
+				}
+			break;
+			case 'SP':
+			break;
+		}
+		
 	}
 
 	/**

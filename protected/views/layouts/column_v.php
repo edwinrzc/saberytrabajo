@@ -45,6 +45,7 @@
 					array('label'=>'Nacionalidades', 'url'=>array('/Nacionalidades/admin')),
 					array('label'=>'Nivel de Instruccion', 'url'=>array('/nivelinstruccion/admin')),
 					array('label'=>'Parentesco Familiar', 'url'=>array('/parentescofamiliar/admin')),
+					array('label'=>'Partido Politico', 'url'=>array('/partidopolitico/admin')),
 					array('label'=>'Mision Social', 'url'=>array('/misionsocial/admin')),
 					array('label'=>'Organizacion Social', 'url'=>array('/organizacionsocial/admin')), 
                     /*array('label'=>'Sub 2', 

@@ -161,7 +161,7 @@ class UiController extends Controller
                 );
             }
         }
-        $this->render('login', array('model' => $model));
+        $this->renderPartial('login', array('model' => $model));
     }
 
     public function actionPwdRec()

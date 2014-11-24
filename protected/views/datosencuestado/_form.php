@@ -3,11 +3,6 @@
 /* @var $model Datosencuestado */
 /* @var $form CActiveForm */
 
-
-Yii::app()->clientScript->registerScript('form_familiar', "
-
-
-");
 ?>
 <style type="text/css">
 <!--
@@ -56,7 +51,10 @@ th {
 				<th colspan="3" >Tipo de Construccion</th>
 			</tr>
 			<tr>
-				<td width="50%"><?php echo $form->labelEx($model,'cod_edo'); ?></td>
+				<td width="50%">
+					<?php echo $form->labelEx($model,'cod_edo'); ?>
+					<input type="hidden" name="action" value="DP" />
+				</td>
 				<td colspan="2"><?php echo $form->labelEx($model,'cod_mun'); ?></td>
 			</tr>
 			<tr>
@@ -375,7 +373,7 @@ th {
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_com_ind',CHtml::listData(Comunidadindigena::model()->findAll($estadicivil),'cod_com_ind','nom_com_ind'),
-			             						array('prompt' => 'Comunidad Indigena...', 'style'=>'width:200px;'
+			             						array('prompt' => 'Comunidad Indigena...', 'style'=>'width:130px;'
 								)
 						);
 			       ?>
@@ -629,7 +627,7 @@ th {
 	</div> -->
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Registrar'); ?>
+		<?php echo CHtml::Button('Registrar',array('id'=>'btn-datos-personales', 'class'=>'small blue nice button radius')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

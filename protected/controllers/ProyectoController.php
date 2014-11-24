@@ -41,7 +41,7 @@ class ProyectoController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','pdf'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -50,6 +50,29 @@ class ProyectoController extends Controller
 		);
 	}
 
+	public function actionPdf($cod_pro)
+	{
+		// <-------------- Obtiene y trae el código de la persona -------------->> //
+		//print_r($model_cargo);die;
+	
+		$data=Proyecto::model()->findByPk($cod_pro);
+	
+	
+		//$model_organizacion = Organizacionsocial::model()->findByPk($data['cod_org_soc']);
+		//$model_mision = Misionsocial::model()->findByPk($data['cod_mis_soc']);
+	
+	
+		//print_r($model_plan_corporativo);die;
+	
+		// <-------------- Llamado a los distintos modelos del sistema -------------->> //
+		$this->render('pdf',array('model'=>$this->loadModel($cod_pro),
+				// 'model_organizacion'=>$model_organizacion,
+	
+	
+	
+				true
+		));
+	}
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
