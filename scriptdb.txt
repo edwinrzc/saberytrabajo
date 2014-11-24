@@ -1,0 +1,47 @@
+-- Table: viviendo.mvv_organizacion_social
+
+-- DROP TABLE viviendo.mvv_organizacion_social;
+
+CREATE TABLE viviendo.mvv_organizacion_social
+(
+  cod_org_soc serial NOT NULL, -- Codigo de la organizacion social
+  nom_org_soc character varying(60) NOT NULL, -- Nombre de la organizacion social
+  des_org_soc text, -- Descripcion de la organizacion
+  CONSTRAINT "PK_organizacion_social" PRIMARY KEY (cod_org_soc)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_organizacion_social
+  OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_organizacion_social
+  IS 'Tabla para las organizaciones sociales';
+COMMENT ON COLUMN viviendo.mvv_organizacion_social.cod_org_soc IS 'Codigo de la organizacion social';
+COMMENT ON COLUMN viviendo.mvv_organizacion_social.nom_org_soc IS 'Nombre de la organizacion social';
+COMMENT ON COLUMN viviendo.mvv_organizacion_social.des_org_soc IS 'Descripcion de la organizacion';
+
+
+
+
+-- Table: viviendo.mvv_mision_social
+
+-- DROP TABLE viviendo.mvv_mision_social;
+
+CREATE TABLE viviendo.mvv_mision_social
+(
+  cod_mis_soc serial NOT NULL, -- Codigo de la mision social
+  nom_mis_soc character varying(70) NOT NULL, -- Nombre de la mision social
+  des_mis_soc text, -- Descripción de la mision social
+  CONSTRAINT "PK_mision_social" PRIMARY KEY (cod_mis_soc)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_mision_social
+  OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_mision_social
+  IS 'Tabla para las misiones sociales';
+COMMENT ON COLUMN viviendo.mvv_mision_social.cod_mis_soc IS 'Codigo de la mision social';
+COMMENT ON COLUMN viviendo.mvv_mision_social.nom_mis_soc IS 'Nombre de la mision social';
+COMMENT ON COLUMN viviendo.mvv_mision_social.des_mis_soc IS 'Descripción de la mision social';
+
