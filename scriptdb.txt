@@ -1,47 +1,110 @@
--- Table: viviendo.mvv_organizacion_social
+-- Table: dpt_estadal
 
--- DROP TABLE viviendo.mvv_organizacion_social;
+-- DROP TABLE dpt_estadal;
 
-CREATE TABLE viviendo.mvv_organizacion_social
+CREATE TABLE dpt_estadal
 (
-  cod_org_soc serial NOT NULL, -- Codigo de la organizacion social
-  nom_org_soc character varying(60) NOT NULL, -- Nombre de la organizacion social
-  des_org_soc text, -- Descripcion de la organizacion
-  CONSTRAINT "PK_organizacion_social" PRIMARY KEY (cod_org_soc)
+  gid integer NOT NULL DEFAULT nextval('"dpt estadal_gid_seq"'::regclass),
+  cod_estado character varying(50),
+  estado character varying(20),
+  km2 numeric,
+  sup_ha numeric,
+  geom geometry(MultiPolygon,4189),
+  CONSTRAINT "dpt estadal_pkey" PRIMARY KEY (gid)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE viviendo.mvv_organizacion_social
+ALTER TABLE dpt_estadal
   OWNER TO postgres;
-COMMENT ON TABLE viviendo.mvv_organizacion_social
-  IS 'Tabla para las organizaciones sociales';
-COMMENT ON COLUMN viviendo.mvv_organizacion_social.cod_org_soc IS 'Codigo de la organizacion social';
-COMMENT ON COLUMN viviendo.mvv_organizacion_social.nom_org_soc IS 'Nombre de la organizacion social';
-COMMENT ON COLUMN viviendo.mvv_organizacion_social.des_org_soc IS 'Descripcion de la organizacion';
+
+-- Index: "dpt estadal_geom_gist"
+
+-- DROP INDEX "dpt estadal_geom_gist";
+
+CREATE INDEX "dpt estadal_geom_gist"
+  ON dpt_estadal
+  USING gist
+  (geom);
 
 
+  
+  -- Table: dpt_municipal
 
+-- DROP TABLE dpt_municipal;
 
--- Table: viviendo.mvv_mision_social
-
--- DROP TABLE viviendo.mvv_mision_social;
-
-CREATE TABLE viviendo.mvv_mision_social
+CREATE TABLE dpt_municipal
 (
-  cod_mis_soc serial NOT NULL, -- Codigo de la mision social
-  nom_mis_soc character varying(70) NOT NULL, -- Nombre de la mision social
-  des_mis_soc text, -- Descripción de la mision social
-  CONSTRAINT "PK_mision_social" PRIMARY KEY (cod_mis_soc)
+  gid integer NOT NULL DEFAULT nextval('"dpt municipal_gid_seq"'::regclass),
+  cod_estado character varying(3),
+  estado character varying(17),
+  cap_estado character varying(50),
+  cod_munic character varying(3),
+  ci_munici character varying(6),
+  municipio character varying(50),
+  cap_munic character varying(50),
+  nota character varying(50),
+  hectares numeric,
+  geom geometry(MultiPolygon,4189),
+  CONSTRAINT "dpt municipal_pkey" PRIMARY KEY (gid)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE viviendo.mvv_mision_social
+ALTER TABLE dpt_municipal
   OWNER TO postgres;
-COMMENT ON TABLE viviendo.mvv_mision_social
-  IS 'Tabla para las misiones sociales';
-COMMENT ON COLUMN viviendo.mvv_mision_social.cod_mis_soc IS 'Codigo de la mision social';
-COMMENT ON COLUMN viviendo.mvv_mision_social.nom_mis_soc IS 'Nombre de la mision social';
-COMMENT ON COLUMN viviendo.mvv_mision_social.des_mis_soc IS 'Descripción de la mision social';
+
+-- Index: "dpt municipal_geom_gist"
+
+-- DROP INDEX "dpt municipal_geom_gist";
+
+CREATE INDEX "dpt municipal_geom_gist"
+  ON dpt_municipal
+  USING gist
+  (geom);
+
+
+  
+  
+  
+  -- Table: dpt_parroquial
+
+-- DROP TABLE dpt_parroquial;
+
+CREATE TABLE dpt_parroquial
+(
+  gid integer NOT NULL DEFAULT nextval('"dpt parroquial_gid_seq"'::regclass),
+  id character varying(6),
+  cod_estado character varying(3),
+  estado character varying(20),
+  cap_estado character varying(50),
+  cod_munic character varying(3),
+  ci_munici character varying(6),
+  municipio character varying(50),
+  cap_munic character varying(50),
+  cod_parroq character varying(3),
+  ci_parroq character varying(6),
+  parroquia character varying(50),
+  cap_parroq character varying(50),
+  nota character varying(50),
+  hectareas numeric,
+  perimeter numeric,
+  sup_ha numeric,
+  geom geometry(MultiPolygon,4189),
+  CONSTRAINT "dpt parroquial_pkey" PRIMARY KEY (gid)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE dpt_parroquial
+  OWNER TO postgres;
+
+-- Index: "dpt parroquial_geom_gist"
+
+-- DROP INDEX "dpt parroquial_geom_gist";
+
+CREATE INDEX "dpt parroquial_geom_gist"
+  ON dpt_parroquial
+  USING gist
+  (geom);
 
