@@ -153,7 +153,7 @@ class Datosencuestado extends CActiveRecord
 			'cod_car_est' => 'Carrera de Estudio',
 			'ult_gra_cur_dp_enc' => 'Ultimo Año Cursado',
 			'tit_obt_dp_enc' => 'Titulo Obtenido',
-			'fam_pri_lib_dp_enc' => 'Familiar Privado de Livertad',
+			'fam_pri_lib_dp_enc' => 'Familiar Privado de Libertad',
 			'cod_par_fam' => 'Parentesco',
 			'cod_cen_pen' => 'Centro Penitenciario',
 			'org_soc_dp_enc' => 'Pertenece a una Organizacion',
