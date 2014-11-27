@@ -80,7 +80,7 @@ class Datosencuestado extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('pri_nom_dp_enc, pri_ape_dp_enc, nac_dp_enc, ced_dp_enc, cod_nac_enc', 'required'),
+			array('cod_edo,cod_mun,pri_nom_dp_enc, pri_ape_dp_enc, nac_dp_enc, ced_dp_enc, cod_nac_enc', 'required'),
 			array('ced_dp_enc, cod_nac_enc, cod_est_civ, cod_com_ind, cod_mot_est, cod_niv_ins, cod_est_per_dp_enc, cod_car_est, cod_par_fam, cod_cen_pen, cod_org_soc, cod_mis_soc', 'numerical', 'integerOnly'=>true),
 			array('cod_par', 'length', 'max'=>6),
 			array('dir_com_dp_enc', 'length', 'max'=>150),
@@ -118,6 +118,8 @@ class Datosencuestado extends CActiveRecord
 	{
 		return array(
 			'cod_dp_enc' => 'Codigo',
+			'cod_edo' => 'Estado',
+			'cod_mun' => 'Municipio',
 			'cod_par' => 'Parroquia',
 			'dir_com_dp_enc' => 'Direccion Completa',
 			'sec_dp_enc' => 'Sector',

@@ -79,7 +79,7 @@ th {
 			                           'type' => 'POST',
 			                           'url' => CController::createUrl('datosencuestado/municipios'),
 			                           'update' => '#Datosencuestado_cod_mun'
-			                       ),'options'=>$sel,'prompt' => 'Seleccione un Estado...', 'style'=>'width:280px;'
+			                       ),'options'=>$sel,'prompt' => 'Seleccione...', 'style'=>'width:280px;'
 			                 )
 			             );
 			       ?>
@@ -101,13 +101,13 @@ th {
 			             }
 			       ?>
 			       <?php
-			             echo $form->dropDownList($model,'cod_mun',CHtml::listData(Municipal::model()->findAll($municipio),'ci_munici','municipio'),
+			             echo $form->dropDownList($model,'cod_mun',CHtml::listData(array(''),'ci_munici','municipio'),
 			                       array(
 			                           'ajax' => array(
 			                           'type' => 'POST',
 			                           'url' => CController::createUrl('datosencuestado/parroquia'),
 			                           'update' => '#Datosencuestado_cod_par'
-			                       ),'options'=>$sel,'prompt' => 'Seleccione un Municipio...', 'style'=>'width:280px;'
+			                       ),'options'=>$sel,'prompt' => 'Seleccione...', 'style'=>'width:280px;'
 			                   )
 			             );
 			       ?>
@@ -130,7 +130,7 @@ th {
 			             $parroquia->order = 'parroquia ASC';
 			       ?>
 			       <?php
-			             echo $form->dropDownList($model,'cod_par',CHtml::listData(Parroquial::model()->findAll($parroquia),'ci_parroq','parroquia'),
+			             echo $form->dropDownList($model,'cod_par',CHtml::listData(array(''),'ci_parroq','parroquia'),
 			             						array('prompt' => 'Seleccione una Parroquia...', 'style'=>'width:280px;'
 								)
 						);
@@ -303,7 +303,7 @@ th {
 					<?php echo $form->error($model,'sex_dp_enc'); ?>
 				</td>
 			</tr>						
-			<tr>
+			<tr style="display: none;" class="tr_depende_sexo" >
 				<td>
 					<?php echo $form->labelEx($model,'est_emb_dp_enc'); ?>
 				</td>
@@ -314,7 +314,7 @@ th {
 					<?php echo $form->labelEx($model,'asi_ctrl_emb_dp_enc'); ?>
 				</td>
 			</tr>						
-			<tr>
+			<tr style="display: none;" class="tr_depende_sexo">
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[est_emb_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
@@ -362,7 +362,7 @@ th {
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[es_ind_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
 					?>
 					<?php echo $form->error($model,'es_ind_dp_enc'); ?>
 				</td>
@@ -373,7 +373,7 @@ th {
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_com_ind',CHtml::listData(Comunidadindigena::model()->findAll($estadicivil),'cod_com_ind','nom_com_ind'),
-			             						array('prompt' => 'Comunidad Indigena...', 'style'=>'width:130px;'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -417,12 +417,15 @@ th {
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[est_act_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
 					?>
 					<?php echo $form->error($model,'est_act_dp_enc'); ?>
 				</td>
 				<td>
-					<?php echo $form->textField($model,'tip_ins_dp_enc',array('size'=>2,'maxlength'=>2)); ?>
+					<?php echo CHtml::dropDownList('Datosencuestado[tip_ins_dp_enc]', $model, 
+              				array('P' => 'Publica', 'PV' => 'Privada'),
+							array('empty' => 'Seleccione...','disabled'=>'disabled'));
+					?>
 					<?php echo $form->error($model,'tip_ins_dp_enc'); ?>
 				</td>
 			</tr>			
@@ -445,7 +448,7 @@ th {
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_mot_est',CHtml::listData(Motivoestudio::model()->findAll($motivo),'cod_mot_est','nom_mot_est'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:180px;'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:180px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -458,7 +461,7 @@ th {
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_niv_ins',CHtml::listData(Nivelinstruccion::model()->findAll($nivel),'cod_niv_ins','nom_niv_ins'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','class'=>'slt_opc_campos'
 								)
 						);
 			       ?>
@@ -471,7 +474,7 @@ th {
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_car_est',CHtml::listData(Carreraestudio::model()->findAll($nivel),'cod_car_est','nom_car_est'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -511,7 +514,7 @@ th {
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[fam_pri_lib_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
 					?>
 					<?php echo $form->error($model,'fam_pri_lib_dp_enc'); ?>
 				</td>
@@ -523,7 +526,7 @@ th {
 					<?php
 			             echo $form->dropDownList($model,'cod_par_fam',
 								CHtml::listData(Parentescofamiliar::model()->findAll($parentesco),'cod_par_fam','nom_par_fam'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -537,7 +540,7 @@ th {
 					<?php
 			             echo $form->dropDownList($model,'cod_cen_pen',
 								CHtml::listData(Centropenitenciario::model()->findAll($centro),'cod_cen_pen','nom_cen_pen'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -556,7 +559,7 @@ th {
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[org_soc_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
 					?>
 					<?php echo $form->error($model,'org_soc_dp_enc'); ?>
 				</td>
@@ -568,7 +571,7 @@ th {
 					<?php
 			             echo $form->dropDownList($model,'cod_org_soc',
 								CHtml::listData(Organizacionsocial::model()->findAll($organiza),'cod_org_soc','nom_org_soc'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -586,7 +589,7 @@ th {
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[mis_soc_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
 					?>
 					<?php echo $form->error($model,'mis_soc_dp_enc'); ?>
 				</td>
@@ -598,7 +601,7 @@ th {
 					<?php
 			             echo $form->dropDownList($model,'cod_mis_soc',
 								CHtml::listData(Misionsocial::model()->findAll($mision),'cod_mis_soc','nom_mis_soc'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
 								)
 						);
 			       ?>

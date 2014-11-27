@@ -136,6 +136,8 @@ class DatosencuestadoController extends Controller
 	public function actionCreate()
 	{
 		$model=new Datosencuestado;
+		$model1=new Caracteristicavivienda;
+		$model2= new Situacionpolitica;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -149,6 +151,8 @@ class DatosencuestadoController extends Controller
 
 		$this->render('crearencuesta',array(
 			'model'=>$model,
+			'model1'=>$model1,
+			'model2'=>$model2,
 		));
 	}
 	
