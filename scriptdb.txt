@@ -1,110 +1,163 @@
--- Table: dpt_estadal
+-- Table: viviendo.mvv_caracteristica_vivienda
 
--- DROP TABLE dpt_estadal;
+-- DROP TABLE viviendo.mvv_caracteristica_vivienda;
 
-CREATE TABLE dpt_estadal
+CREATE TABLE viviendo.mvv_caracteristica_vivienda
 (
-  gid integer NOT NULL DEFAULT nextval('"dpt estadal_gid_seq"'::regclass),
-  cod_estado character varying(50),
-  estado character varying(20),
-  km2 numeric,
-  sup_ha numeric,
-  geom geometry(MultiPolygon,4189),
-  CONSTRAINT "dpt estadal_pkey" PRIMARY KEY (gid)
+  cod_dp_enc integer NOT NULL, -- Codigo datos personales encuestado
+  pre1_car_viv character varying(11), -- Pregunta tipo de vivienda, opciones: Apartamento, Casa, Quinta, Rancho, Refugio, Otro
+  pre2_car_viv character varying(15), -- Pregunta Cuáles son las condiciones de tenencia de la vivienda, opciones: Propia, Alquilada, Conserje, Pagandose, Cuidando, Prestada, Invadida, Comodato, Alojamiento
+  pre3_car_viv character varying(10), -- Pregunta Cuál es la tenencia del terreno, opciones: Propio, Ejido - Municipal
+  pre4_car_viv character varying(15), -- Pregunta En qué zona está ubicada, Opciones: Urbanizada, No Urbanizada, Rural
+  pre5_car_viv character varying(30), -- Pregunta Qué característica tiene la zona de la ubicación de la vivienda, opciones: Plana, Cerro, Colina, Loma, Orilla de barranco, Orilla de rio, Orilla de Quebrada
+  pre6_car_viv character varying(40), -- Pregunta De qué manera llega a  la vivienda, opciones: Directamente de la calle, Por senderos Picas o Escalinatas, A través de otras viviendas pasillos
+  pre7_car_viv character varying(15), -- Pregunta Materiales predominantes en las paredes internas, opciones: BLFC Bloque o Ladrillo frisado (Acabado) concreto, BLSF Bloque o Ladrillo sin frisar (No acabado), MAFFVS Madera aserrada fórmica fibra de vidrio y similares , ATBF Adobe Tapia o Bahareque frisado, ATBSF Adobe Tapia o Bahareque sin frisado, OCPTCZLS Otros (Caña,ALTER TABLE viviendo.mvv_caracteristica_vivienda
+  pre8_car_viv character varying(9), -- Pregunta Cuál es material predominante en el techo, opciones: PBA Platabanda, TM Teja o Madera, TLA Tajali - Lámina Asfáltica, LMZS Láminas Metálicas (Zinc o similares), AS Asbesto y similares,  OPTS Otros (Palma, Tablas y Similares)
+  pre9_car_viv character varying(10), -- Pregunta Cuál es material predominante del piso, Opciones: CLT Cerámica Ladrillo Terracota, MAYS Madera Alfombra y similares, CPOV Cemento Pulido o Viniles, CSP Cemento sin Pulir, T Tierra
+  pre10_car_viv character varying(12), -- Pregunta  Cómo se distribuyen para dormir en las habitaciones o espacios de la vivienda, opciones: PCSELH Pareja conyugal sola en la habitación,PCPMDUA Pareja con personas menores de un año, PCPMDUAA Pareja con personas mayores de un año, PSDEUH Persona sola durmiendo en una habitación, MDTPDEUH Menos de tres personas durmiendo en una habitación, TPOMDEUMH Tres personas o más durmiendo en una misma habitación
+  pre11_car_viv character(1), -- Pregunta Cuántos Baños tiene la vivienda
+  pre12_car_viv character(2), -- Preguntas Cuántos Dormitorios tiene la vivienda
+  pre13_car_viv character(2), -- La Vivienda cuenta con Servicio de Agua Blanca, Opciones S para cuando es si N para cuando es no
+  pre14_car_viv character(4), -- Pregunta Como llega normalmente el Agua a la Vivienda opciones: AOT Acueducto o Tubería, CC Camión Cisterna, PPOV Pila Pública o Vecinos, OM Otros Medios
+  pre15_car_viv character(1), -- Pregunta La Vivienda Almacena Agua, opciones: S para cuando es si N para cuando es no
+  pre16_car_viv character(4), -- Pregunta Qué utilizan para almacenar el Agua, opciones: TQ Tanques, RP Recipientes Plásticos, TORM Tobos o Recipientes Metálicos, RDVV Recipientes de Vidrio / Vasijas
+  pre17_car_viv character(7), -- Pregunta Cómo están Distribuidos el o los Baños con los que cuenta la Vivienda, opciones: BCPDYL Baño con Poceta Ducha y Lavamanos, BCP Baño con Poceta, BCPYL Baño con Poceta y Lavamanos, EDHOL Escusado de Hoyo o Letrina, BCPYD  Baño con Poceta y Ducha, NTPOE No tiene Poceta o Escusado
+  pre18_car_viv character(5), -- Pregunta Donde está ubicado el o los Baños o Letrinas de la Vivienda, opciones: BDDLV Baño Dentro de la Vivienda, BFDLV Baño Fuera de la Vivienda, LFDLV  Letrina Fuera de la Vivienda
+  pre19_car_viv character(6), -- Pregunta  A dónde va el Agua de Desecho de la Poceta, opciones DDLVUC Dentro de la Vivienda una Cloaca, RQ Ríos Quebradas, FDLVPS  Fuera de la Vivienda 2 pozos Sépticos
+  pre20_car_viv character(3), -- Pregunta A dónde va el Agua de Desecho del Fregadero, Ducha, Batea y Lavamanos, opciones: C Cloacas, PS Pozo Séptico, ALC A la Calle, RQ Ríos Quebradas, P Patio
+  pre21_car_viv character(1), -- Pregunta La Vivienda cuenta con Servicio Eléctrico, opciones: S para cuamdo es si, N para cuando es no
+  pre22_car_viv character(1), -- La Vivienda cuenta con Servicio Telefónico Fijo, opciones: S para cuamdo es si, N para cuando es no
+  pre23_car_viv character(1), -- Pregunta La Vivienda cuenta con Servicio de Internet, opciones: S para cuamdo es si, N para cuando es no
+  pre24_car_viv character(3), -- Pregunta Centros de Educación Inicial
+  pre25_car_viv character(3), -- Pregunta Centros de Educación Primaria
+  pre26_car_viv character(3), -- Pregunta Centros de Educación Básica/Diversificada
+  pre27_car_viv character(3), -- Pregunta Centros de Educación Superior
+  pre28_car_viv character(3), -- Pregunta Centros de Atención Primaria
+  pre29_car_viv character(3), -- Pregunta Centros de Diagnóstico Integral
+  pre30_car_viv character(3), -- Pregunta Centros Hospitalarios
+  pre31_car_viv character(3), -- Pregunta Centros de Salud/Clínicas Privadas
+  pre32_car_viv character(15), -- Pregunta Medio de Transporte predominante, opciones:  AP A Pie, AB Autobus, JP Jeep, B Bicicleta, MT Moto, VP, Vehiculo Particular, O Otro
+  pre33_car_viv character varying(15), -- Pregunta Exposición a Factores de Riesgo Ambiental, opciones: DQ Desechos Químicos, VS Vibraciones, OF Olores Fuertes, VOS Vertederos, SF Sonidos Fuertes, H Humo, AS Aguas Servidas, O otro
+  CONSTRAINT "PK_caracteristica_vivienda" PRIMARY KEY (cod_dp_enc),
+  CONSTRAINT "FK_dp_encuestado_a_caracteristica_vivienda" FOREIGN KEY (cod_dp_enc)
+      REFERENCES viviendo.mvv_dp_encuestado (cod_dp_enc) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE dpt_estadal
+ALTER TABLE viviendo.mvv_caracteristica_vivienda
   OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_caracteristica_vivienda
+  IS 'Tabla par la caracteristicas de la vivienda';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.cod_dp_enc IS 'Codigo datos personales encuestado';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre1_car_viv IS 'Pregunta tipo de vivienda, opciones: Apartamento, Casa, Quinta, Rancho, Refugio, Otro
+';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre2_car_viv IS 'Pregunta Cuáles son las condiciones de tenencia de la vivienda, opciones: Propia, Alquilada, Conserje, Pagandose, Cuidando, Prestada, Invadida, Comodato, Alojamiento';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre3_car_viv IS 'Pregunta Cuál es la tenencia del terreno, opciones: Propio, Ejido - Municipal';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre4_car_viv IS 'Pregunta En qué zona está ubicada, Opciones: Urbanizada, No Urbanizada, Rural';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre5_car_viv IS 'Pregunta Qué característica tiene la zona de la ubicación de la vivienda, opciones: Plana, Cerro, Colina, Loma, Orilla de barranco, Orilla de rio, Orilla de Quebrada';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre6_car_viv IS 'Pregunta De qué manera llega a  la vivienda, opciones: Directamente de la calle, Por senderos Picas o Escalinatas, A través de otras viviendas pasillos';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre7_car_viv IS 'Pregunta Materiales predominantes en las paredes internas, opciones: BLFC Bloque o Ladrillo frisado (Acabado) concreto, BLSF Bloque o Ladrillo sin frisar (No acabado), MAFFVS Madera aserrada fórmica fibra de vidrio y similares , ATBF Adobe Tapia o Bahareque frisado, ATBSF Adobe Tapia o Bahareque sin frisado, OCPTCZLS Otros (Caña,ALTER TABLE viviendo.mvv_caracteristica_vivienda';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre8_car_viv IS 'Pregunta Cuál es material predominante en el techo, opciones: PBA Platabanda, TM Teja o Madera, TLA Tajali - Lámina Asfáltica, LMZS Láminas Metálicas (Zinc o similares), AS Asbesto y similares,  OPTS Otros (Palma, Tablas y Similares)';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre9_car_viv IS 'Pregunta Cuál es material predominante del piso, Opciones: CLT Cerámica Ladrillo Terracota, MAYS Madera Alfombra y similares, CPOV Cemento Pulido o Viniles, CSP Cemento sin Pulir, T Tierra';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre10_car_viv IS 'Pregunta  Cómo se distribuyen para dormir en las habitaciones o espacios de la vivienda, opciones: PCSELH Pareja conyugal sola en la habitación,PCPMDUA Pareja con personas menores de un año, PCPMDUAA Pareja con personas mayores de un año, PSDEUH Persona sola durmiendo en una habitación, MDTPDEUH Menos de tres personas durmiendo en una habitación, TPOMDEUMH Tres personas o más durmiendo en una misma habitación';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre11_car_viv IS 'Pregunta Cuántos Baños tiene la vivienda';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre12_car_viv IS 'Preguntas Cuántos Dormitorios tiene la vivienda';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre13_car_viv IS 'La Vivienda cuenta con Servicio de Agua Blanca, Opciones S para cuando es si N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre14_car_viv IS 'Pregunta Como llega normalmente el Agua a la Vivienda opciones: AOT Acueducto o Tubería, CC Camión Cisterna, PPOV Pila Pública o Vecinos, OM Otros Medios';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre15_car_viv IS 'Pregunta La Vivienda Almacena Agua, opciones: S para cuando es si N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre16_car_viv IS 'Pregunta Qué utilizan para almacenar el Agua, opciones: TQ Tanques, RP Recipientes Plásticos, TORM Tobos o Recipientes Metálicos, RDVV Recipientes de Vidrio / Vasijas';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre17_car_viv IS 'Pregunta Cómo están Distribuidos el o los Baños con los que cuenta la Vivienda, opciones: BCPDYL Baño con Poceta Ducha y Lavamanos, BCP Baño con Poceta, BCPYL Baño con Poceta y Lavamanos, EDHOL Escusado de Hoyo o Letrina, BCPYD  Baño con Poceta y Ducha, NTPOE No tiene Poceta o Escusado';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre18_car_viv IS 'Pregunta Donde está ubicado el o los Baños o Letrinas de la Vivienda, opciones: BDDLV Baño Dentro de la Vivienda, BFDLV Baño Fuera de la Vivienda, LFDLV  Letrina Fuera de la Vivienda ';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre19_car_viv IS 'Pregunta  A dónde va el Agua de Desecho de la Poceta, opciones DDLVUC Dentro de la Vivienda una Cloaca, RQ Ríos Quebradas, FDLVPS  Fuera de la Vivienda 2 pozos Sépticos';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre20_car_viv IS 'Pregunta A dónde va el Agua de Desecho del Fregadero, Ducha, Batea y Lavamanos, opciones: C Cloacas, PS Pozo Séptico, ALC A la Calle, RQ Ríos Quebradas, P Patio';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre21_car_viv IS 'Pregunta La Vivienda cuenta con Servicio Eléctrico, opciones: S para cuamdo es si, N para cuando es no ';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre22_car_viv IS 'La Vivienda cuenta con Servicio Telefónico Fijo, opciones: S para cuamdo es si, N para cuando es no ';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre23_car_viv IS 'Pregunta La Vivienda cuenta con Servicio de Internet, opciones: S para cuamdo es si, N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre24_car_viv IS 'Pregunta Centros de Educación Inicial';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre25_car_viv IS 'Pregunta Centros de Educación Primaria';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre26_car_viv IS 'Pregunta Centros de Educación Básica/Diversificada';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre27_car_viv IS 'Pregunta Centros de Educación Superior';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre28_car_viv IS 'Pregunta Centros de Atención Primaria';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre29_car_viv IS 'Pregunta Centros de Diagnóstico Integral';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre30_car_viv IS 'Pregunta Centros Hospitalarios';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre31_car_viv IS 'Pregunta Centros de Salud/Clínicas Privadas';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre32_car_viv IS 'Pregunta Medio de Transporte predominante, opciones:  AP A Pie, AB Autobus, JP Jeep, B Bicicleta, MT Moto, VP, Vehiculo Particular, O Otro';
+COMMENT ON COLUMN viviendo.mvv_caracteristica_vivienda.pre33_car_viv IS 'Pregunta Exposición a Factores de Riesgo Ambiental, opciones: DQ Desechos Químicos, VS Vibraciones, OF Olores Fuertes, VOS Vertederos, SF Sonidos Fuertes, H Humo, AS Aguas Servidas, O otro';
 
--- Index: "dpt estadal_geom_gist"
-
--- DROP INDEX "dpt estadal_geom_gist";
-
-CREATE INDEX "dpt estadal_geom_gist"
-  ON dpt_estadal
-  USING gist
-  (geom);
 
 
-  
-  -- Table: dpt_municipal
 
--- DROP TABLE dpt_municipal;
+-- Table: viviendo.mvv_situacion_politica
 
-CREATE TABLE dpt_municipal
+-- DROP TABLE viviendo.mvv_situacion_politica;
+
+CREATE TABLE viviendo.mvv_situacion_politica
 (
-  gid integer NOT NULL DEFAULT nextval('"dpt municipal_gid_seq"'::regclass),
-  cod_estado character varying(3),
-  estado character varying(17),
-  cap_estado character varying(50),
-  cod_munic character varying(3),
-  ci_munici character varying(6),
-  municipio character varying(50),
-  cap_munic character varying(50),
-  nota character varying(50),
-  hectares numeric,
-  geom geometry(MultiPolygon,4189),
-  CONSTRAINT "dpt municipal_pkey" PRIMARY KEY (gid)
+  cod_dp_enc integer NOT NULL, -- Codigo del encuestado
+  reg_ele_sit_pol character(1) NOT NULL, -- Registro electoral, opciones si es S es que si esta inscrito, si es N es por que no esta inscrito
+  par_pol_sit_pol character(1), -- Partido politico, opciones S cuando es si y N cuando es no
+  cod_par_pol integer, -- Codigo del partido politico
+  otr_par_sit_pol character varying(60), -- Si pertenece a otro partido politico
+  nom_cen_vot_sit_pol character varying(80), -- Nombre del centro de votacion
+  cod_par character(6), -- Codigo de la parroquia
+  mie_mes_sit_pol character(1), -- Miembro de mesa, opciones S para cuando es si y N para cuando es no
+  tes_mes_sit_pol character(1), -- Testigo de mesa, opciones S para cuando es si y N para cuando es no
+  res_par_sit_pol character(1), -- Si tiene responsabilidad en el partido politico, opciones S para cuando es si y N para cuando es no
+  ins_sit_pol character varying(60), -- Instancia a la que pertenece
+  des_res_sit_pol character varying(60), -- Descripcion de la responsabilidad
+  niv_dir_sit_pol character(1), -- Nivel de direccion, opciones N para cuando es nacional, E para cuando es estadal, M para cuando es municipal y P para cuando es parroquial
+  CONSTRAINT "PK_situacion_politica" PRIMARY KEY (cod_dp_enc),
+  CONSTRAINT "FK_dp_encuestado_a_situacion_politica" FOREIGN KEY (cod_dp_enc)
+      REFERENCES viviendo.mvv_dp_encuestado (cod_dp_enc) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT "FK_partido_politico_a_situacion_politica" FOREIGN KEY (cod_par_pol)
+      REFERENCES viviendo.mvv_partido_politico (cod_par_pol) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE dpt_municipal
+ALTER TABLE viviendo.mvv_situacion_politica
   OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_situacion_politica
+  IS 'Tabla para saber la situación politica del encuestado';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.cod_dp_enc IS 'Codigo del encuestado';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.reg_ele_sit_pol IS 'Registro electoral, opciones si es S es que si esta inscrito, si es N es por que no esta inscrito';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.par_pol_sit_pol IS 'Partido politico, opciones S cuando es si y N cuando es no';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.cod_par_pol IS 'Codigo del partido politico';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.otr_par_sit_pol IS 'Si pertenece a otro partido politico';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.nom_cen_vot_sit_pol IS 'Nombre del centro de votacion';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.cod_par IS 'Codigo de la parroquia';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.mie_mes_sit_pol IS 'Miembro de mesa, opciones S para cuando es si y N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.tes_mes_sit_pol IS 'Testigo de mesa, opciones S para cuando es si y N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.res_par_sit_pol IS 'Si tiene responsabilidad en el partido politico, opciones S para cuando es si y N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.ins_sit_pol IS 'Instancia a la que pertenece';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.des_res_sit_pol IS 'Descripcion de la responsabilidad';
+COMMENT ON COLUMN viviendo.mvv_situacion_politica.niv_dir_sit_pol IS 'Nivel de direccion, opciones N para cuando es nacional, E para cuando es estadal, M para cuando es municipal y P para cuando es parroquial';
 
--- Index: "dpt municipal_geom_gist"
-
--- DROP INDEX "dpt municipal_geom_gist";
-
-CREATE INDEX "dpt municipal_geom_gist"
-  ON dpt_municipal
-  USING gist
-  (geom);
 
 
-  
-  
-  
-  -- Table: dpt_parroquial
+-- Table: viviendo.mvv_partido_politico
 
--- DROP TABLE dpt_parroquial;
+-- DROP TABLE viviendo.mvv_partido_politico;
 
-CREATE TABLE dpt_parroquial
+CREATE TABLE viviendo.mvv_partido_politico
 (
-  gid integer NOT NULL DEFAULT nextval('"dpt parroquial_gid_seq"'::regclass),
-  id character varying(6),
-  cod_estado character varying(3),
-  estado character varying(20),
-  cap_estado character varying(50),
-  cod_munic character varying(3),
-  ci_munici character varying(6),
-  municipio character varying(50),
-  cap_munic character varying(50),
-  cod_parroq character varying(3),
-  ci_parroq character varying(6),
-  parroquia character varying(50),
-  cap_parroq character varying(50),
-  nota character varying(50),
-  hectareas numeric,
-  perimeter numeric,
-  sup_ha numeric,
-  geom geometry(MultiPolygon,4189),
-  CONSTRAINT "dpt parroquial_pkey" PRIMARY KEY (gid)
+  cod_par_pol serial NOT NULL, -- Codigo de los partidos politicos
+  nom_par_pol character varying(60) NOT NULL, -- Nombre del partido politico
+  des_par_pol text, -- Descripcion del partido politico
+  CONSTRAINT "PK_partido_politico" PRIMARY KEY (cod_par_pol)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE dpt_parroquial
+ALTER TABLE viviendo.mvv_partido_politico
   OWNER TO postgres;
-
--- Index: "dpt parroquial_geom_gist"
-
--- DROP INDEX "dpt parroquial_geom_gist";
-
-CREATE INDEX "dpt parroquial_geom_gist"
-  ON dpt_parroquial
-  USING gist
-  (geom);
+COMMENT ON TABLE viviendo.mvv_partido_politico
+  IS 'Tabla para los partidos politicos';
+COMMENT ON COLUMN viviendo.mvv_partido_politico.cod_par_pol IS 'Codigo de los partidos politicos';
+COMMENT ON COLUMN viviendo.mvv_partido_politico.nom_par_pol IS 'Nombre del partido politico';
+COMMENT ON COLUMN viviendo.mvv_partido_politico.des_par_pol IS 'Descripcion del partido politico';
 
