@@ -4,37 +4,6 @@
 /* @var $form CActiveForm */
 
 ?>
-<style type="text/css">
-<!--
-.tabla-int {
-   width: 100%;
-   border: 1px solid #000;
-}
-th, td {
-   width: 25%;
-   text-align: left;
-   vertical-align: top;
-   border: 1px solid #000;
-   border-collapse: collapse;
-   padding: 0.3em;
-   caption-side: bottom;
-   text-align: center;
-}
-caption {
-   padding: 0.3em;
-   color: #fff;
-    background: #000;
-}
-
-th {
-   background: #FC4747;
-}
-.td-int
-{
-	background: #eee;
-}
--->
-</style>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
