@@ -67,7 +67,7 @@ class Caracteristicavivienda extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cod_dp_enc', 'required'),
+			array('cod_dp_enc,pre1_car_viv,pre2_car_viv,pre3_car_viv,pre4_car_viv', 'required'),
 			array('cod_dp_enc', 'numerical', 'integerOnly'=>true),
 			array('pre1_car_viv', 'length', 'max'=>11),
 			array('pre2_car_viv, pre4_car_viv, pre7_car_viv, pre32_car_viv, pre33_car_viv', 'length', 'max'=>15),
@@ -140,6 +140,9 @@ class Caracteristicavivienda extends CActiveRecord
 			'pre31_car_viv' => 'Centros de Salud/Clínicas Privadas',
 			'pre32_car_viv' => 'Medio de Transporte predominante',
 			'pre33_car_viv' => 'Exposición a Factores de Riesgo Ambiental',
+			'cod_edo'=>'Estado',
+			'cod_mun'=>'Municipio',
+			'cod_par'=>'Parroquia',
 		);
 	}
 

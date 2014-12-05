@@ -20,6 +20,10 @@
  */
 class Situacionpolitica extends CActiveRecord
 {
+	
+	public $cod_edo;
+	
+	public $cod_mun;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -46,7 +50,7 @@ class Situacionpolitica extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cod_dp_enc, reg_ele_sit_pol', 'required'),
+			array('cod_dp_enc, reg_ele_sit_pol,cod_par', 'required'),
 			array('cod_dp_enc, cod_par_pol', 'numerical', 'integerOnly'=>true),
 			array('reg_ele_sit_pol, par_pol_sit_pol, mie_mes_sit_pol, tes_mes_sit_pol, res_par_sit_pol, niv_dir_sit_pol', 'length', 'max'=>1),
 			array('otr_par_sit_pol, ins_sit_pol, des_res_sit_pol', 'length', 'max'=>60),
@@ -75,19 +79,21 @@ class Situacionpolitica extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'cod_dp_enc' => 'Cod Dp Enc',
-			'reg_ele_sit_pol' => 'Reg Ele Sit Pol',
-			'par_pol_sit_pol' => 'Par Pol Sit Pol',
-			'cod_par_pol' => 'Cod Par Pol',
-			'otr_par_sit_pol' => 'Otr Par Sit Pol',
-			'nom_cen_vot_sit_pol' => 'Nom Cen Vot Sit Pol',
-			'cod_par' => 'Cod Par',
-			'mie_mes_sit_pol' => 'Mie Mes Sit Pol',
-			'tes_mes_sit_pol' => 'Tes Mes Sit Pol',
-			'res_par_sit_pol' => 'Res Par Sit Pol',
-			'ins_sit_pol' => 'Ins Sit Pol',
-			'des_res_sit_pol' => 'Des Res Sit Pol',
-			'niv_dir_sit_pol' => 'Niv Dir Sit Pol',
+			'cod_dp_enc' => 'Codigo',
+			'reg_ele_sit_pol' => '¿Esta Inscrito en el Registro Electoral?',
+			'par_pol_sit_pol' => '¿Esta Inscrito en algun Partido Politico?',
+			'cod_par_pol' => 'Partido Politico',
+			'otr_par_sit_pol' => 'Otro Partido',
+			'nom_cen_vot_sit_pol' => 'Nombre del Centro de Votacion',
+			'cod_edo' => 'Estado',
+			'cod_mun' => 'Municipio',
+			'cod_par' => 'Parroquia',
+			'mie_mes_sit_pol' => '¿Es o ha sido Miembro de Mesa?',
+			'tes_mes_sit_pol' => '¿Es o ha sido Testigo de Mesa?',
+			'res_par_sit_pol' => '¿Tiene alguna Responsabilidad en su Partido Politico?',
+			'ins_sit_pol' => 'Indique Instancia',
+			'des_res_sit_pol' => 'Indique Responsabilidad',
+			'niv_dir_sit_pol' => 'Nivel de Direccion',
 		);
 	}
 

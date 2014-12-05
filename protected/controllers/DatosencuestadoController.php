@@ -136,23 +136,56 @@ class DatosencuestadoController extends Controller
 	public function actionCreate()
 	{
 		$model=new Datosencuestado;
-		$model1=new Caracteristicavivienda;
+		
+		/*$model1=new Caracteristicavivienda;
 		$model2= new Situacionpolitica;
-
+		$model3= new Posesionesvivienda;
+		$model4= new Informacionlaboral;
+		$model5= new Distribuciontiempo;
+		
+		$this->render('crearencuesta',array(
+				'model1'=>$model1,
+				'model2'=>$model2,
+				'model3'=>$model3,
+				'model4'=>$model4,
+				'model5'=>$model5,
+				'id'=>13,
+		));
+		Yii::app()->end();*/
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Datosencuestado']))
 		{
 			$model->attributes=$_POST['Datosencuestado'];
+			
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->cod_dp_enc));
+			{	
+				
+				$model1=new Caracteristicavivienda;
+				$model2= new Situacionpolitica;
+				$model3= new Posesionesvivienda;
+				$model4= new Informacionlaboral;
+				$model5= new Distribuciontiempo;
+				
+				$this->render('crearencuesta',array(
+						'model1'=>$model1,
+						'model2'=>$model2,
+						'model3'=>$model3,
+						'model4'=>$model4,
+						'model5'=>$model5,
+						'id'=>13,
+				));
+				
+				Yii::app()->end();
+				
+			}
+			
 		}
 
-		$this->render('crearencuesta',array(
+		$this->render('create',array(
 			'model'=>$model,
-			'model1'=>$model1,
-			'model2'=>$model2,
 		));
 	}
 	
@@ -172,26 +205,92 @@ class DatosencuestadoController extends Controller
 	public function actionRegistrar()
 	{
 		header("Content-Type: application/json", true);
-		
-		switch ($_POST['action'])
+		try 
 		{
-
-			case 'DP':
-				$model = new Datosencuestado;
-				$model->attributes = $_POST['Datosencuestado'];
-				$this->validarForm($model);
-				//$this->performAjaxValidation($model);
-				if($model->save())
-				{
-					$JSON['status'] = true;
-					$JSON['cod_dp_enc'] = $model->cod_dp_enc;
-					die(json_encode($JSON));
-				}
-			break;
-			case 'SP':
-			break;
+			switch ($_POST['action'])
+			{
+			
+				case 'DP':
+					$model = new Datosencuestado;
+					$model->attributes = $_POST['Datosencuestado'];
+					$this->validarForm($model);
+					break;
+				case 'DV':
+					$model = new Caracteristicavivienda;
+					$model->attributes = $_POST['Caracteristicavivienda'];
+					$this->validarForm($model);
+					break;
+				case 'SP':
+					$model = new Situacionpolitica;
+					$model->attributes = $_POST['Situacionpolitica'];
+					$this->validarForm($model);
+					break;
+				case 'PV':
+					$model = new Posesionesvivienda;
+					$model->attributes = $_POST['Posesionesvivienda'];
+					$this->validarForm($model);
+				break;
+				case 'IL':
+					//print_r($_POST);die;
+					$model = new Informacionlaboral;
+					$model2 = new Distribuciontiempo;
+					$model3 = new Distribuciontiempo;
+					$fuente = $_POST['Informacionlaboral']['fue_ing_inf_lab'];
+					$_POST['Informacionlaboral']['fue_ing_inf_lab'] = implode(',',$fuente);
+					$model->attributes = $_POST['Informacionlaboral'];
+					$this->validarDistribucion($_POST['Distribuciontiempo']);
+					$this->validarDistribucion($_POST['Distribuciontiempo2']);	
+						
+					//print_r($model2->attributes);die;
+					$this->validarForm($model);					
+					
+					if($model->save())
+					{
+						$this->salvarDistribucion($_POST['Distribuciontiempo']);
+						$this->salvarDistribucion($_POST['Distribuciontiempo2']);
+						$JSON['status'] = true;
+						$JSON['cod_dp_enc'] = $model->cod_dp_enc;
+						die(json_encode($JSON));
+					}
+				break;
+			}
+			
+			
+			if($model->save())
+			{
+				$JSON['status'] = true;
+				$JSON['cod_dp_enc'] = $model->cod_dp_enc;
+				die(json_encode($JSON));
+			}
+			
+		} 
+		catch (Exception $e) 
+		{
+			$JSON['error'] = 'Se produjo un error inesperado, es posible que ya haya realizado el registro';
+			$JSON['error2']= $e->getMessage();
+			die(json_encode($JSON));
 		}
 		
+		
+	}
+	
+	
+	public function validarDistribucion(array $post)
+	{
+		$model = new Distribuciontiempo();
+		$model->isNewRecord = true;
+		$model->unsetAttributes();
+		$model->attributes = $post;	
+		
+		$this->validarForm($model);
+		
+	}
+	
+	
+	public function salvarDistribucion(array $post)
+	{
+		$model = new Distribuciontiempo();
+		$model->salvarDistribucion('I', $post);
 	}
 
 	/**

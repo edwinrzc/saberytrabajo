@@ -14,8 +14,8 @@
 
 	<?php echo $form->errorSummary($model); ?>
 		
-	<div class="row">
-		<table class="tabla-int" >
+	<div class="row grid-view">
+		<table class="items" >
 			<tr>
 				<th colspan="3" >Tipo de Construccion</th>
 			</tr>
@@ -287,18 +287,18 @@
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[est_emb_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
 					?>
 					<?php echo $form->error($model,'est_emb_dp_enc'); ?>
 				</td>
 				<td>
-					<?php echo $form->textField($model,'sem_emb_dp_enc'); ?>
+					<?php echo $form->textField($model,'sem_emb_dp_enc',array('disabled'=>'disabled')); ?>
 					<?php echo $form->error($model,'sem_emb_dp_enc'); ?>
 				</td>
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[asi_ctrl_emb_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...','disabled'=>'disabled'));
 					?>
 					<?php echo $form->error($model,'asi_ctrl_emb_dp_enc'); ?>
 				</td>
@@ -599,7 +599,7 @@
 	</div> -->
 
 	<div class="row buttons">
-		<?php echo CHtml::Button('Registrar',array('id'=>'btn-datos-personales', 'class'=>'small blue nice button radius')); ?>
+		<?php echo CHtml::submitButton('Registrar',array('id'=>'btn-datos-personales', 'class'=>'small blue nice button radius')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

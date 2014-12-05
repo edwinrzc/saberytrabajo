@@ -47,6 +47,7 @@
 					array('label'=>'Parentesco Familiar', 'url'=>array('/parentescofamiliar/admin')),
 					array('label'=>'Partido Politico', 'url'=>array('/partidopolitico/admin')),
 					array('label'=>'Mision Social', 'url'=>array('/misionsocial/admin')),
+                  	array('label'=>'Ocupacion', 'url'=>array('/ocupacion/admin')),
 					array('label'=>'Organizacion Social', 'url'=>array('/organizacionsocial/admin')), 
                     /*array('label'=>'Sub 2', 
                       'items'=>array( 
@@ -76,59 +77,7 @@
 				'htmlOptions'=>array('class'=>'operations'),
 			));
 			$this->endWidget();
-		?>
-		
-		<?php
-			$this->beginWidget('zii.widgets.CPortlet', array(
-				'title'=>'<span class="icon icon-user">Account Details</span>',
-			));
-			?>
-            Domains Used: 45/100
-			<?php
-			$this->widget('zii.widgets.jui.CJuiProgressBar', array(
-				'value'=>45,
-				'htmlOptions'=>array(
-					'style'=>'height:10px;',
-					'class'=>'shadowprogressbar'
-				),
-			));
-			?>
-            <br />
-            Space Used: 95%
-            <?php
-			$this->widget('zii.widgets.jui.CJuiProgressBar', array(
-				'value'=>95,
-				'htmlOptions'=>array(
-					'style'=>'height:10px;',
-					'class'=>'shadowprogressbar'
-				),
-			));
-			?>
-            <br />
-            Bandwidth Used: 10%
-            <?php
-			$this->widget('zii.widgets.jui.CJuiProgressBar', array(
-				'value'=>10,
-				'htmlOptions'=>array(
-					'style'=>'height:10px;',
-					'class'=>'shadowprogressbar'
-				),
-			));
-			?>
-            <br />
-            Conversion rate: 25%            
-            <?php
-			$this->widget('zii.widgets.jui.CJuiProgressBar', array(
-				'value'=>25,
-				'htmlOptions'=>array(
-					'style'=>'height:10px;',
-					'class'=>'shadowprogressbar'
-				),
-			));
-			?>
-			<?php
-			$this->endWidget();
-		?>
+		?>	
 		
 		</div><!-- sidebar -->
 	</div>

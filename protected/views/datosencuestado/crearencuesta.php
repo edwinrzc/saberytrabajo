@@ -7,31 +7,70 @@ $baseUrl = Yii::app()->request->baseUrl;
 $cs = Yii::app()->getClientScript();
 $cs->registerCssFile($baseUrl.'/css/jquery.css');
 $cs->registerCssFile($baseUrl.'/assets/cba5058/jui/css/base/jquery-ui.css');
+$cs->registerCssFile($baseUrl.'/assets/552382aa/gridview/styles.css');
 // $cs->registerCssFile($baseUrl.'/css/tinyeditor.css');
 $cs->registerScriptFile($baseUrl.'/assets/cba5058/jui/js/jquery-ui.min.js');
+$cs->registerScriptFile($baseUrl.'/js/funciones.js');
 
-$this->menu=array(
+/*$this->menu=array(
 	array('label'=>'List Datosencuestado', 'url'=>array('index')),
 	array('label'=>'Manage Datosencuestado', 'url'=>array('admin')),
-);
+);*/
 
 Yii::app()->clientScript->registerScript('form_familiar', "
-		
-	jQuery('#mydialog').dialog({'title':'Desembolsos','autoOpen':false,'modal':true});
 
-	$('#btn-datos-personales').click(function(e)
+	$('#article_tab').show();
+	var _tabs = $('#article_tab').tabs();  	
+	//$('#article_tab' ).tabs({ disabled: [ 2, 3, 4, 5] }); //when initializing the tabs
+	//$('#article_tab').tabs('option', 'disabled', [1, 2, 3, 4, 5] ); // or setting after init
+		
+	$('#btn-datos-vivienda').click(function(e)
 	{		
 		_op = {param:{}};
-		_op.param = $('#datosencuestado-form').serialize();
+		_op.param = $('#caracteristicavivienda-form').serialize();
 		_url = '".Yii::app()->createUrl('/datosencuestado/registrar')."';
 		_op.tipo = 'dialog';
 		_op.contentMsj = 'mensaje';			
-		_res = registrarFormulario(_url,_op);
-		if(typeof(_res) != 'undefined')
-		{
-			$('#codigo_maestro').val(_res.cod_dp_enc);
-		}
-			
+		_res = registrarFormulario(_url,_op);			
+		
+		
+	});
+	
+	$('#btn-situacion-politica').click(function(e)
+	{		
+		_op = {param:{}};
+		_op.param = $('#situacionpolitica-form').serialize();
+		_url = '".Yii::app()->createUrl('/datosencuestado/registrar')."';
+		_op.tipo = 'dialog';
+		_op.contentMsj = 'mensaje';			
+		_res = registrarFormulario(_url,_op);			
+		
+		
+	});
+		
+	$('#btn-posesiones-vivienda').click(function(e)
+	{		
+		_op = {param:{}};
+		_op.param = $('#posesionesvivienda-form').serialize();
+		_url = '".Yii::app()->createUrl('/datosencuestado/registrar')."';
+		_op.tipo = 'dialog';
+		_op.contentMsj = 'mensaje';			
+		_res = registrarFormulario(_url,_op);			
+		
+		
+	});
+		
+		
+	$('#btn-info-laboral').click(function(e)
+	{		
+		_op = {param:{}};
+		_op.param = $('#informacionlaboral-form').serialize();
+		//_op.param.form = $('#distribuciontiempo-form').serialize();
+		_op.param.form2 = $('#distribuciontiempo-form22').serialize();
+		_url = '".Yii::app()->createUrl('/datosencuestado/registrar')."';
+		_op.tipo = 'dialog';
+		_op.contentMsj = 'mensaje';			
+		_res = registrarFormulario(_url,_op);			
 		
 		
 	});
@@ -54,6 +93,7 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 	{
 		_attr = $(this).attr('id');
 		_valor = $('#'+_attr).find('option:selected').val();
+		_text = $('#'+_attr).find('option:selected').text();
 		
 		switch(_attr)
 		{
@@ -122,6 +162,62 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 					break;
 				}
 			break;
+			case 'Situacionpolitica_reg_ele_sit_pol':
+				
+				switch(_valor)
+				{
+					case 'S':
+						bloquearDesbloquear('D','Situacionpolitica_par_pol_sit_pol');
+						bloquearDesbloquear('D','Situacionpolitica_nom_cen_vot_sit_pol');
+						bloquearDesbloquear('D','Situacionpolitica_cod_edo');
+						bloquearDesbloquear('D','Situacionpolitica_cod_mun');
+						bloquearDesbloquear('D','Situacionpolitica_cod_par');
+						bloquearDesbloquear('D','Situacionpolitica_mie_mes_sit_pol');
+						bloquearDesbloquear('D','Situacionpolitica_tes_mes_sit_pol');
+					break;
+					case 'N':
+						bloquearDesbloquear('B','Situacionpolitica_par_pol_sit_pol');
+						bloquearDesbloquear('B','Situacionpolitica_nom_cen_vot_sit_pol');
+						bloquearDesbloquear('B','Situacionpolitica_cod_edo');
+						bloquearDesbloquear('B','Situacionpolitica_cod_mun');
+						bloquearDesbloquear('B','Situacionpolitica_cod_par');
+						bloquearDesbloquear('B','Situacionpolitica_mie_mes_sit_pol');
+						bloquearDesbloquear('B','Situacionpolitica_tes_mes_sit_pol');
+					break;
+				}
+			break;
+			case 'Situacionpolitica_par_pol_sit_pol':
+				
+				switch(_valor)
+				{
+					case 'S':
+						bloquearDesbloquear('D','Situacionpolitica_cod_par_pol');
+						bloquearDesbloquear('D','Situacionpolitica_res_par_sit_pol');
+						bloquearDesbloquear('D','Situacionpolitica_ins_sit_pol');
+						bloquearDesbloquear('D','Situacionpolitica_des_res_sit_pol');
+						bloquearDesbloquear('D','Situacionpolitica_niv_dir_sit_pol');
+					break;
+					case 'N':
+						bloquearDesbloquear('B','Situacionpolitica_cod_par_pol');
+						bloquearDesbloquear('B','Situacionpolitica_res_par_sit_pol');
+						bloquearDesbloquear('B','Situacionpolitica_ins_sit_pol');
+						bloquearDesbloquear('B','Situacionpolitica_des_res_sit_pol');
+						bloquearDesbloquear('B','Situacionpolitica_niv_dir_sit_pol');
+					break;
+				}
+			break;
+			case 'Situacionpolitica_cod_par_pol':
+			
+				switch(_text)
+				{
+					case 'Otro':
+						bloquearDesbloquear('D','Situacionpolitica_otr_par_sit_pol');
+					break;
+					default:
+						bloquearDesbloquear('B','Situacionpolitica_otr_par_sit_pol');
+					break;
+				}
+			break;
 		}
 	});
 				
@@ -146,106 +242,9 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 		//alert('Esta as: '+$('#codigo_maestro').val());
 		//return false;
 	});
-				
-				
-	function registrarFormulario(_url,_op)
-	{
-		
-		$.ajax(
-		{
-			url:_url,
-			async:false,
-			type:'post',
-			data:_op.param,
-			dataType:'json',			
-			success:function(_res)
-			{
-				
-				
-				if(_res.status){
-					$('#mydialog').html('El registro se realizo de manera satisfactoria.');
-					$('#mydialog').dialog('option', 'title', 'Mensaje de Sistema');
-					$('#mydialog').dialog('option', 'width', '250px;');
-					$('#mydialog').dialog('open');
-					return _res;
-
-				}
-				else
-				{
-					_msj = '';
-					$.each(_res,function(ev,valor)
-					{
-						_msj += mensaje(valor);
-					});
-				
-					$('#mydialog').html(estructMensaje(_msj));
-					$('#mydialog').dialog('option', 'title', 'Mensaje de Sistema');
-					$('#mydialog').dialog('option', 'width', '250px;');
-					$('#mydialog').dialog('open');
-				}
-				/*_msj = '';
-				$.each(_res,function(ev,valor)
-				{
-					_msj += mensaje(valor);
-				});
-				
-				
-				if(_msj != '' && _op.tipo != 'reload')
-				{
-					$('#mydialog').html(estructMensaje(_msj)).fadeIn('slow');
-				}
-				else
-				{
-					switch(_op.tipo)
-					{
-						case 'dialog':
-							$('#mydialog').html('El registro se realizo de manera satisfactoria.');
-							$('#mydialog').dialog('option', 'title', 'Mensaje de Sistema');
-							$('#mydialog').dialog('option', 'width', '250px;');
-							$('#mydialog').dialog('open');
-						break;
-						case 'reload':
-		
-							if(_msj != '' && !_res.status)
-							{
-								$('.'+_op.contentMsj).html(estructMensaje(_msj)).fadeIn('slow');
-								return;
-							}
-							$('#mydialog').dialog('close');
-							 location.reload();
-						break;
-					}
-				}*/				
-				
-			}
-	
-		});	
-	}
-				
-				
-	function estructMensaje(_msj)
-	{
-		_html = '';
-		_ul_i = '<ul>';
-		_ul_f = '</ul>';
-		_html = '<p>Por favor corrija los siguientes errores:</p>';
-		_html += _ul_i+_msj+_ul_f;
-		return _html;
-	}
-		
-	function mensaje(msj)
-	{ 
-		_msj = '';
-		if(msj)
-		{
-			_msj = '<li>'+msj+'</li>';
-		}
-		
-		return _msj;
-	}
 		
 		
-");
+",CClientScript::POS_LOAD);
 ?>
 <style type="text/css">
 <!--
@@ -278,6 +277,7 @@ th {
 }
 -->
 </style>
+<div class="span-23">
 <h1>Agregar Datosencuestado</h1>
 
 <div id="mydialog"></div>
@@ -285,23 +285,25 @@ th {
 <?php
 $this->widget('zii.widgets.jui.CJuiTabs',array(
         'id'=>'article_tab',
-        'htmlOptions'=>array('class'=>'shadowaccordion'),  // INVISIBLE..
+        'htmlOptions'=>array('class'=>'shadowaccordion','style'=>'display: none;'),  // INVISIBLE..
         'tabs'=>array(
-                'Datos Personales'=>$this->renderPartial('_form',
-                        array('model'=>$model,'id'=>1),true),
+                /*'Datos Personales'=>$this->renderPartial('_form',
+                        array('model'=>$model,'id'=>1),true),*/
                 'Datos Vivienda'=>$this->renderPartial('_form1',
-                        array('model'=>$model1,'id'=>1),true),
-                'Posesiones Vivienda'=>'',
-                'Informacion Laboral'=>'',
+                        array('model'=>$model1,'id'=>$id),true),
+                'Posesiones Vivienda'=>$this->renderPartial('_form3',
+                        array('model'=>$model3,'id'=>$id),true),
+                'Informacion Laboral'=>$this->renderPartial('_form4',
+                        array('model'=>$model4,'model1'=>$model5,'id'=>$id),true),
 				'Codicion de Salud'=>'',
 				'Situacion Politica'=>$this->renderPartial('_form2',
-                        array('model'=>$model2,'id'=>1),true),
+                        array('model'=>$model2,'id'=>$id),true),
 				/*'Deposito'=>$this->renderPartial('inspeccion/_listado',
 						array('model'=>$model,'id'=>6),true),*/
         ),
         'options'=>array(
                 'collapsible'=>false,
-                'cookie'=>9000,
         ),
 ));     // el ID del tab
 ?>
+</div>
