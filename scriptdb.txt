@@ -257,3 +257,257 @@ COMMENT ON COLUMN viviendo.mvv_situacion_politica.niv_dir_sit_pol IS 'Nivel de d
 
 
 
+-- Table: viviendo.mvv_asignacion_vivienda
+
+-- DROP TABLE viviendo.mvv_asignacion_vivienda;
+
+CREATE TABLE viviendo.mvv_asignacion_vivienda
+(
+  cod_asi_viv serial NOT NULL, -- Codigo de asignacion
+  num_viv_asi_viv character varying(10) NOT NULL, -- Numero de vivienda asignada
+  cod_pro integer, -- Codigo de proyecto
+  cod_dp_enc integer NOT NULL, -- Codigo del beneficiario
+  cod_user integer NOT NULL, -- Codigo de usuario quien hizo el registro
+  fec_reg_asi_viv timestamp with time zone DEFAULT now(), -- Fecha de registro de la asignacion
+  CONSTRAINT "PK_asignacion_vivienda" PRIMARY KEY (cod_asi_viv),
+  CONSTRAINT "FK_dp_encuestado_a_asignacion_vivienda" FOREIGN KEY (cod_dp_enc)
+      REFERENCES viviendo.mvv_dp_encuestado (cod_dp_enc) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT "PK_proyecto_a_asignacion_vivienda" FOREIGN KEY (cod_pro)
+      REFERENCES viviendo.mvv_proyecto (cod_pro) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT "UK_asignacion_vivienda" UNIQUE (num_viv_asi_viv, cod_dp_enc)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_asignacion_vivienda
+  OWNER TO postgres;
+COMMENT ON COLUMN viviendo.mvv_asignacion_vivienda.cod_asi_viv IS 'Codigo de asignacion';
+COMMENT ON COLUMN viviendo.mvv_asignacion_vivienda.num_viv_asi_viv IS 'Numero de vivienda asignada';
+COMMENT ON COLUMN viviendo.mvv_asignacion_vivienda.cod_pro IS 'Codigo de proyecto';
+COMMENT ON COLUMN viviendo.mvv_asignacion_vivienda.cod_dp_enc IS 'Codigo del beneficiario';
+COMMENT ON COLUMN viviendo.mvv_asignacion_vivienda.cod_user IS 'Codigo de usuario quien hizo el registro';
+COMMENT ON COLUMN viviendo.mvv_asignacion_vivienda.fec_reg_asi_viv IS 'Fecha de registro de la asignacion';
+
+
+
+-- Table: viviendo.mvv_ayuda_requerida
+
+-- DROP TABLE viviendo.mvv_ayuda_requerida;
+
+CREATE TABLE viviendo.mvv_ayuda_requerida
+(
+  cod_dp_enc integer NOT NULL, -- Codigo del encuestado
+  cod_ayu_tec integer, -- Codigo de la ayuda tecnica
+  CONSTRAINT "FK_ayuda_tecnica_a_ayuda_requerida" FOREIGN KEY (cod_ayu_tec)
+      REFERENCES viviendo.mvv_ayuda_tecnica (cod_ayu_tec) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE CASCADE,
+  CONSTRAINT "FK_condicion_salud_a_ayuda_requerida" FOREIGN KEY (cod_dp_enc)
+      REFERENCES viviendo.mvv_condicion_salud (cod_dp_enc) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT "UK_ayuda_requerida" UNIQUE (cod_dp_enc, cod_ayu_tec)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_ayuda_requerida
+  OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_ayuda_requerida
+  IS 'Tabla para la ayuda requerida por el encuestado';
+COMMENT ON COLUMN viviendo.mvv_ayuda_requerida.cod_dp_enc IS 'Codigo del encuestado';
+COMMENT ON COLUMN viviendo.mvv_ayuda_requerida.cod_ayu_tec IS 'Codigo de la ayuda tecnica';
+
+
+
+-- Table: viviendo.mvv_ayuda_tecnica
+
+-- DROP TABLE viviendo.mvv_ayuda_tecnica;
+
+CREATE TABLE viviendo.mvv_ayuda_tecnica
+(
+  cod_ayu_tec serial NOT NULL, -- Codigo de la ayuda tecnica
+  nom_ayu_tec character varying(40) NOT NULL, -- Nombre de la ayuda tecnica
+  des_ayu_tec text, -- Descripcion de la ayuda
+  CONSTRAINT "PK_ayuda_tecnica" PRIMARY KEY (cod_ayu_tec)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_ayuda_tecnica
+  OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_ayuda_tecnica
+  IS 'Tabla para registrar las diferentes ayudas que puede solicitar una persona';
+COMMENT ON COLUMN viviendo.mvv_ayuda_tecnica.cod_ayu_tec IS 'Codigo de la ayuda tecnica';
+COMMENT ON COLUMN viviendo.mvv_ayuda_tecnica.nom_ayu_tec IS 'Nombre de la ayuda tecnica';
+COMMENT ON COLUMN viviendo.mvv_ayuda_tecnica.des_ayu_tec IS 'Descripcion de la ayuda';
+
+
+
+-- Table: viviendo.mvv_cadena_alimentos
+
+-- DROP TABLE viviendo.mvv_cadena_alimentos;
+
+CREATE TABLE viviendo.mvv_cadena_alimentos
+(
+  cod_cad_ali serial NOT NULL, -- Codigo de la cadena de alimentos
+  nom_cad_ali character varying(40) NOT NULL, -- Nombre de la cadena de alimentos
+  des_cad_ali text, -- Descripcion de la cadena de alimentos
+  CONSTRAINT "PK_cadena_alimentos" PRIMARY KEY (cod_cad_ali)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_cadena_alimentos
+  OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_cadena_alimentos
+  IS 'Tabla de las cadnas de alimentos';
+COMMENT ON COLUMN viviendo.mvv_cadena_alimentos.cod_cad_ali IS 'Codigo de la cadena de alimentos';
+COMMENT ON COLUMN viviendo.mvv_cadena_alimentos.nom_cad_ali IS 'Nombre de la cadena de alimentos';
+COMMENT ON COLUMN viviendo.mvv_cadena_alimentos.des_cad_ali IS 'Descripcion de la cadena de alimentos';
+
+
+
+
+-- Table: viviendo.mvv_condicion_salud
+
+-- DROP TABLE viviendo.mvv_condicion_salud;
+
+CREATE TABLE viviendo.mvv_condicion_salud
+(
+  cod_dp_enc integer NOT NULL, -- Codigo de encuentado
+  tie_tip_dis_con_sal character(1), -- Tiene algun tipo de discapacidad, opciones S cuando es si y N para cuando es no
+  tip_dis_con_sal character(1), -- Tipo de discapacidad, opciones: auditiva(A), motora(M), Intelectual(I), Visual(V)
+  tie_adi_con_sal character(1), -- Tiene alguna adiccion, opciones S para cuando es si y N para cuando es no
+  tip_adi_con_sal character varying(30), -- Tipo de adiccion, opciones: dorgas(D), medicamentos(M), tabaco(T), juegos(J), alcohol(A), Cigarrillo (CLL), chimo(C), otro(O)
+  otr_adi_con_sal character(20), -- Otra adiccion
+  pad_enf_con_sal character(1), -- Padece alguna enfermedad, opciones S para cuando es si N para cuando es no
+  rec_tra_con_sal character(1), -- Recibe tratamiento, opciones: S para cuando es si N para cuando es no
+  tip_tra_con_sal character(1), -- Tipo de tratamiento, opcines: T para cuando es temporal y P para cuando es permanente
+  cod_enf integer, -- Codigo de la enfermedad
+  des_tra_con_sal text, -- Descripcion del tratamiento
+  otr_enf_con_sal character varying(80), -- Si posee otra enfermedad no documentada
+  otr_des_tra_con_sal text, -- Descripcion de la otra enfermedad no documentada
+  req_ayu_tec_con_sal character(1), -- Requiere ayuda tecnica, opciones: S para cuando es si y N para cuando es no
+  fre_med_con_sal character(2), -- Frecuencia de asistencia medica, opciones: diario(D), semanal(S), mensual(M), trimestral(T), Semestral(ST), anual(A)
+  rec_asi_med_con_sal character(2), -- Recibe asistencia medica, opciones publica(P), privada(PV)
+  tip_asi_med_con_sal character(1), -- Tipo de asistencia medica, opciones: preventiva(P), curativa(C)
+  alt_apr_con_sal character(4), -- Altura aproximada
+  pes_apro_con_sal character(4), -- Peso aproximado
+  num_com_dia_con_sal numeric, -- Numero de comidas diarias
+  con_com_cas_con_sal character(3), -- Consumo de comida en casa
+  con_com_fue_cas_con_sal character(3), -- Consumo de comida fuera de casa
+  cod_cad_ali integer, -- Codigo de la cadena de alimentos
+  otr_cad_ali character(40), -- Otra cadena de alimentos
+  CONSTRAINT "PK_condicion_salud" PRIMARY KEY (cod_dp_enc),
+  CONSTRAINT "FK_cadena_alimentos_a_condicion_salud" FOREIGN KEY (cod_cad_ali)
+      REFERENCES viviendo.mvv_cadena_alimentos (cod_cad_ali) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT "FK_dp_encuestado_a_condicion_salud" FOREIGN KEY (cod_dp_enc)
+      REFERENCES viviendo.mvv_dp_encuestado (cod_dp_enc) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT "FK_enfermedades_a_condicion_salud" FOREIGN KEY (cod_enf)
+      REFERENCES viviendo.mvv_enfermedad (cod_enf) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_condicion_salud
+  OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_condicion_salud
+  IS 'Tabla para la condicion de salud';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.cod_dp_enc IS 'Codigo de encuentado';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.tie_tip_dis_con_sal IS 'Tiene algun tipo de discapacidad, opciones S cuando es si y N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.tip_dis_con_sal IS 'Tipo de discapacidad, opciones: auditiva(A), motora(M), Intelectual(I), Visual(V)';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.tie_adi_con_sal IS 'Tiene alguna adiccion, opciones S para cuando es si y N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.tip_adi_con_sal IS 'Tipo de adiccion, opciones: dorgas(D), medicamentos(M), tabaco(T), juegos(J), alcohol(A), Cigarrillo (CLL), chimo(C), otro(O)';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.otr_adi_con_sal IS 'Otra adiccion';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.pad_enf_con_sal IS 'Padece alguna enfermedad, opciones S para cuando es si N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.rec_tra_con_sal IS 'Recibe tratamiento, opciones: S para cuando es si N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.tip_tra_con_sal IS 'Tipo de tratamiento, opcines: T para cuando es temporal y P para cuando es permanente';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.cod_enf IS 'Codigo de la enfermedad';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.des_tra_con_sal IS 'Descripcion del tratamiento';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.otr_enf_con_sal IS 'Si posee otra enfermedad no documentada';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.otr_des_tra_con_sal IS 'Descripcion de la otra enfermedad no documentada';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.req_ayu_tec_con_sal IS 'Requiere ayuda tecnica, opciones: S para cuando es si y N para cuando es no';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.fre_med_con_sal IS 'Frecuencia de asistencia medica, opciones: diario(D), semanal(S), mensual(M), trimestral(T), Semestral(ST), anual(A)';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.rec_asi_med_con_sal IS 'Recibe asistencia medica, opciones publica(P), privada(PV)';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.tip_asi_med_con_sal IS 'Tipo de asistencia medica, opciones: preventiva(P), curativa(C)';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.alt_apr_con_sal IS 'Altura aproximada';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.pes_apro_con_sal IS 'Peso aproximado';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.num_com_dia_con_sal IS 'Numero de comidas diarias';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.con_com_cas_con_sal IS 'Consumo de comida en casa';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.con_com_fue_cas_con_sal IS 'Consumo de comida fuera de casa';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.cod_cad_ali IS 'Codigo de la cadena de alimentos';
+COMMENT ON COLUMN viviendo.mvv_condicion_salud.otr_cad_ali IS 'Otra cadena de alimentos';
+
+
+
+
+-- Table: viviendo.mvv_distribucion_tiempo
+
+-- DROP TABLE viviendo.mvv_distribucion_tiempo;
+
+CREATE TABLE viviendo.mvv_distribucion_tiempo
+(
+  cod_dis_tie serial NOT NULL, -- Codigo distribucion del tiempo
+  cod_dp_enc integer NOT NULL, -- Codigo del encuestado
+  tip_dis_tie character(2) NOT NULL, -- Tipo de distribucion del tiempo, opciones: LV para cuando es de lunes a viernes, SD para cuando sea fines de semana
+  hor_tra_reg_dis_tie character(5), -- Hora de trabajo regular
+  hor_rec_dis_tie character(4), -- Horas de recreacion
+  hor_dep_dis_tie character(5), -- Horas por deporte
+  hor_jue_aza_dis_tie character(5), -- Horas por juego de azar
+  hor_com_fam_dis_tie character(5), -- Horas en compratir familiar
+  hor_tv_dis_tie character(5), -- Horas para ver tv
+  hor_lec_dis_tie character(5), -- Hora para la lectura
+  hor_otr_act_dis_tie character(5), -- Hora para otras actividades
+  CONSTRAINT "PK_distribucion_tiempo" PRIMARY KEY (cod_dis_tie),
+  CONSTRAINT "FK_dp_encuestado_a_distribucion_tiempo" FOREIGN KEY (cod_dp_enc)
+      REFERENCES viviendo.mvv_dp_encuestado (cod_dp_enc) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT "UK_distribucion_tiempo" UNIQUE (cod_dp_enc, tip_dis_tie)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_distribucion_tiempo
+  OWNER TO postgres;
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.cod_dis_tie IS 'Codigo distribucion del tiempo';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.cod_dp_enc IS 'Codigo del encuestado';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.tip_dis_tie IS 'Tipo de distribucion del tiempo, opciones: LV para cuando es de lunes a viernes, SD para cuando sea fines de semana';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.hor_tra_reg_dis_tie IS 'Hora de trabajo regular';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.hor_rec_dis_tie IS 'Horas de recreacion ';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.hor_dep_dis_tie IS 'Horas por deporte';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.hor_jue_aza_dis_tie IS 'Horas por juego de azar';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.hor_com_fam_dis_tie IS 'Horas en compratir familiar';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.hor_tv_dis_tie IS 'Horas para ver tv';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.hor_lec_dis_tie IS 'Hora para la lectura';
+COMMENT ON COLUMN viviendo.mvv_distribucion_tiempo.hor_otr_act_dis_tie IS 'Hora para otras actividades';
+
+
+
+
+-- Table: viviendo.mvv_enfermedad
+
+-- DROP TABLE viviendo.mvv_enfermedad;
+
+CREATE TABLE viviendo.mvv_enfermedad
+(
+  cod_enf serial NOT NULL, -- codigo de la enfermedad
+  nom_enf character varying(40) NOT NULL, -- Nombre de la enfermedad
+  des_enf text, -- Descripcion de la enfermedad
+  CONSTRAINT "PK_enfermedades" PRIMARY KEY (cod_enf)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_enfermedad
+  OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_enfermedad
+  IS 'Tabla para las diferentes enfermedades';
+COMMENT ON COLUMN viviendo.mvv_enfermedad.cod_enf IS 'codigo de la enfermedad';
+COMMENT ON COLUMN viviendo.mvv_enfermedad.nom_enf IS 'Nombre de la enfermedad';
+COMMENT ON COLUMN viviendo.mvv_enfermedad.des_enf IS 'Descripcion de la enfermedad';
+
+

@@ -11,7 +11,11 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php 
+	
+		echo $form->errorSummary($model); 
+		$opciones = array('S'=>'','N'=>'Disabled','F'=>'','M'=>'none');
+	?>
 <div class="row">
 	<table class="tabla-int" >
 		<tr>
@@ -29,16 +33,37 @@
 		</tr>
 		<tr>
 			<td>
-				<?php echo CHtml::dropDownList('Situacionpolitica[reg_ele_sit_pol]', $model, 
+				<?php 
+							$sel1 = array('');
+							
+							if(isset($model->reg_ele_sit_pol) && !empty($model->reg_ele_sit_pol))
+							{
+									
+								$sel1[trim($model->reg_ele_sit_pol)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Situacionpolitica[reg_ele_sit_pol]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...', 'style'=>'width:280px;','class'=>'clear-error slt_opc_campos'));
+							array('empty' => 'Seleccione...','options'=>$sel1, 'style'=>'width:280px;','class'=>'clear-error slt_opc_campos'));
 					?>
 				<?php echo $form->error($model,'pre1_car_viv'); ?>
 			</td>
 			<td colspan="2">
-				<?php echo CHtml::dropDownList('Situacionpolitica[par_pol_sit_pol]', $model, 
+				<?php 
+						$sel2 = array('');
+						$disabled = '';
+						if(isset($model->par_pol_sit_pol) && !empty($model->par_pol_sit_pol))
+						{
+								
+							$sel2[trim($model->par_pol_sit_pol)] = array('selected'=>'selected');
+							$disabled = $opciones['S'];
+								
+						}
+							
+						echo CHtml::dropDownList('Situacionpolitica[par_pol_sit_pol]', $model, 
               			array('S' => 'Si', 'N' => 'No'),
-						array('empty' => 'Seleccione...','disabled'=>'disabled', 'style'=>'width:280px;','class'=>'clear-error slt_opc_campos'));
+						array('empty' => 'Seleccione...','options'=>$sel2,'disabled'=>$disabled, 'style'=>'width:280px;','class'=>'clear-error slt_opc_campos'));
 				?>
 				<?php echo $form->error($model,'pre2_car_viv'); ?>
 			</td>
@@ -56,18 +81,30 @@
 				<?php
 		             $parpol = new CDbCriteria;
 		             $parpol->order = 'nom_par_pol ASC';
+		             $disabled = 'disabled';
+		             if(!empty($model->cod_par_pol))
+					 {
+					 	$disabled = '';
+					 }
 		       ?>
 				<?php
 		             echo $form->dropDownList($model,'cod_par_pol',
 							CHtml::listData(Partidopolitico::model()->findAll($parpol),'cod_par_pol','nom_par_pol'),
-		             						array('prompt' => 'Seleccione...','class'=>'slt_opc_campos', 'style'=>'width:280px;','disabled'=>'disabled'
+		             						array('prompt' => 'Seleccione...','class'=>'slt_opc_campos', 'style'=>'width:280px;','disabled'=>$disabled,
 							)
 					);
 		       ?>
 				<?php echo $form->error($model,'cod_par_pol'); ?>				
 			</td>
 			<td colspan="2">
-				<?php echo $form->textField($model,'otr_par_sit_pol',array('size'=>40,'maxlength'=>60,'disabled'=>'disabled')); ?>
+				<?php 
+						$disabled = 'disabled';
+						if(!empty($model->otr_par_sit_pol))
+						{
+							$disabled = '';
+						}
+						
+					  echo $form->textField($model,'otr_par_sit_pol',array('size'=>40,'maxlength'=>60,'disabled'=>$disabled,)); ?>
 				<?php echo $form->error($model,'otr_par_sit_pol'); ?>
 			</td>
 		</tr>
@@ -81,7 +118,15 @@
 		</tr>
 		<tr>
 			<td>
-				<?php echo $form->textField($model,'nom_cen_vot_sit_pol',array('size'=>40,'maxlength'=>80,'disabled'=>'disabled')); ?>
+				<?php 
+						$disabled = 'disabled';
+						if(!empty($model->nom_cen_vot_sit_pol))
+						{
+							$disabled = '';
+						}
+						
+						echo $form->textField($model,'nom_cen_vot_sit_pol',
+						array('size'=>40,'maxlength'=>80,'disabled'=>$disabled,)); ?>
 				<?php echo $form->error($model,'nom_cen_vot_sit_pol'); ?>
 			</td>
 			<td colspan="2">
@@ -176,16 +221,36 @@
 		</tr>
 		<tr>
 			<td width="50%">
-				<?php echo CHtml::dropDownList('Situacionpolitica[mie_mes_sit_pol]', $model, 
+				<?php 
+						$sel3 = array('');
+						
+						if(isset($model->mie_mes_sit_pol) && !empty($model->mie_mes_sit_pol))
+						{
+								
+							$sel3[trim($model->mie_mes_sit_pol)] = array('selected'=>'selected');
+								
+						}
+							
+						echo CHtml::dropDownList('Situacionpolitica[mie_mes_sit_pol]', $model, 
 		              	array('S' => 'Si', 'N' => 'No'),
-						array('empty' => 'Seleccione...','disabled'=>'disabled', 'style'=>'width:280px;','class'=>'clear-error'));
+						array('empty' => 'Seleccione...','options'=>$sel3,'disabled'=>$opciones[$model->reg_ele_sit_pol], 'style'=>'width:280px;','class'=>'clear-error'));
 				?>
 				<?php echo $form->error($model,'mie_mes_sit_pol'); ?>
 			</td>
 			<td colspan="2">
-				<?php echo CHtml::dropDownList('Situacionpolitica[tes_mes_sit_pol]', $model, 
+				<?php 
+						$sel4 = array('');
+						$disabled = 'disabled';
+						if(isset($model->tes_mes_sit_pol) && !empty($model->tes_mes_sit_pol))
+						{
+								
+							$sel4[trim($model->tes_mes_sit_pol)] = array('selected'=>'selected');
+							$disabled = '';
+						}
+							
+						echo CHtml::dropDownList('Situacionpolitica[tes_mes_sit_pol]', $model, 
 		              	array('S' => 'Si', 'N' => 'No'),
-						array('empty' => 'Seleccione...','disabled'=>'disabled', 'style'=>'width:280px;','class'=>'clear-error'));
+						array('empty' => 'Seleccione...','options'=>$sel4,'disabled'=>$opciones[$model->reg_ele_sit_pol], 'style'=>'width:280px;','class'=>'clear-error'));
 				?>
 				<?php echo $form->error($model,'tes_mes_sit_pol'); ?>
 			</td>
@@ -200,14 +265,25 @@
 		</tr>						
 		<tr>
 			<td width="50%">
-				<?php echo CHtml::dropDownList('Situacionpolitica[res_par_sit_pol]', $model, 
+				<?php 
+						$sel5 = array('');
+						$disabled = 'disabled';
+						if(isset($model->res_par_sit_pol) && !empty($model->res_par_sit_pol))
+						{
+								
+							$sel5[trim($model->res_par_sit_pol)] = array('selected'=>'selected');
+							$disabled = $opciones[$model->res_par_sit_pol];
+								
+						}
+							
+						echo CHtml::dropDownList('Situacionpolitica[res_par_sit_pol]', $model, 
 		              	array('S' => 'Si', 'N' => 'No'),
-						array('empty' => 'Seleccione...','disabled'=>'disabled', 'style'=>'width:280px;','class'=>'clear-error'));
+						array('empty' => 'Seleccione...','options'=>$sel5,'disabled'=>$disabled, 'style'=>'width:280px;','class'=>'clear-error'));
 				?>
 				<?php echo $form->error($model,'res_par_sit_pol'); ?>
 			</td>
 			<td colspan="2">
-				<?php echo $form->textField($model,'ins_sit_pol',array('size'=>40,'maxlength'=>60,'disabled'=>'disabled')); ?>
+				<?php echo $form->textField($model,'ins_sit_pol',array('size'=>40,'maxlength'=>60,'disabled'=>$disabled,)); ?>
 				<?php echo $form->error($model,'ins_sit_pol'); ?>
 			</td>
 		</tr>				
@@ -221,15 +297,31 @@
 		</tr>				
 		<tr>
 			<td width="50%">
-				<?php echo $form->textField($model,'des_res_sit_pol',array('size'=>40,'maxlength'=>60,'disabled'=>'disabled','class'=>'clear-error')); ?>
+				<?php 
+						$disabled = 'disabled';
+						if(!empty($model->des_res_sit_pol))
+						{
+							$disabled = '';
+						}
+						echo $form->textField($model,'des_res_sit_pol',array('size'=>40,'maxlength'=>60,'disabled'=>$disabled,'class'=>'clear-error')); ?>
 				<?php echo $form->error($model,'des_res_sit_pol'); ?>
 			</td>
 			<td colspan="2">
-				<?php echo CHtml::dropDownList('Situacionpolitica[niv_dir_sit_pol]', $model, 
+				<?php 
+						$sel6 = array('');
+						$disabled = 'disabled';
+						if(isset($model->niv_dir_sit_pol) && !empty($model->niv_dir_sit_pol))
+						{
+								
+							$sel6[trim($model->niv_dir_sit_pol)] = array('selected'=>'selected');
+							$disabled = '';
+						}
+							
+						echo CHtml::dropDownList('Situacionpolitica[niv_dir_sit_pol]', $model, 
 		              	array('N' => 'Nacional', 'E' => 'Estadal',
 		              		  'M'=>'Municipal','P'=>'Parroquial'
 				),
-						array('empty' => 'Seleccione...','disabled'=>'disabled', 'style'=>'width:280px;','class'=>'clear-error'));
+						array('empty' => 'Seleccione...','options'=>$sel6,'disabled'=>$disabled, 'style'=>'width:280px;','class'=>'clear-error'));
 				?>
 				<?php echo $form->error($model,'niv_dir_sit_pol'); ?>
 			</td>

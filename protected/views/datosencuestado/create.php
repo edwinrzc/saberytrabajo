@@ -146,12 +146,8 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 
 ",CClientScript::POS_LOAD);
 
-$this->menu=array(
-	array('label'=>'List Datosencuestado', 'url'=>array('index')),
-	array('label'=>'Manage Datosencuestado', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Create Datosencuestado</h1>
+<h1>Datos Basicos Jefe Familiar</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model,'tipo'=>$tipo)); ?>

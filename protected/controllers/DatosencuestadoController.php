@@ -128,30 +128,40 @@ class DatosencuestadoController extends Controller
 		}
 		
 	}
+	
+	
+	
+	public function actionListarjefefamiliar()
+	{
+		$criteria = new CDbCriteria;
+		$criteria->select = "cod_dp_enc,ced_dp_enc ||'('||pri_nom_dp_enc||' '||pri_ape_dp_enc||')' AS pri_nom_dp_enc";
+		//$criteria->condition = "ced_dp_enc = :term ";
+		//$criteria->params = array(':term'=> $_GET['term']);
+		
+		$criteria->condition = "LOWER(ced_dp_enc::TEXT) like LOWER(:term)";
+		$criteria->params = array(':term'=> '%'.$_GET['term'].'%');
+		$criteria->limit = 30;
+		$data = Datosencuestado::model()->findAll($criteria);
+		$arr = array();
+		foreach ($data as $item) {
+			$arr[] = array(
+					'id' => $item->cod_dp_enc,
+					'value' => $item->pri_nom_dp_enc,
+					'label' => $item->pri_nom_dp_enc,
+			);
+		}
+		echo CJSON::encode($arr);
+	}
 
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionJefefamiliar()
 	{
 		$model=new Datosencuestado;
 		
-		/*$model1=new Caracteristicavivienda;
-		$model2= new Situacionpolitica;
-		$model3= new Posesionesvivienda;
-		$model4= new Informacionlaboral;
-		$model5= new Distribuciontiempo;
 		
-		$this->render('crearencuesta',array(
-				'model1'=>$model1,
-				'model2'=>$model2,
-				'model3'=>$model3,
-				'model4'=>$model4,
-				'model5'=>$model5,
-				'id'=>13,
-		));
-		Yii::app()->end();*/
 		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -168,6 +178,8 @@ class DatosencuestadoController extends Controller
 				$model3= new Posesionesvivienda;
 				$model4= new Informacionlaboral;
 				$model5= new Distribuciontiempo;
+				$model6= new Condicionsalud;
+				$model7= new Alimentacionsemanal;
 				
 				$this->render('crearencuesta',array(
 						'model1'=>$model1,
@@ -175,9 +187,11 @@ class DatosencuestadoController extends Controller
 						'model3'=>$model3,
 						'model4'=>$model4,
 						'model5'=>$model5,
+						'model6'=>$model6,
+						'model7'=>$model7,
 						'id'=>13,
+						'tipo'=>'JF',
 				));
-				
 				Yii::app()->end();
 				
 			}
@@ -186,6 +200,58 @@ class DatosencuestadoController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+			'tipo'=>'JF',
+		));
+	}
+	
+	
+	
+	/**
+	 * Creates a new model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 */
+	public function actionGrupofamiliar()
+	{
+		$model=new Datosencuestado;	
+	
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+	
+		if(isset($_POST['Datosencuestado']))
+		{
+			$model->attributes=$_POST['Datosencuestado'];
+				
+			if($model->save())
+			{
+	
+				$model1=new Caracteristicavivienda;
+				$model2= new Situacionpolitica;
+				$model3= new Posesionesvivienda;
+				$model4= new Informacionlaboral;
+				$model5= new Distribuciontiempo;
+				$model6= new Condicionsalud;
+				$model7= new Alimentacionsemanal;
+	
+				$this->render('crearencuesta',array(
+						'model1'=>$model1,
+						'model2'=>$model2,
+						'model3'=>$model3,
+						'model4'=>$model4,
+						'model5'=>$model5,
+						'model6'=>$model6,
+						'model7'=>$model7,
+						'id'=>13,
+						'tipo'=>'GF',
+				));
+				Yii::app()->end();
+	
+			}
+				
+		}
+	
+		$this->render('create',array(
+				'model'=>$model,
+				'tipo'=>'GF',
 		));
 	}
 	
@@ -233,8 +299,6 @@ class DatosencuestadoController extends Controller
 				case 'IL':
 					//print_r($_POST);die;
 					$model = new Informacionlaboral;
-					$model2 = new Distribuciontiempo;
-					$model3 = new Distribuciontiempo;
 					$fuente = $_POST['Informacionlaboral']['fue_ing_inf_lab'];
 					$_POST['Informacionlaboral']['fue_ing_inf_lab'] = implode(',',$fuente);
 					$model->attributes = $_POST['Informacionlaboral'];
@@ -248,6 +312,28 @@ class DatosencuestadoController extends Controller
 					{
 						$this->salvarDistribucion($_POST['Distribuciontiempo']);
 						$this->salvarDistribucion($_POST['Distribuciontiempo2']);
+						$JSON['status'] = true;
+						$JSON['cod_dp_enc'] = $model->cod_dp_enc;
+						die(json_encode($JSON));
+					}
+				break;
+				case 'CS':
+					//print_r($_POST);die;
+					$model = new Condicionsalud;
+					$model2 = new Alimentacionsemanal;
+					$model3 = new Ayudarequerida;
+					$model->attributes = $_POST['Condicionsalud'];
+					$model2->attributes = $_POST['Alimentacionsemanal'];
+					$model3->attributes = $_POST['Ayudarequerida'];
+					
+					//$model3->insertarRequerimiento($model->cod_dp_enc,$_POST['Ayudarequerida']);
+					//print_r($model2->attributes);die;
+					$this->validarForm($model);
+					$this->validarForm($model2);					
+					
+					if($model->save() && $model2->save())
+					{
+						$model3->insertarRequerimiento($model->cod_dp_enc,$_POST['Ayudarequerida']);
 						$JSON['status'] = true;
 						$JSON['cod_dp_enc'] = $model->cod_dp_enc;
 						die(json_encode($JSON));
@@ -272,6 +358,101 @@ class DatosencuestadoController extends Controller
 		}
 		
 		
+	}
+	
+	
+	
+	public function actionModificar()
+	{
+		header("Content-Type: application/json", true);
+		try
+		{
+			switch ($_POST['action'])
+			{
+					
+				case 'DP':
+					$model = $this->loadModel($_POST['Datosencuestado']['cod_dp_enc']);
+					$model->attributes = $_POST['Datosencuestado'];
+					$this->validarForm($model);
+					break;
+				case 'DV':
+					$model = Caracteristicavivienda::model()->findByPk($_POST['Caracteristicavivienda']['cod_dp_enc']);
+					$model->attributes = $_POST['Caracteristicavivienda'];
+					$this->validarForm($model);
+					break;
+				case 'SP':
+					$model = Situacionpolitica::model()->findByPk($_POST['Situacionpolitica']['cod_dp_enc']);
+					$model->attributes = $_POST['Situacionpolitica'];
+					$this->validarForm($model);
+					break;
+				case 'PV':
+					$model = Posesionesvivienda::model()->findByPk($_POST['Posesionesvivienda']['cod_dp_enc']);
+					$model->attributes = $_POST['Posesionesvivienda'];
+					$this->validarForm($model);
+					break;
+				case 'IL':
+					//print_r($_POST);die;
+					$model = Informacionlaboral::model()->findByPk($_POST['Informacionlaboral']['cod_dp_enc']);
+					$fuente = $_POST['Informacionlaboral']['fue_ing_inf_lab'];
+					$_POST['Informacionlaboral']['fue_ing_inf_lab'] = implode(',',$fuente);
+					$model->attributes = $_POST['Informacionlaboral'];
+					//$this->validarDistribucion($_POST['Distribuciontiempo']);
+					//$this->validarDistribucion($_POST['Distribuciontiempo2']);
+	
+					//print_r($model2->attributes);die;
+					$this->validarForm($model);
+						
+					if($model->save())
+					{
+						//$this->salvarDistribucion($_POST['Distribuciontiempo']);
+						//$this->salvarDistribucion($_POST['Distribuciontiempo2']);
+						$JSON['status'] = true;
+						$JSON['cod_dp_enc'] = $model->cod_dp_enc;
+						die(json_encode($JSON));
+					}
+					break;
+				case 'CS':
+					//print_r($_POST);die;
+					$model = Condicionsalud::model()->findByPk($_POST['Condicionsalud']['cod_dp_enc']);
+					$model2 = Alimentacionsemanal::model()->findByPk($_POST['Alimentacionsemanal']['cod_dp_enc']);
+					$model3 = Ayudarequerida::model()->findByAttributes(array('cod_dp_enc'=>$_POST['Condicionsalud']['cod_dp_enc']));
+					//$model3->delete();
+					$model->attributes = $_POST['Condicionsalud'];
+					$model2->attributes = $_POST['Alimentacionsemanal'];
+					$model3->attributes = $_POST['Ayudarequerida'];
+						
+					//$model3->insertarRequerimiento($model->cod_dp_enc,$_POST['Ayudarequerida']);
+					//print_r($model2->attributes);die;
+					$this->validarForm($model);
+					$this->validarForm($model2);
+						
+					if($model->save() && $model2->save())
+					{
+						$model3->insertarRequerimiento($model->cod_dp_enc,$_POST['Ayudarequerida']);
+						$JSON['status'] = true;
+						$JSON['cod_dp_enc'] = $model->cod_dp_enc;
+						die(json_encode($JSON));
+					}
+					break;
+			}
+				
+				
+			if($model->save())
+			{
+				$JSON['status'] = true;
+				$JSON['cod_dp_enc'] = $model->cod_dp_enc;
+				die(json_encode($JSON));
+			}
+				
+		}
+		catch (Exception $e)
+		{
+			$JSON['error'] = 'Se produjo un error inesperado, es posible que ya haya realizado el registro';
+			$JSON['error2']= $e->getMessage();
+			die(json_encode($JSON));
+		}
+	
+	
 	}
 	
 	
@@ -310,11 +491,40 @@ class DatosencuestadoController extends Controller
 			$model->attributes=$_POST['Datosencuestado'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->cod_dp_enc));
+		}//$model->tip_per_dp_enc
+		
+		
+		switch ($model->tip_per_dp_enc)
+		{
+			case 'JF':
+				$model1= Caracteristicavivienda::model()->findByPk($id);
+				$model2= Situacionpolitica::model()->findByPk($id);
+				$model3= Posesionesvivienda::model()->findByPk($id);
+				$model4= Informacionlaboral::model()->findByPk($id);
+				$model5= Distribuciontiempo::model()->findByAttributes(array('cod_dp_enc'=>$id,'tip_dis_tie'=>'LV'));
+				$model8= Distribuciontiempo::model()->findByAttributes(array('cod_dp_enc'=>$id,'tip_dis_tie'=>'SD'));
+				$model6= Condicionsalud::model()->findByPk($id);
+				$model7= Alimentacionsemanal::model()->findByPk($id);
+				
+				$this->render('modificarencuesta',array(
+						'model'=>$model,
+						'model1'=>$model1,
+						'model2'=>$model2,
+						'model3'=>$model3,
+						'model4'=>$model4,
+						'model5'=>$model5,
+						'model6'=>$model6,
+						'model7'=>$model7,
+						'model8'=>$model8,
+						'id'=>$model->cod_dp_enc,
+						'tipo'=>$model->tip_per_dp_enc,
+				));
+				
+			break;
+			case 'GF':
+			break;
 		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+		
 	}
 
 	/**

@@ -1,0 +1,1 @@
+opciones: S para cuamdo es si, N para cuando es no 

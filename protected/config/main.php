@@ -159,7 +159,8 @@ return array(
 		
 		'db'=>array(
 			'connectionString' => 'pgsql:host=localhost;port=5432;dbname=db_web_sab_tra;',
-			'emulatePrepare' => true,
+			'emulatePrepare' => false,
+			'enableParamLogging' => true,
 			'username' => 'postgres',
 			'password' => '123',
 			'charset' => 'utf8',
@@ -174,7 +175,7 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',					
-   					'levels'=>'error, info, rbac', // <--- agregar 'rbac'
+   					'levels'=>'error, info, rbac,warning', // <--- agregar 'rbac'
 				),
 				// uncomment the following to show log messages on web pages
 				/*

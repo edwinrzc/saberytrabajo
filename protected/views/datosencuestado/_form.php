@@ -17,12 +17,70 @@
 	<div class="row grid-view">
 		<table class="items" >
 			<tr>
-				<th colspan="3" >Tipo de Construccion</th>
+				<th colspan="3" >Datos Personales</th>
 			</tr>
+			<?php 
+			if($tipo == 'GF'):
+			?>
+			<tr>
+				<td>
+					<?php echo $form->labelEx($model,'cod_jef_fam_dp_enc'); ?>					
+				</td>
+				<td colspan="2">
+					<?php echo $form->labelEx($model,'cod_par_jef_fam_dp_enc'); ?>					
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<?php
+			            if ($model->cod_jef_fam_dp_enc!='')
+						{
+							$value=$model->jefe->ced_dp_enc;
+						}
+						else {
+							$value='';
+						}
+						
+						echo $form->hiddenField($model, 'cod_jef_fam_dp_enc');
+						$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+						'name'=>'cod_jef_fam_dp_enc',
+						'model'=>$model,
+						'value'=>$value,
+						'sourceUrl'=>$this->createUrl('Listarjefefamiliar'),
+						'options'=>array(
+							'minLength'=>'3',
+							'showAnim'=>'fold',
+							'select' => 'js:function(event, ui)
+							{ jQuery("#Datosencuestado_cod_jef_fam_dp_enc").val(ui.item["id"]); }',
+							'search'=> 'js:function(event, ui)
+							{ jQuery("#Datosencuestado_cod_jef_fam_dp_enc").val(0); }'
+						),
+						));
+			       ?>
+				</td>
+				<td colspan="2">
+					<?php
+			             $parentesco = new CDbCriteria;
+			             $parentesco->order = 'nom_par_fam ASC';
+			       ?>
+					<?php
+			             echo $form->dropDownList($model,'cod_par_jef_fam_dp_enc',
+								CHtml::listData(Parentescofamiliar::model()->findAll($parentesco),'cod_par_fam','nom_par_fam'),
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;'
+								)
+						);
+			       ?>
+					<?php echo $form->error($model,'cod_par_jef_fam_dp_enc'); ?>
+				</td>
+			</tr>
+			<?php 
+			endif;
+			?>
 			<tr>
 				<td width="50%">
 					<?php echo $form->labelEx($model,'cod_edo'); ?>
 					<input type="hidden" name="action" value="DP" />
+					<input type="hidden" name="Datosencuestado[tip_per_dp_enc]" value="<?php echo $tipo;?>" />
 				</td>
 				<td colspan="2"><?php echo $form->labelEx($model,'cod_mun'); ?></td>
 			</tr>

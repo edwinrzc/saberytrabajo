@@ -3,30 +3,47 @@
 /* @var $model Datosencuestado */
 
 
-$this->menu=array(
-	array('label'=>'Agregar', 'url'=>array('create')),
-);
 
 Yii::app()->clientScript->registerScript('search', "
 
 ");
 ?>
-
+<div class="span-23">
 <h1>Administrador de Datos Familiares</h1>
 
-
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<div class="row">
+	<div class="span-2">
+		<a href="<?php echo Yii::app()->createUrl("/datosencuestado/jefefamiliar")?>">
+			<img title="Agregar Jefe Familiar" height="50px" src="<?php echo Yii::app()->request->baseUrl.'/images/jefe2.jpg'; ?>">
+		</a>
+	</div>
+	<div class="span-2">
+		<a href="<?php echo Yii::app()->createUrl("/datosencuestado/grupofamiliar")?>">
+			<img title="Agregar Grupo Familiar" height="50px" src="<?php echo Yii::app()->request->baseUrl.'/images/grupo.jpg'; ?>">
+		</a>
+	</div>	
+</div>
+<br><br>
+<br>
+<?php 
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datosencuestado-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'cod_dp_enc',
 		'cod_par',
 		'dir_com_dp_enc',
 		'sec_dp_enc',
 		'pun_ref_dp_enc',
 		'pri_nom_dp_enc',
+		'pri_ape_dp_enc',
+		'ced_dp_enc',
+		array(
+				'name'=>'cod_nac_enc',
+				'value'=>'$data->nacionalidad->nom_nac_enc',
+				'filter'=>CHtml::listData(Nacionalidades::model()->findAll(),'cod_nac_enc','nom_nac_enc'),
+		),
+		'sex_dp_enc',
 		/*
 		'seg_nom_dp_enc',
 		'pri_ape_dp_enc',
@@ -85,3 +102,5 @@ Yii::app()->clientScript->registerScript('search', "
 		),
 	),
 )); ?>
+
+</div>

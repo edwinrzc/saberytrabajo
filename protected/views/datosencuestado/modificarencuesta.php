@@ -28,7 +28,20 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 	{		
 		_op = {param:{}};
 		_op.param = $('#caracteristicavivienda-form').serialize();
-		_url = '".Yii::app()->createUrl('/datosencuestado/registrar')."';
+		_url = '".Yii::app()->createUrl('/datosencuestado/modificar')."';
+		_op.tipo = 'dialog';
+		_op.contentMsj = 'mensaje';			
+		_res = registrarFormulario(_url,_op);			
+		
+		
+	});
+				
+				
+	$('#btn-datos-personales').click(function(e)
+	{		
+		_op = {param:{}};
+		_op.param = $('#datosencuestado-form').serialize();
+		_url = '".Yii::app()->createUrl('/datosencuestado/modificar')."';
 		_op.tipo = 'dialog';
 		_op.contentMsj = 'mensaje';			
 		_res = registrarFormulario(_url,_op);			
@@ -41,7 +54,7 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 	{		
 		_op = {param:{}};
 		_op.param = $('#condicionsalud-form').serialize();
-		_url = '".Yii::app()->createUrl('/datosencuestado/registrar')."';
+		_url = '".Yii::app()->createUrl('/datosencuestado/modificar')."';
 		_op.tipo = 'dialog';
 		_op.contentMsj = 'mensaje';			
 		_res = registrarFormulario(_url,_op);			
@@ -54,7 +67,7 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 	{		
 		_op = {param:{}};
 		_op.param = $('#situacionpolitica-form').serialize();
-		_url = '".Yii::app()->createUrl('/datosencuestado/registrar')."';
+		_url = '".Yii::app()->createUrl('/datosencuestado/modificar')."';
 		_op.tipo = 'dialog';
 		_op.contentMsj = 'mensaje';			
 		_res = registrarFormulario(_url,_op);			
@@ -66,7 +79,7 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 	{		
 		_op = {param:{}};
 		_op.param = $('#posesionesvivienda-form').serialize();
-		_url = '".Yii::app()->createUrl('/datosencuestado/registrar')."';
+		_url = '".Yii::app()->createUrl('/datosencuestado/modificar')."';
 		_op.tipo = 'dialog';
 		_op.contentMsj = 'mensaje';			
 		_res = registrarFormulario(_url,_op);			
@@ -81,7 +94,7 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 		_op.param = $('#informacionlaboral-form').serialize();
 		//_op.param.form = $('#distribuciontiempo-form').serialize();
 		_op.param.form2 = $('#distribuciontiempo-form22').serialize();
-		_url = '".Yii::app()->createUrl('/datosencuestado/registrar')."';
+		_url = '".Yii::app()->createUrl('/datosencuestado/modificar')."';
 		_op.tipo = 'dialog';
 		_op.contentMsj = 'mensaje';			
 		_res = registrarFormulario(_url,_op);			
@@ -371,21 +384,20 @@ th {
 <h1>Agregar Datosencuestado</h1>
 
 <div id="mydialog"></div>
-<div><input type="hidden" name="codigo_maestro" value="" ></div>
 <?php
 
 $array = array('');
 if($tipo == 'JF')
 {
 	$array = array(
-			/*'Datos Personales'=>$this->renderPartial('_form',
-			 array('model'=>$model,'id'=>1),true),*/
+			'Datos Personales'=>$this->renderPartial('_form6',
+			 array('model'=>$model,'id'=>$id,'tipo'=>$tipo),true),
 			'Datos Vivienda'=>$this->renderPartial('_form1',
 					array('model'=>$model1,'id'=>$id),true),
 			'Posesiones Vivienda'=>$this->renderPartial('_form3',
 					array('model'=>$model3,'id'=>$id),true),
-			'Informacion Laboral'=>$this->renderPartial('_form4',
-					array('model'=>$model4,'model1'=>$model5,'id'=>$id),true),
+			'Informacion Laboral'=>$this->renderPartial('_form7',
+					array('model'=>$model4,'model1'=>$model5,'model2'=>$model8,'id'=>$id),true),
 			'Codicion de Salud'=>$this->renderPartial('_form5',
 					array('model'=>$model6,'model1'=>$model7,'id'=>$id),true),
 			'Situacion Politica'=>$this->renderPartial('_form2',
@@ -397,10 +409,10 @@ if($tipo == 'JF')
 else
 {
 	$array = array(
-			/*'Datos Personales'=>$this->renderPartial('_form',
-			 array('model'=>$model,'id'=>1),true),*/
-			'Informacion Laboral'=>$this->renderPartial('_form4',
-					array('model'=>$model4,'model1'=>$model5,'id'=>$id),true),
+			'Datos Personales'=>$this->renderPartial('_form6',
+			 array('model'=>$model,'id'=>$id,'tipo'=>$tipo),true),
+			'Informacion Laboral'=>$this->renderPartial('_form7',
+					array('model'=>$model4,'model1'=>$model5,'model2'=>$model8,'id'=>$id),true),
 			'Codicion de Salud'=>$this->renderPartial('_form5',
 					array('model'=>$model6,'model1'=>$model7,'id'=>$id),true),
 			'Situacion Politica'=>$this->renderPartial('_form2',

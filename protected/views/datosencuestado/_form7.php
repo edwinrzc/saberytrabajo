@@ -391,40 +391,41 @@
 				<table>					
 					<tr>
 						<td>
-							<?php echo $form->labelEx($model1,'hor_tra_reg_dis_tie'); ?>
+							<?php 
+							echo $form->labelEx($model2,'hor_tra_reg_dis_tie'); ?>
 							<input type="hidden" name="Distribuciontiempo2[cod_dp_enc]" value="<?php echo $id;?>" />
 							<input type="hidden" name="Distribuciontiempo2[tip_dis_tie]" value="SD" />
 						</td>
 						<td>
-							<input id="Distribuciontiempo2_hor_tra_reg_dis_tie" type="text" name="Distribuciontiempo2[hor_tra_reg_dis_tie]" maxlength="5" size="5">
-							<?php echo $form->error($model1,'hor_tra_reg_dis_tie'); ?>
+							<input id="Distribuciontiempo2_hor_tra_reg_dis_tie" value="<?php echo $model2->hor_tra_reg_dis_tie;?>" type="text" name="Distribuciontiempo2[hor_tra_reg_dis_tie]" maxlength="5" size="5">
+							<?php echo $form->error($model2,'hor_tra_reg_dis_tie'); ?>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<?php echo $form->labelEx($model1,'hor_rec_dis_tie'); ?>
+							<?php echo $form->labelEx($model2,'hor_rec_dis_tie'); ?>
 						</td>
 						<td>
-							<input id="Distribuciontiempo2_hor_rec_dis_tie" type="text" name="Distribuciontiempo2[hor_rec_dis_tie]" maxlength="5" size="5">
-							<?php echo $form->error($model1,'hor_rec_dis_tie'); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo $form->labelEx($model1,'hor_dep_dis_tie'); ?>
-						</td>
-						<td>
-							<input id="Distribuciontiempo2_hor_dep_dis_tie" type="text" name="Distribuciontiempo2[hor_dep_dis_tie]" maxlength="5" size="5">
-							<?php echo $form->error($model1,'hor_dep_dis_tie'); ?>
+							<input id="Distribuciontiempo2_hor_rec_dis_tie" type="text" value="<?php echo $model2->hor_rec_dis_tie;?>" name="Distribuciontiempo2[hor_rec_dis_tie]" maxlength="5" size="5">
+							<?php echo $form->error($model2,'hor_rec_dis_tie'); ?>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<?php echo $form->labelEx($model1,'hor_jue_aza_dis_tie'); ?>
+							<?php echo $form->labelEx($model2,'hor_dep_dis_tie'); ?>
 						</td>
 						<td>
-							<input id="Distribuciontiempo2_hor_jue_aza_dis_tie" type="text" name="Distribuciontiempo2[hor_jue_aza_dis_tie]" maxlength="5" size="5">
-							<?php echo $form->error($model1,'hor_jue_aza_dis_tie'); ?>
+							<input id="Distribuciontiempo2_hor_dep_dis_tie" value="<?php echo $model2->hor_dep_dis_tie;?>" type="text" name="Distribuciontiempo2[hor_dep_dis_tie]" maxlength="5" size="5">
+							<?php echo $form->error($model2,'hor_dep_dis_tie'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php echo $form->labelEx($model2,'hor_jue_aza_dis_tie'); ?>
+						</td>
+						<td>
+							<input id="Distribuciontiempo2_hor_jue_aza_dis_tie" value="<?php echo $model2->hor_jue_aza_dis_tie;?>" type="text" name="Distribuciontiempo2[hor_jue_aza_dis_tie]" maxlength="5" size="5">
+							<?php echo $form->error($model2,'hor_jue_aza_dis_tie'); ?>
 						</td>
 					</tr>
 				</table>
@@ -433,38 +434,38 @@
 				<table>
 					<tr>
 						<td>
-							<?php echo $form->labelEx($model1,'hor_tv_dis_tie'); ?>
+							<?php echo $form->labelEx($model2,'hor_tv_dis_tie'); ?>
 						</td>
 						<td>
-							<input id="Distribuciontiempo2_hor_tv_dis_tie" type="text" name="Distribuciontiempo2[hor_tv_dis_tie]" maxlength="5" size="5">
-							<?php echo $form->error($model1,'hor_tv_dis_tie'); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo $form->labelEx($model1,'hor_lec_dis_tie'); ?>
-						</td>
-						<td>
-							<input id="Distribuciontiempo2_hor_lec_dis_tie" type="text" name="Distribuciontiempo2[hor_lec_dis_tie]" maxlength="5" size="5">
-							<?php echo $form->error($model1,'hor_lec_dis_tie'); ?>
+							<input id="Distribuciontiempo2_hor_tv_dis_tie" value="<?php echo $model2->hor_tv_dis_tie;?>" type="text" name="Distribuciontiempo2[hor_tv_dis_tie]" maxlength="5" size="5">
+							<?php echo $form->error($model2,'hor_tv_dis_tie'); ?>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<?php echo $form->labelEx($model1,'hor_com_fam_dis_tie'); ?>
+							<?php echo $form->labelEx($model2,'hor_lec_dis_tie'); ?>
 						</td>
 						<td>
-							<input id="Distribuciontiempo2_hor_com_fam_dis_tie" type="text" name="Distribuciontiempo2[hor_com_fam_dis_tie]" maxlength="5" size="5">
-							<?php echo $form->error($model1,'hor_com_fam_dis_tie'); ?>
+							<input id="Distribuciontiempo2_hor_lec_dis_tie" value="<?php echo $model2->hor_lec_dis_tie;?>" type="text" name="Distribuciontiempo2[hor_lec_dis_tie]" maxlength="5" size="5">
+							<?php echo $form->error($model2,'hor_lec_dis_tie'); ?>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<?php echo $form->labelEx($model1,'hor_otr_act_dis_tie'); ?>
+							<?php echo $form->labelEx($model2,'hor_com_fam_dis_tie'); ?>
 						</td>
 						<td>
-							<input id="Distribuciontiempo2_hor_otr_act_dis_tie" type="text" name="Distribuciontiempo2[hor_otr_act_dis_tie]" maxlength="5" size="5">
-							<?php echo $form->error($model1,'hor_otr_act_dis_tie'); ?>
+							<input id="Distribuciontiempo2_hor_com_fam_dis_tie" value="<?php echo $model2->hor_com_fam_dis_tie;?>" type="text" name="Distribuciontiempo2[hor_com_fam_dis_tie]" maxlength="5" size="5">
+							<?php echo $form->error($model2,'hor_com_fam_dis_tie'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php echo $form->labelEx($model2,'hor_otr_act_dis_tie'); ?>
+						</td>
+						<td>
+							<input id="Distribuciontiempo2_hor_otr_act_dis_tie" value="<?php echo $model2->hor_otr_act_dis_tie;?>" type="text" name="Distribuciontiempo2[hor_otr_act_dis_tie]" maxlength="5" size="5">
+							<?php echo $form->error($model2,'hor_otr_act_dis_tie'); ?>
 						</td>
 					</tr>
 				</table>				

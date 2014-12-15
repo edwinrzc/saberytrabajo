@@ -30,22 +30,42 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre1_car_viv]', $model, 
+					<?php 
+							$sel1 = array('');
+							
+							if(isset($model->pre1_car_viv) && !empty($model->pre1_car_viv))
+							{
+									
+								$sel1[trim($model->pre1_car_viv)] = array('selected'=>'selected');
+									
+							}
+					
+							echo CHtml::dropDownList('Caracteristicavivienda[pre1_car_viv]', $model, 
               				array('APTO' => 'Aparatamento', 'C' => 'Casa',
 								  'QTA' => 'Quinta','RC'=>'Rancho',
 								  'RG'=>'Refugio','O'=>'Otro'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel1, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre1_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre2_car_viv]', $model, 
+					<?php 
+							$sel2 = array('');
+							
+							if(isset($model->pre2_car_viv) && !empty($model->pre2_car_viv))
+							{
+									
+								$sel2[trim($model->pre2_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre2_car_viv]', $model, 
               				array('ADA' => 'Alquilada', 'ATO' => 'Alojamiento',
 								  'CTO' => 'Comodato','CJE'=>'Conserje',
 								  'CDO'=>'Cuidando','IDA'=>'Invadida',
 								  'PSE'=>'Pagandose','PDA'=>'Prestada',
 								  'PIA'=>'Propia'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel2, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre2_car_viv'); ?>
 				</td>
@@ -60,17 +80,37 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre3_car_viv]', $model, 
+					<?php 
+							$sel3 = array('');
+							
+							if(isset($model->pre3_car_viv) && !empty($model->pre3_car_viv))
+							{
+									
+								$sel3[trim($model->pre3_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre3_car_viv]', $model, 
               				array('PIO' => 'Propio', 'EM' => 'Ejido-Municipal'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel3, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre3_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre4_car_viv]', $model, 
+					<?php 
+							$sel4 = array('');
+							
+							if(isset($model->pre4_car_viv) && !empty($model->pre4_car_viv))
+							{
+									
+								$sel4[trim($model->pre4_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre4_car_viv]', $model, 
               				array('UDA' => 'Urbanizada', 'NUDA' => 'No Urbanizada',
 								  'RAL' => 'Rural'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel4, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre4_car_viv'); ?>
 				</td>
@@ -85,19 +125,39 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre5_car_viv]', $model, 
+					<?php 
+							$sel5 = array('');
+							
+							if(isset($model->pre5_car_viv) && !empty($model->pre5_car_viv))
+							{
+									
+								$sel5[trim($model->pre5_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre5_car_viv]', $model, 
               				array('CO' => 'Cerro', 'CA' => 'Colina',
 								  'LA' => 'Loma','ODB'=>'Orilla de Barranco',
 								  'ODR'=>'Orilla de rio','ODQ'=>'Orilla de Quebrada'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel5, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre5_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre6_car_viv]', $model, 
+					<?php 
+							$sel6 = array('');
+							
+							if(isset($model->pre6_car_viv) && !empty($model->pre6_car_viv))
+							{
+									
+								$sel6[trim($model->pre6_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre6_car_viv]', $model, 
               				array('DDLC' => 'Directamente de la calle', 'PSPOE' => 'Por senderos, Picas o Escalinatas',
 								  'ATDOVP'=>'Por otras viviendas, pasillos'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel6, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre6_car_viv'); ?>
 				</td>
@@ -112,20 +172,40 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre7_car_viv]', $model, 
+					<?php 
+							$sel7 = array('');
+							
+							if(isset($model->pre7_car_viv) && !empty($model->pre7_car_viv))
+							{
+									
+								$sel7[trim($model->pre7_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre7_car_viv]', $model, 
               				array('ATBF' => 'Adobe, Tapia o Bahareque frisado','ATBSF' =>'Adobe, Tapia o Bahareque sin frisado',
 								  'BLFC' => 'Bloque o Ladrillo frisado (Acabado) concreto ','BLSF'=>'Bloque o Ladrillo sin frisar (No acabado)',
 								  'MAFFVS'=>'Madera, fibra de vidrio y similares','OCPTCZLS'=>'Otros'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel7, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre7_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre8_car_viv]', $model, 
+					<?php 
+							$sel8 = array('');
+							
+							if(isset($model->pre8_car_viv) && !empty($model->pre8_car_viv))
+							{
+									
+								$sel8[trim($model->pre8_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre8_car_viv]', $model, 
               				array('AS' => 'Asbesto y similares', 'LMZS' => 'Laminas Metalicas (Zinc o similares)',
 								  'TLA' => 'Tajali - Lamina Asfaltica','TM'=>'Teja o Madera',
 								  'PBA'=>'Platabanda','OPTS'=>'Otros (Palma, Tablas y Similares)'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel8, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre8_car_viv'); ?>
 				</td>
@@ -140,20 +220,40 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre9_car_viv]', $model, 
+					<?php 
+							$sel9 = array('');
+							
+							if(isset($model->pre9_car_viv) && !empty($model->pre9_car_viv))
+							{
+									
+								$sel9[trim($model->pre9_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre9_car_viv]', $model, 
               				array('CLT' => 'Ceramica, Ladrillo, Terracota', 'MAYS' => 'Madera, Alfombra y similares',
 								  'CPOV' => 'Cemento Pulido o Viniles','CSP'=>'Cemento sin Pulir',
 								  'T'=>'Tierra'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel9, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre9_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre10_car_viv]', $model, 
+					<?php 
+							$sel10 = array('');
+							
+							if(isset($model->pre10_car_viv) && !empty($model->pre10_car_viv))
+							{
+									
+								$sel10[trim($model->pre10_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre10_car_viv]', $model, 
               				array('PCSELH' => 'Pareja conyugal sola en la habitacion', 'PCPMDUA' => 'Pareja con personas menores de un a&ntildeo',
 								  'PCPMDUAA' => 'Pareja con personas mayores de un a&ntildeo','PSDEUH'=>'Persona sola durmiendo en una habitacion',
 								  'MDTPDEUH'=>'Menos de tres personas durmiendo en una habitacion','TPOMDEUMH'=>'Tres personas o mas durmiendo en una misma habitacion'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel10, 'style'=>'width:220px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre10_car_viv'); ?>
 				</td>
@@ -186,17 +286,37 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre13_car_viv]', $model, 
+					<?php 
+							$sel13 = array('');
+							
+							if(isset($model->pre13_car_viv) && !empty($model->pre13_car_viv))
+							{
+									
+								$sel13[trim($model->pre13_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre13_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel13, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre13_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre14_car_viv]', $model, 
+					<?php 
+							$sel14 = array('');
+							
+							if(isset($model->pre14_car_viv) && !empty($model->pre14_car_viv))
+							{
+									
+								$sel14[trim($model->pre14_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre14_car_viv]', $model, 
               				array('AOT' => 'Acueducto o Tuberia', 'CC' => 'Camion Cisterna',
               					  'PPOV'=>'Pila Publica o Vecinos','OM'=>'Otros Medios'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel14, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre14_car_viv'); ?>
 				</td>
@@ -211,17 +331,37 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre15_car_viv]', $model, 
+					<?php 
+							$sel15 = array('');
+							
+							if(isset($model->pre15_car_viv) && !empty($model->pre15_car_viv))
+							{
+									
+								$sel15[trim($model->pre15_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre15_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel15, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre15_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre16_car_viv]', $model, 
+					<?php 
+							$sel16 = array('');
+							
+							if(isset($model->pre16_car_viv) && !empty($model->pre16_car_viv))
+							{
+									
+								$sel16[trim($model->pre16_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre16_car_viv]', $model, 
               				array('TQ' => 'Tanques', 'RP' =>'Recipientes Plasticos',
               					  'TORM'=>'Tobos o Recipientes Metalicos','RDVV'=>'Recipientes de Vidrio / Vasijas'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel16, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre16_car_viv'); ?>
 				</td>
@@ -236,19 +376,39 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre17_car_viv]', $model, 
+					<?php 
+							$sel17 = array('');
+							
+							if(isset($model->pre17_car_viv) && !empty($model->pre17_car_viv))
+							{
+									
+								$sel17[trim($model->pre17_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre17_car_viv]', $model, 
               				array('BCPDYL' => 'Bano con Poceta, Ducha y Lavamanos', 'BCP' =>'Bano con Poceta',
               					  'BCPYL'=>'Bano con Poceta y Lavamanos','EDHOL'=>'Escusado de Hoyo o Letrina',
 								  'BCPYD'=>'Bano con Poceta y Ducha','NTPOE'=>'No tiene Poceta o Escusado'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel17, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre17_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre18_car_viv]', $model, 
+					<?php 
+							$sel18 = array('');
+							
+							if(isset($model->pre18_car_viv) && !empty($model->pre18_car_viv))
+							{
+									
+								$sel18[trim($model->pre18_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre18_car_viv]', $model, 
               				array('BDDLV' => 'Bano Dentro de la Vivienda', 'BFDLV' =>'Bano Fuera de la Vivienda',
               					  'LFDLV'=>'Letrina Fuera de la Vivienda'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel18, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre18_car_viv'); ?>
 				</td>
@@ -263,19 +423,39 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre19_car_viv]', $model, 
+					<?php 
+							$sel19 = array('');
+							
+							if(isset($model->pre19_car_viv) && !empty($model->pre19_car_viv))
+							{
+									
+								$sel19[trim($model->pre19_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre19_car_viv]', $model, 
               				array('DDLVUC' => 'Dentro de la Vivienda una Cloaca', 'RQ' =>'Rios Quebradas',
               					  'FDLVPS'=>'Fuera de la Vivienda 2 pozos Septicos'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel19, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre19_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre20_car_viv]', $model, 
+					<?php 
+							$sel20 = array('');
+							
+							if(isset($model->pre20_car_viv) && !empty($model->pre20_car_viv))
+							{
+									
+								$sel20[trim($model->pre20_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre20_car_viv]', $model, 
               				array('C' => 'Cloacas', 'PS' =>'Pozo Septico',
               					  'ALC'=>'A la Calle','RQ'=>'Rios Quebradas',
 								  'P'=>'Patio'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel20, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre20_car_viv'); ?>
 				</td>
@@ -290,16 +470,36 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre21_car_viv]', $model, 
+					<?php 
+							$sel21 = array('');
+							
+							if(isset($model->pre21_car_viv) && !empty($model->pre21_car_viv))
+							{
+									
+								$sel21[trim($model->pre21_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre21_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel21, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre21_car_viv'); ?>
 				</td>
 				<td colspan="2">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre22_car_viv]', $model, 
+					<?php 
+							$sel22 = array('');
+							
+							if(isset($model->pre22_car_viv) && !empty($model->pre22_car_viv))
+							{
+									
+								$sel22[trim($model->pre22_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre22_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel22, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre22_car_viv'); ?>
 				</td>
@@ -314,19 +514,39 @@
 			</tr>
 			<tr>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre23_car_viv]', $model, 
+					<?php 
+							$sel23 = array('');
+							
+							if(isset($model->pre23_car_viv) && !empty($model->pre23_car_viv))
+							{
+									
+								$sel23[trim($model->pre23_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre23_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel23, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre23_car_viv'); ?>
 				</td>
 				<td>
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre33_car_viv]', $model, 
+					<?php 
+							$sel33 = array('');
+							
+							if(isset($model->pre33_car_viv) && !empty($model->pre33_car_viv))
+							{
+									
+								$sel33[trim($model->pre33_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre33_car_viv]', $model, 
               				array('DQ' => 'Desechos Quimicos', 'VS' =>'Vibraciones',
               					  'OF'=>'Olores Fuertes','VOS'=>'Vertederos',
 								  'SF'=>'Sonidos Fuertes','H'=>'Humo',
 								  'AS'=>'Aguas Servidas','O'=>'Otro'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel33, 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'pre33_car_viv'); ?>
 				</td>
@@ -338,12 +558,22 @@
 			</tr>
 			<tr>
 				<td colspan="3">
-					<?php echo CHtml::dropDownList('Caracteristicavivienda[pre32_car_viv]', $model, 
+					<?php 
+							$sel32 = array('');
+							
+							if(isset($model->pre32_car_viv) && !empty($model->pre32_car_viv))
+							{
+									
+								$sel32[trim($model->pre32_car_viv)] = array('selected'=>'selected');
+									
+							}
+							
+							echo CHtml::dropDownList('Caracteristicavivienda[pre32_car_viv]', $model, 
               				array('AP' =>'A Pie', 'AB' =>'Autobus',
               					  'JP'=>'Jeep','B'=>'Bicicleta',
 								  'MT'=>'Moto','VP'=>'Vehiculo Particular',
 								  'O'=>'Otro'),
-							array('empty' => 'Seleccione...', 'style'=>'width:220px;float:left;'));
+							array('empty' => 'Seleccione...','options'=>$sel32, 'style'=>'width:220px;float:left;'));
 					?>
 					<?php echo $form->error($model,'pre32_car_viv'); ?>
 				</td>

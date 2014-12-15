@@ -47,6 +47,8 @@
  * @property integer $cod_org_soc
  * @property string $mis_soc_dp_enc
  * @property integer $cod_mis_soc
+ * @property integer $cod_jef_fam_dp_enc
+ * @property integer $cod_par_jef_fam_dp_enc
  */
 class Datosencuestado extends CActiveRecord
 {
@@ -78,26 +80,31 @@ class Datosencuestado extends CActiveRecord
 	public function rules()
 	{
 		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+		// will receive user inputs.		
+		
 		return array(
-			array('cod_edo,cod_mun,pri_nom_dp_enc, pri_ape_dp_enc, nac_dp_enc, ced_dp_enc, cod_nac_enc', 'required'),
-			array('ced_dp_enc, cod_nac_enc, cod_est_civ, cod_com_ind, cod_mot_est, cod_niv_ins, cod_est_per_dp_enc, cod_car_est, cod_par_fam, cod_cen_pen, cod_org_soc, cod_mis_soc', 'numerical', 'integerOnly'=>true),
-			array('cod_par', 'length', 'max'=>6),
-			array('dir_com_dp_enc', 'length', 'max'=>150),
-			array('sec_dp_enc, pun_ref_dp_enc', 'length', 'max'=>80),
-			array('pri_nom_dp_enc, seg_nom_dp_enc, pri_ape_dp_enc, seg_ape_dp_enc', 'length', 'max'=>40),
-			array('nac_dp_enc, par_nac_dp_enc, sex_dp_enc, est_emb_dp_enc, asi_ctrl_emb_dp_enc, es_ind_dp_enc, est_act_dp_enc, fam_pri_lib_dp_enc, org_soc_dp_enc, mis_soc_dp_enc', 'length', 'max'=>1),
-			array('sit_leg_dp_enc', 'length', 'max'=>3),
-			array('lug_nac_dp_enc', 'length', 'max'=>50),
-			array('mail_dp_enc', 'length', 'max'=>100),
-			array('tel_hab_dp_enc, tel_cel_dp_enc', 'length', 'max'=>16),
-			array('tip_ins_dp_enc, tip_per_dp_enc', 'length', 'max'=>2),
-			array('tit_obt_dp_enc', 'length', 'max'=>60),
-			array('fec_nac_dp_enc, sem_emb_dp_enc, fec_reg_dp_enc, ult_gra_cur_dp_enc', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('cod_dp_enc, cod_par, dir_com_dp_enc, sec_dp_enc, pun_ref_dp_enc, pri_nom_dp_enc, seg_nom_dp_enc, pri_ape_dp_enc, seg_ape_dp_enc, nac_dp_enc, ced_dp_enc, cod_nac_enc, sit_leg_dp_enc, fec_nac_dp_enc, lug_nac_dp_enc, par_nac_dp_enc, sex_dp_enc, est_emb_dp_enc, sem_emb_dp_enc, asi_ctrl_emb_dp_enc, cod_est_civ, es_ind_dp_enc, cod_com_ind, mail_dp_enc, tel_hab_dp_enc, tel_cel_dp_enc, est_act_dp_enc, tip_ins_dp_enc, cod_mot_est, cod_niv_ins, tip_per_dp_enc, cod_est_per_dp_enc, fec_reg_dp_enc, cod_car_est, ult_gra_cur_dp_enc, tit_obt_dp_enc, fam_pri_lib_dp_enc, cod_par_fam, cod_cen_pen, org_soc_dp_enc, cod_org_soc, mis_soc_dp_enc, cod_mis_soc', 'safe', 'on'=>'search'),
+				array('cod_par,pri_nom_dp_enc, pri_ape_dp_enc, nac_dp_enc, ced_dp_enc, cod_nac_enc', 'required'),
+				array('ced_dp_enc, cod_nac_enc, cod_est_civ, cod_com_ind, cod_mot_est, cod_niv_ins, cod_est_per_dp_enc, cod_car_est, cod_par_fam, cod_cen_pen, cod_org_soc, cod_mis_soc, cod_jef_fam_dp_enc, cod_par_jef_fam_dp_enc', 'numerical', 'integerOnly'=>true),
+				array('cod_par', 'length', 'max'=>6),
+				array('dir_com_dp_enc', 'length', 'max'=>150),
+				array('sec_dp_enc, pun_ref_dp_enc', 'length', 'max'=>80),
+				array('pri_nom_dp_enc, seg_nom_dp_enc, pri_ape_dp_enc, seg_ape_dp_enc', 'length', 'max'=>40),
+				array('nac_dp_enc, par_nac_dp_enc, sex_dp_enc, est_emb_dp_enc, asi_ctrl_emb_dp_enc, es_ind_dp_enc, est_act_dp_enc, fam_pri_lib_dp_enc, org_soc_dp_enc, mis_soc_dp_enc', 'length', 'max'=>1),
+				array('es_ind_dp_enc,est_emb_dp_enc,asi_ctrl_emb_dp_enc,fam_pri_lib_dp_enc,est_act_dp_enc', 'default', 'value'=>'N'),
+				array('sit_leg_dp_enc', 'length', 'max'=>3),
+				array('lug_nac_dp_enc', 'length', 'max'=>50),
+				array('mail_dp_enc', 'length', 'max'=>100),
+				array('tel_hab_dp_enc, tel_cel_dp_enc', 'length', 'max'=>16),
+				array('tip_ins_dp_enc, tip_per_dp_enc', 'length', 'max'=>2),
+				array('ult_gra_cur_dp_enc', 'length', 'max'=>11),
+				array('tit_obt_dp_enc', 'length', 'max'=>60),
+				array('fec_nac_dp_enc, sem_emb_dp_enc, fec_reg_dp_enc', 'safe'),
+				// The following rule is used by search().
+				// Please remove those attributes that should not be searched.
+				array('cod_dp_enc, cod_par, dir_com_dp_enc, sec_dp_enc, pun_ref_dp_enc, pri_nom_dp_enc, seg_nom_dp_enc, pri_ape_dp_enc, seg_ape_dp_enc, nac_dp_enc, ced_dp_enc, cod_nac_enc, sit_leg_dp_enc, fec_nac_dp_enc, lug_nac_dp_enc, par_nac_dp_enc, sex_dp_enc, est_emb_dp_enc, sem_emb_dp_enc, asi_ctrl_emb_dp_enc, cod_est_civ, es_ind_dp_enc, cod_com_ind, mail_dp_enc, tel_hab_dp_enc, tel_cel_dp_enc, est_act_dp_enc, tip_ins_dp_enc, cod_mot_est, cod_niv_ins, tip_per_dp_enc, cod_est_per_dp_enc, fec_reg_dp_enc, cod_car_est, ult_gra_cur_dp_enc, tit_obt_dp_enc, fam_pri_lib_dp_enc, cod_par_fam, cod_cen_pen, org_soc_dp_enc, cod_org_soc, mis_soc_dp_enc, cod_mis_soc, cod_jef_fam_dp_enc, cod_par_jef_fam_dp_enc', 'safe', 'on'=>'search'),
 		);
+		
+		
 	}
 
 	/**
@@ -108,6 +115,8 @@ class Datosencuestado extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+				'jefe'=>array(self::HAS_MANY, 'Datosencuestado', 'cod_dp_enc'),
+				'nacionalidad' => array(self::BELONGS_TO, 'Nacionalidades', 'cod_nac_enc'),
 		);
 	}
 
@@ -162,6 +171,8 @@ class Datosencuestado extends CActiveRecord
 			'cod_org_soc' => 'Organizacion Social',
 			'mis_soc_dp_enc' => 'Pertenece a una Mision',
 			'cod_mis_soc' => 'Mision Social',
+			'cod_jef_fam_dp_enc' => 'Jefe de Familia',
+			'cod_par_jef_fam_dp_enc' => 'Parentesco Familiar',
 		);
 	}
 
@@ -219,6 +230,8 @@ class Datosencuestado extends CActiveRecord
 		$criteria->compare('cod_org_soc',$this->cod_org_soc);
 		$criteria->compare('mis_soc_dp_enc',$this->mis_soc_dp_enc,true);
 		$criteria->compare('cod_mis_soc',$this->cod_mis_soc);
+		$criteria->compare('cod_jef_fam_dp_enc',$this->cod_jef_fam_dp_enc);
+		$criteria->compare('cod_par_jef_fam_dp_enc',$this->cod_par_jef_fam_dp_enc);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
