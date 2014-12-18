@@ -70,7 +70,13 @@ class AsignacionviviendaController extends Controller
 		{
 			$model->attributes=$_POST['Asignacionvivienda'];
 			if($model->save())
+			{
+				$proyecto = Proyecto::model()->findByPk($model->cod_pro);
+				$proyecto->viv_asi_pro = $proyecto->viv_asi_pro + 1;
+				$proyecto->save();
 				$this->redirect(array('view','id'=>$model->cod_asi_viv));
+			}
+				
 		}
 
 		$this->render('create',array(
@@ -87,7 +93,7 @@ class AsignacionviviendaController extends Controller
 		//$criteria->condition = "ced_dp_enc = :term ";
 		//$criteria->params = array(':term'=> $_GET['term']);
 		
-		$criteria->condition = "LOWER(ced_dp_enc::TEXT) like LOWER(:term)";
+		$criteria->condition = "LOWER(ced_dp_enc::TEXT) like LOWER(:term) AND tip_per_dp_enc = 'JF'";
 		$criteria->params = array(':term'=> '%'.$_GET['term'].'%');
 		$criteria->limit = 30;
 		$data = Datosencuestado::model()->findAll($criteria);

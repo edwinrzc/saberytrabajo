@@ -7,18 +7,7 @@ $this->menu=array(
 	array('label'=>'Agregar', 'url'=>array('create')),
 );
 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#proyecto-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
+
 ?>
 
 <h1>Administrador de Proyecto</h1>
@@ -30,6 +19,7 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'cod_pdvsa_pro',
 		'nom_pro',
+		'num_tot_viv_pro',
 		'viv_asi_pro',
 		'sec_pro',
 		'est_pro',

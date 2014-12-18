@@ -657,3 +657,61 @@ COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_mis_soc IS 'Codigo mision socia
 COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_jef_fam_dp_enc IS 'Codigo del jefe familiar';
 COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_par_jef_fam_dp_enc IS 'Codigo del parentesco con el jefe familiar';
 
+
+
+
+
+
+-- Table: viviendo.mvv_proyecto
+
+-- DROP TABLE viviendo.mvv_proyecto;
+
+CREATE TABLE viviendo.mvv_proyecto
+(
+  cod_pro serial NOT NULL, -- Codigo de proyecto
+  nom_pro character varying(100) NOT NULL, -- Nombre de Proyecto
+  cod_edo character varying(2) NOT NULL, -- Codigo de estado
+  cod_mun character varying(4), -- Codigo del municipio
+  cod_par character varying(6), -- Codigo de la parroquia
+  sec_pro character varying(100), -- Sector del proyecto
+  dir_exa_pro character varying(100), -- Direccion exacta del proyecto
+  pun_ref_pro character varying(100), -- Punto de referencia
+  viv_asi_pro integer, -- Vivienda asignadas del proyecto
+  obs_pro text, -- Observaciones del proyecto
+  num_viv_ais_pro integer DEFAULT 0, -- Numero de viviendas aisladas
+  num_viv_con_pro integer DEFAULT 0, -- Numero de vivienda concentradas
+  num_viv_est_met_pro numeric, -- Numero de viviendas con estructura metalica
+  num_viv_est_tra_pro numeric, -- Numero de viviendas con estructura tradicional
+  num_viv_est_mix_pro numeric, -- Numero de viviendas con estructura mixta
+  est_pro character(1), -- Estatus del proyecto, opciones A es igual a activo y P es igual a paralizado
+  the_geom geometry(Point,4326),
+  cod_pdvsa_pro character varying(6), -- Codigo pvsa
+  fec_reg_pro time with time zone DEFAULT now(),
+  fec_reg timestamp with time zone DEFAULT now(),
+  num_tot_viv_pro numeric DEFAULT 0, -- Numero total de viviendas
+  CONSTRAINT "PK_proyecto" PRIMARY KEY (cod_pro)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_proyecto
+  OWNER TO postgres;
+COMMENT ON COLUMN viviendo.mvv_proyecto.cod_pro IS 'Codigo de proyecto';
+COMMENT ON COLUMN viviendo.mvv_proyecto.nom_pro IS 'Nombre de Proyecto';
+COMMENT ON COLUMN viviendo.mvv_proyecto.cod_edo IS 'Codigo de estado';
+COMMENT ON COLUMN viviendo.mvv_proyecto.cod_mun IS 'Codigo del municipio';
+COMMENT ON COLUMN viviendo.mvv_proyecto.cod_par IS 'Codigo de la parroquia';
+COMMENT ON COLUMN viviendo.mvv_proyecto.sec_pro IS 'Sector del proyecto';
+COMMENT ON COLUMN viviendo.mvv_proyecto.dir_exa_pro IS 'Direccion exacta del proyecto';
+COMMENT ON COLUMN viviendo.mvv_proyecto.pun_ref_pro IS 'Punto de referencia';
+COMMENT ON COLUMN viviendo.mvv_proyecto.viv_asi_pro IS 'Vivienda asignadas del proyecto';
+COMMENT ON COLUMN viviendo.mvv_proyecto.obs_pro IS 'Observaciones del proyecto';
+COMMENT ON COLUMN viviendo.mvv_proyecto.num_viv_ais_pro IS 'Numero de viviendas aisladas';
+COMMENT ON COLUMN viviendo.mvv_proyecto.num_viv_con_pro IS 'Numero de vivienda concentradas';
+COMMENT ON COLUMN viviendo.mvv_proyecto.num_viv_est_met_pro IS 'Numero de viviendas con estructura metalica';
+COMMENT ON COLUMN viviendo.mvv_proyecto.num_viv_est_tra_pro IS 'Numero de viviendas con estructura tradicional';
+COMMENT ON COLUMN viviendo.mvv_proyecto.num_viv_est_mix_pro IS 'Numero de viviendas con estructura mixta';
+COMMENT ON COLUMN viviendo.mvv_proyecto.est_pro IS 'Estatus del proyecto, opciones A es igual a activo y P es igual a paralizado';
+COMMENT ON COLUMN viviendo.mvv_proyecto.cod_pdvsa_pro IS 'Codigo pvsa';
+COMMENT ON COLUMN viviendo.mvv_proyecto.num_tot_viv_pro IS 'Numero total de viviendas';
+

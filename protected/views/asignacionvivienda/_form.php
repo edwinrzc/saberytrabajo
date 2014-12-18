@@ -64,6 +64,7 @@ th {
 				<?php
 			             $proyecto = new CDbCriteria;
 			             $proyecto->order = 'nom_pro ASC';
+			            // $Proyecto->condition  = 't.viv_asi_pro::numeric < t.num_tot_viv_pro::numeric';
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_pro',

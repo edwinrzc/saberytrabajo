@@ -2,7 +2,82 @@
 /* @var $this ProyectoController */
 /* @var $model Proyecto */
 /* @var $form CActiveForm */
+$baseUrl = Yii::app()->request->baseUrl;
+$cs = Yii::app()->getClientScript();
+$cs->registerCssFile($baseUrl.'/css/jquery.css');
+$cs->registerCssFile($baseUrl.'/assets/cba5058/jui/css/base/jquery-ui.css');
+// $cs->registerCssFile($baseUrl.'/css/tinyeditor.css');
+$cs->registerScriptFile($baseUrl.'/assets/cba5058/jui/js/jquery-ui.min.js');
+$cs->registerScriptFile($baseUrl.'/js/funciones.js');
+Yii::app()->clientScript->registerScript('proyecto', "
 
+	jQuery('.evaluar-cantidades').blur(function()
+	{
+		verificarTotales();
+	});
+		
+	
+	jQuery('#form-proyecto').click(function()
+	{
+		if(verificarTotales())
+		{
+			jQuery('#proyecto-form').submit();
+		}
+	});
+		
+	function verificarTotales()
+	{
+		$('#errorSummary').empty().hide();
+		var _msj = '';
+		var _campos = 'Tipo de Construccion y Estructura Constructiva';
+		var _val_1 = $('#Proyecto_num_viv_ais_pro').val();
+		var _val_2 = $('#Proyecto_num_viv_con_pro').val();
+		var _val_3 = $('#Proyecto_num_viv_est_met_pro').val();
+		var _val_4 = $('#Proyecto_num_viv_est_tra_pro').val();
+		var _val_5 = $('#Proyecto_num_viv_est_mix_pro').val();
+		
+		if(!isN(_val_1) || !isN(_val_2) || !isN(_val_3) || !isN(_val_4) || !isN(_val_5))
+		{
+			
+			_msj += mensaje('Los campos de '+_campos+' no pueden ser letras');
+			_msj += mensaje('Los campos de '+_campos+' no pueden ser decimales');
+			$('#errorSummary').html(estructMensaje(_msj)).show().fadeIn('slow');
+			return false;
+		}
+		
+		var valor_1 = parseInt(_val_1) + parseInt(_val_2);
+		var valor_2 = parseInt(_val_3) + parseInt(_val_4) + parseInt(_val_5);
+		
+		if(valor_1 <= 0 || valor_2 <= 0)
+		{
+			_msj += mensaje('Los campos de '+_campos+' no pueden ser cero o numeros negativos');
+		}
+		
+		if(valor_1 != valor_2)
+		{
+			_msj += mensaje('El total de los campos '+_campos+' no pueden ser distintos');
+		}
+		
+		if(_msj != '')
+		{
+			$('#errorSummary').html(estructMensaje(_msj)).show().fadeIn('slow');
+			return false;
+		}
+		
+		jQuery('#Proyecto_num_tot_viv_pro').val(valor_1);
+		
+		return true;
+	}
+		
+		
+	function isN(input)
+	{
+	    var number = /^\-{0,1}(?:[0-9]+){0,1}(?:\.[0-9]+){0,1}$/i;
+	    var regex = RegExp(number);
+	    return regex.test(input) && input.length>0;
+	}
+		
+");
 $data = $model->isNewRecord ? array('lon_pro'=>'','lat_pro'=>'') : $model->longitdLatitud($model->cod_pro);
 ?>
 <style type="text/css">
@@ -45,7 +120,10 @@ th {
 
 	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model); 
+		  echo $form->hiddenField($model, 'num_tot_viv_pro');
+	?>
+	
 	<fieldset><LEGEND align="left">Ficha del Proyecto</LEGEND>
 		<div class="row">
 			<div class="row1">
@@ -223,6 +301,7 @@ th {
 	</fieldset>
 	<fieldset><LEGEND align="left">Viviendas del Proyecto</LEGEND>	
 		<div class="row">
+			<div class="errorSummary" id="errorSummary" style="display: none;"></div>
 			<div class="row1" >
 				<table class="tabla-int" >
 					<tr>
@@ -260,21 +339,21 @@ th {
 					<tr>
 						<td><?php echo $form->labelEx($model,'num_viv_est_met_pro'); ?></td>
 						<td>
-							<?php echo $form->textField($model,'num_viv_est_met_pro',array('size'=>10,'maxlength'=>2)); ?>
+							<?php echo $form->textField($model,'num_viv_est_met_pro',array('size'=>10,'maxlength'=>2,'class'=>'evaluar-cantidades')); ?>
 							<?php echo $form->error($model,'num_viv_est_met_pro'); ?>
 						</td>
 					</tr>
 					<tr>
 						<td><?php echo $form->labelEx($model,'num_viv_est_tra_pro'); ?></td>
 						<td>
-							<?php echo $form->textField($model,'num_viv_est_tra_pro',array('size'=>10,'maxlength'=>2)); ?>
+							<?php echo $form->textField($model,'num_viv_est_tra_pro',array('size'=>10,'maxlength'=>2,'class'=>'evaluar-cantidades')); ?>
 							<?php echo $form->error($model,'num_viv_est_tra_pro'); ?>
 						</td>
 					</tr>
 					<tr>
 						<td><?php echo $form->labelEx($model,'num_viv_est_mix_pro'); ?></td>
 						<td>
-							<?php echo $form->textField($model,'num_viv_est_mix_pro',array('size'=>10,'maxlength'=>2)); ?>
+							<?php echo $form->textField($model,'num_viv_est_mix_pro',array('size'=>10,'maxlength'=>2,'class'=>'evaluar-cantidades')); ?>
 							<?php echo $form->error($model,'num_viv_est_mix_pro'); ?>
 						</td>
 					</tr>
@@ -283,7 +362,7 @@ th {
 		</div>
 	</fieldset>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrar' : 'Save'); ?>
+		<?php echo CHtml::Button($model->isNewRecord ? 'Agregar' : 'Guardar',array('id'=>'form-proyecto')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

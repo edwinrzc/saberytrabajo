@@ -23,6 +23,8 @@
  * @property string $the_geom
  * @property string $cod_pdvsa_pro
  * @property string $fec_reg_pro
+ * @property string $fec_reg
+ * @property string $num_tot_viv_pro
  */
 class Proyecto extends CActiveRecord
 {
@@ -58,19 +60,20 @@ class Proyecto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nom_pro, cod_edo', 'required'),
-			array('viv_asi_pro, num_viv_ais_pro, num_viv_con_pro', 'numerical', 'integerOnly'=>true),
+			array('nom_pro, cod_par,est_pro', 'required'),
+			array('viv_asi_pro, num_viv_ais_pro, num_viv_con_pro, num_tot_viv_pro', 'numerical', 'integerOnly'=>true),
 			array('nom_pro, sec_pro, dir_exa_pro, pun_ref_pro', 'length', 'max'=>100),
+			array('num_viv_ais_pro, num_viv_con_pro,num_viv_est_met_pro, num_viv_est_tra_pro, num_viv_est_mix_pro,num_tot_viv_pro', 'default', 'value'=>0),
 			array('cod_pdvsa_pro','unique'),
 			array('cod_edo', 'length', 'max'=>2),
 			array('cod_mun', 'length', 'max'=>4),
 			array('cod_par, cod_pdvsa_pro', 'length', 'max'=>6),
 			array('est_pro', 'length', 'max'=>1),
 			array('lon_pro,lat_pro','numerical'),
-			array('obs_pro, num_viv_est_met_pro, num_viv_est_tra_pro, num_viv_est_mix_pro, the_geom, fec_reg_pro', 'safe'),
+			array('obs_pro, num_viv_est_met_pro, num_viv_est_tra_pro, num_viv_est_mix_pro, the_geom, fec_reg_pro, fec_reg, num_tot_viv_pro', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('cod_pro, nom_pro, cod_edo, cod_mun, cod_par, sec_pro, dir_exa_pro, pun_ref_pro, viv_asi_pro, obs_pro, num_viv_ais_pro, num_viv_con_pro, num_viv_est_met_pro, num_viv_est_tra_pro, num_viv_est_mix_pro, est_pro, the_geom, cod_pdvsa_pro, fec_reg_pro', 'safe', 'on'=>'search'),
+			array('cod_pro, nom_pro, cod_edo, cod_mun, cod_par, sec_pro, dir_exa_pro, pun_ref_pro, viv_asi_pro, obs_pro, num_viv_ais_pro, num_viv_con_pro, num_viv_est_met_pro, num_viv_est_tra_pro, num_viv_est_mix_pro, est_pro, the_geom, cod_pdvsa_pro, fec_reg_pro, fec_reg, num_tot_viv_pro', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -110,43 +113,10 @@ class Proyecto extends CActiveRecord
 			'the_geom' => 'The Geom',
 			'cod_pdvsa_pro' => 'Codigo PDVSA',
 			'fec_reg_pro' => 'Fecha de Registro',
+			'num_tot_viv_pro' => 'Total de Vivienda',
+			'lat_pro' => 'Latitud',
+			'lon_pro' => 'Longitud',
 		);
-	}
-
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('cod_pro',$this->cod_pro);
-		$criteria->compare('nom_pro',$this->nom_pro,true);
-		$criteria->compare('cod_edo',$this->cod_edo,true);
-		$criteria->compare('cod_mun',$this->cod_mun,true);
-		$criteria->compare('cod_par',$this->cod_par,true);
-		$criteria->compare('sec_pro',$this->sec_pro,true);
-		$criteria->compare('dir_exa_pro',$this->dir_exa_pro,true);
-		$criteria->compare('pun_ref_pro',$this->pun_ref_pro,true);
-		$criteria->compare('viv_asi_pro',$this->viv_asi_pro);
-		$criteria->compare('obs_pro',$this->obs_pro,true);
-		$criteria->compare('num_viv_ais_pro',$this->num_viv_ais_pro);
-		$criteria->compare('num_viv_con_pro',$this->num_viv_con_pro);
-		$criteria->compare('num_viv_est_met_pro',$this->num_viv_est_met_pro,true);
-		$criteria->compare('num_viv_est_tra_pro',$this->num_viv_est_tra_pro,true);
-		$criteria->compare('num_viv_est_mix_pro',$this->num_viv_est_mix_pro,true);
-		$criteria->compare('est_pro',$this->est_pro,true);
-		$criteria->compare('the_geom',$this->the_geom,true);
-		$criteria->compare('cod_pdvsa_pro',$this->cod_pdvsa_pro,true);
-		$criteria->compare('fec_reg_pro',$this->fec_reg_pro,true);
-
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
 	}
 	
 	
@@ -197,6 +167,42 @@ class Proyecto extends CActiveRecord
 		}
 	
 	}
-	
-	
+
+	/**
+	 * Retrieves a list of models based on the current search/filter conditions.
+	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 */
+	public function search()
+	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('cod_pro',$this->cod_pro);
+		$criteria->compare('nom_pro',$this->nom_pro,true);
+		$criteria->compare('cod_edo',$this->cod_edo,true);
+		$criteria->compare('cod_mun',$this->cod_mun,true);
+		$criteria->compare('cod_par',$this->cod_par,true);
+		$criteria->compare('sec_pro',$this->sec_pro,true);
+		$criteria->compare('dir_exa_pro',$this->dir_exa_pro,true);
+		$criteria->compare('pun_ref_pro',$this->pun_ref_pro,true);
+		$criteria->compare('viv_asi_pro',$this->viv_asi_pro);
+		$criteria->compare('obs_pro',$this->obs_pro,true);
+		$criteria->compare('num_viv_ais_pro',$this->num_viv_ais_pro);
+		$criteria->compare('num_viv_con_pro',$this->num_viv_con_pro);
+		$criteria->compare('num_viv_est_met_pro',$this->num_viv_est_met_pro,true);
+		$criteria->compare('num_viv_est_tra_pro',$this->num_viv_est_tra_pro,true);
+		$criteria->compare('num_viv_est_mix_pro',$this->num_viv_est_mix_pro,true);
+		$criteria->compare('est_pro',$this->est_pro,true);
+		$criteria->compare('the_geom',$this->the_geom,true);
+		$criteria->compare('cod_pdvsa_pro',$this->cod_pdvsa_pro,true);
+		$criteria->compare('fec_reg_pro',$this->fec_reg_pro,true);
+		$criteria->compare('fec_reg',$this->fec_reg,true);
+		$criteria->compare('num_tot_viv_pro',$this->num_tot_viv_pro,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 }
