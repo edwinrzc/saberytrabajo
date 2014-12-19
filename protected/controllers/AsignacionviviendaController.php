@@ -71,9 +71,7 @@ class AsignacionviviendaController extends Controller
 			$model->attributes=$_POST['Asignacionvivienda'];
 			if($model->save())
 			{
-				$proyecto = Proyecto::model()->findByPk($model->cod_pro);
-				$proyecto->viv_asi_pro = $proyecto->viv_asi_pro + 1;
-				$proyecto->save();
+				$this->operacionAsignacion($model->cod_pro,'+');
 				$this->redirect(array('view','id'=>$model->cod_asi_viv));
 			}
 				
@@ -122,14 +120,31 @@ class AsignacionviviendaController extends Controller
 
 		if(isset($_POST['Asignacionvivienda']))
 		{
+			if($model->cod_pro != $_POST['Asignacionvivienda']['cod_pro'])
+			{
+				$this->operacionAsignacion($model->cod_pro,'-');
+			}
 			$model->attributes=$_POST['Asignacionvivienda'];
 			if($model->save())
+			{
+				$this->operacionAsignacion($model->cod_pro,'+');
 				$this->redirect(array('view','id'=>$model->cod_asi_viv));
+			}
+				
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+	
+	
+	public function operacionAsignacion($id,$op)
+	{
+		$i = 1;
+		$proyecto = Proyecto::model()->findByPk($id);
+		$proyecto->viv_asi_pro = $proyecto->viv_asi_pro.' '.$op.' '.$i;
+		$proyecto->save();
 	}
 
 	/**

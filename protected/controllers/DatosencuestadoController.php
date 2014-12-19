@@ -189,7 +189,7 @@ class DatosencuestadoController extends Controller
 						'model5'=>$model5,
 						'model6'=>$model6,
 						'model7'=>$model7,
-						'id'=>13,
+						'id'=>$model->cod_dp_enc,
 						'tipo'=>'JF',
 				));
 				Yii::app()->end();
@@ -484,46 +484,30 @@ class DatosencuestadoController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Datosencuestado']))
-		{
-			$model->attributes=$_POST['Datosencuestado'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->cod_dp_enc));
-		}//$model->tip_per_dp_enc
+		// $this->performAjaxValidation($model);		
 		
-		
-		switch ($model->tip_per_dp_enc)
-		{
-			case 'JF':
-				$model1= Caracteristicavivienda::model()->findByPk($id);
-				$model2= Situacionpolitica::model()->findByPk($id);
-				$model3= Posesionesvivienda::model()->findByPk($id);
-				$model4= Informacionlaboral::model()->findByPk($id);
-				$model5= Distribuciontiempo::model()->findByAttributes(array('cod_dp_enc'=>$id,'tip_dis_tie'=>'LV'));
-				$model8= Distribuciontiempo::model()->findByAttributes(array('cod_dp_enc'=>$id,'tip_dis_tie'=>'SD'));
-				$model6= Condicionsalud::model()->findByPk($id);
-				$model7= Alimentacionsemanal::model()->findByPk($id);
-				
-				$this->render('modificarencuesta',array(
-						'model'=>$model,
-						'model1'=>$model1,
-						'model2'=>$model2,
-						'model3'=>$model3,
-						'model4'=>$model4,
-						'model5'=>$model5,
-						'model6'=>$model6,
-						'model7'=>$model7,
-						'model8'=>$model8,
-						'id'=>$model->cod_dp_enc,
-						'tipo'=>$model->tip_per_dp_enc,
-				));
-				
-			break;
-			case 'GF':
-			break;
-		}
+		$model1= Caracteristicavivienda::model()->findByPk($id);
+		$model2= Situacionpolitica::model()->findByPk($id);
+		$model3= Posesionesvivienda::model()->findByPk($id);
+		$model4= Informacionlaboral::model()->findByPk($id);
+		$model5= Distribuciontiempo::model()->findByAttributes(array('cod_dp_enc'=>$id,'tip_dis_tie'=>'LV'));
+		$model8= Distribuciontiempo::model()->findByAttributes(array('cod_dp_enc'=>$id,'tip_dis_tie'=>'SD'));
+		$model6= Condicionsalud::model()->findByPk($id);
+		$model7= Alimentacionsemanal::model()->findByPk($id);
+		//print_r($model6);die;
+		$this->render('modificarencuesta',array(
+				'model'=>$model,
+				'model1'=>$model1,
+				'model2'=>$model2,
+				'model3'=>$model3,
+				'model4'=>$model4,
+				'model5'=>$model5,
+				'model6'=>$model6,
+				'model7'=>$model7,
+				'model8'=>$model8,
+				'id'=>$model->cod_dp_enc,
+				'tipo'=>$model->tip_per_dp_enc,
+		));
 		
 	}
 

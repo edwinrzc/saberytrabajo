@@ -223,17 +223,17 @@
 			<td width="50%">
 				<?php 
 						$sel3 = array('');
-						
+						$disabled = '';
 						if(isset($model->mie_mes_sit_pol) && !empty($model->mie_mes_sit_pol))
 						{
-								
+							$disabled = $opciones['S'];
 							$sel3[trim($model->mie_mes_sit_pol)] = array('selected'=>'selected');
 								
 						}
 							
 						echo CHtml::dropDownList('Situacionpolitica[mie_mes_sit_pol]', $model, 
 		              	array('S' => 'Si', 'N' => 'No'),
-						array('empty' => 'Seleccione...','options'=>$sel3,'disabled'=>$opciones[$model->reg_ele_sit_pol], 'style'=>'width:280px;','class'=>'clear-error'));
+						array('empty' => 'Seleccione...','options'=>$sel3,'disabled'=>$disabled, 'style'=>'width:280px;','class'=>'clear-error'));
 				?>
 				<?php echo $form->error($model,'mie_mes_sit_pol'); ?>
 			</td>
@@ -250,7 +250,7 @@
 							
 						echo CHtml::dropDownList('Situacionpolitica[tes_mes_sit_pol]', $model, 
 		              	array('S' => 'Si', 'N' => 'No'),
-						array('empty' => 'Seleccione...','options'=>$sel4,'disabled'=>$opciones[$model->reg_ele_sit_pol], 'style'=>'width:280px;','class'=>'clear-error'));
+						array('empty' => 'Seleccione...','options'=>$sel4,'disabled'=>$disabled, 'style'=>'width:280px;','class'=>'clear-error'));
 				?>
 				<?php echo $form->error($model,'tes_mes_sit_pol'); ?>
 			</td>

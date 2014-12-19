@@ -724,11 +724,16 @@
 					<?php
 			             $organiza = new CDbCriteria;
 			             $organiza->order = 'nom_org_soc ASC';
+			             $disabled = 'disabled';
+			             if(!empty($model->cod_org_soc))
+						 {
+						 	$disabled ='';
+						 }
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_org_soc',
 								CHtml::listData(Organizacionsocial::model()->findAll($organiza),'cod_org_soc','nom_org_soc'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>$opciones[$model->org_soc_dp_enc]
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>$disabled
 								)
 						);
 			       ?>
@@ -764,11 +769,16 @@
 					<?php
 			             $mision = new CDbCriteria;
 			             $mision->order = 'nom_mis_soc ASC';
+			             $disabled = 'disabled';
+			             if(!empty($model->cod_mis_soc))
+						 {
+						 	$disabled = '';
+						 }
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_mis_soc',
 								CHtml::listData(Misionsocial::model()->findAll($mision),'cod_mis_soc','nom_mis_soc'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>$opciones[$model->mis_soc_dp_enc]
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>$disabled
 								)
 						);
 			       ?>

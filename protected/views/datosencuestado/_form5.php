@@ -132,7 +132,7 @@
 					  {
 					  	$disabled = '';
 					  }
-					  echo $form->textField($model,'otr_adi_con_sal',array('size'=>20,'maxlength'=>20,'disabled'=>$disabled,)); ?>
+					  echo $form->textField($model,'otr_adi_con_sal',array('size'=>20,'maxlength'=>20,'disabled'=>$disabled)); ?>
 				<?php echo $form->error($model,'otr_adi_con_sal'); ?>
 			</td>
 			<td colspan="2">
@@ -170,7 +170,7 @@
 						{
 								
 							$sel6[trim($model->rec_tra_con_sal)] = array('selected'=>'selected');
-							$disabled = $opciones[$model->rec_tra_con_sal];
+							$disabled = '';
 						}
 						
 						echo CHtml::dropDownList('Condicionsalud[rec_tra_con_sal]', $model, 
@@ -222,7 +222,7 @@
 		             echo $form->dropDownList($model,'cod_enf',
 							CHtml::listData(Enfermedad::model()->findAll($enfermedad),'cod_enf','nom_enf'),
 		             						array('prompt' => 'Seleccione...','class'=>'clear-error', 
-												  'style'=>'width:280px;','disabled'=>$disabled,
+												  'style'=>'width:280px;','disabled'=>$disabled
 							)
 					);
 		       ?>
@@ -235,7 +235,7 @@
 					{
 						$disabled = '';
 					}
-					echo $form->textArea($model,'des_tra_con_sal',array('rows'=>3, 'cols'=>40,'disabled'=>$disabled,)); ?>
+					echo $form->textArea($model,'des_tra_con_sal',array('rows'=>3, 'cols'=>40,'disabled'=>$disabled)); ?>
 				<?php echo $form->error($model,'des_tra_con_sal'); ?>
 			</td>
 		</tr>
@@ -256,7 +256,7 @@
 						$disabled = '';
 					} 
 					
-					  echo $form->textField($model,'otr_enf_con_sal',array('size'=>40,'maxlength'=>80,'disabled'=>$disabled,)); ?>
+					  echo $form->textField($model,'otr_enf_con_sal',array('size'=>40,'maxlength'=>80,'disabled'=>$disabled)); ?>
 				<?php echo $form->error($model,'otr_enf_con_sal'); ?>
 			</td>
 			<td colspan="2">
@@ -267,7 +267,7 @@
 							$disabled = '';
 						} 
 					
-					  echo $form->textArea($model,'otr_des_tra_con_sal',array('rows'=>3, 'cols'=>40,'disabled'=>$disabled,)); ?>
+					  echo $form->textArea($model,'otr_des_tra_con_sal',array('rows'=>3, 'cols'=>40,'disabled'=>$disabled)); ?>
 				<?php echo $form->error($model,'otr_des_tra_con_sal'); ?>
 			</td>
 		</tr>

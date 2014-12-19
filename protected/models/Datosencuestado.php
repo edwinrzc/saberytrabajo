@@ -91,6 +91,7 @@ class Datosencuestado extends CActiveRecord
 				array('pri_nom_dp_enc, seg_nom_dp_enc, pri_ape_dp_enc, seg_ape_dp_enc', 'length', 'max'=>40),
 				array('nac_dp_enc, par_nac_dp_enc, sex_dp_enc, est_emb_dp_enc, asi_ctrl_emb_dp_enc, es_ind_dp_enc, est_act_dp_enc, fam_pri_lib_dp_enc, org_soc_dp_enc, mis_soc_dp_enc', 'length', 'max'=>1),
 				array('es_ind_dp_enc,est_emb_dp_enc,asi_ctrl_emb_dp_enc,fam_pri_lib_dp_enc,est_act_dp_enc', 'default', 'value'=>'N'),
+				array('cod_nac_enc, cod_est_civ, cod_com_ind, cod_mot_est, cod_niv_ins, cod_est_per_dp_enc, cod_car_est, cod_par_fam, cod_cen_pen, cod_org_soc, cod_mis_soc, cod_jef_fam_dp_enc, cod_par_jef_fam_dp_enc', 'default', 'value'=>NULL),
 				array('sit_leg_dp_enc', 'length', 'max'=>3),
 				array('lug_nac_dp_enc', 'length', 'max'=>50),
 				array('mail_dp_enc', 'length', 'max'=>100),
