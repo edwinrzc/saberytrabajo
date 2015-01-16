@@ -382,7 +382,15 @@ th {
 </style>
 <div class="span-23">
 <h1>Agregar Datosencuestado</h1>
-
+<div class="row">
+	<div class="span-2">
+		<a href="<?php echo Yii::app()->createUrl("/datosencuestado/admin")?>">
+			<img title="Volver a Menu Anterior" height="45px" src="<?php echo Yii::app()->request->baseUrl.'/images/volver.jpg'; ?>">
+		</a>
+	</div>	
+</div>
+<br><br>
+<br>
 <div id="mydialog"></div>
 <?php
 

@@ -40,6 +40,7 @@
 			            if ($model->cod_jef_fam_dp_enc!='')
 						{
 							$value=$model->jefe->ced_dp_enc;
+							//print_r($model->jefe->ced_dp_enc);die;
 						}
 						else {
 							$value='';
@@ -60,6 +61,7 @@
 							{ jQuery("#Datosencuestado_cod_jef_fam_dp_enc").val(0); }'
 						),
 						));
+
 			       ?>
 				</td>
 				<td colspan="2">

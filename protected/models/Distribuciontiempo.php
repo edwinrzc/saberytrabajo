@@ -107,7 +107,7 @@ class Distribuciontiempo extends CActiveRecord
 					'$atr[hor_lec_dis_tie]', '$atr[hor_otr_act_dis_tie]');";
 						
 				}
-				break;
+			break;
 		}
 	
 	

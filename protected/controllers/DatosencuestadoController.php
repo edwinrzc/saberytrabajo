@@ -210,7 +210,7 @@ class DatosencuestadoController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionGrupofamiliar()
+	public function actionAgregarfamiliar()
 	{
 		$model=new Datosencuestado;	
 	
@@ -223,7 +223,8 @@ class DatosencuestadoController extends Controller
 				
 			if($model->save())
 			{
-	
+				
+				$model->incrementarGrupofamiliar($model->cod_jef_fam_dp_enc);
 				$model1=new Caracteristicavivienda;
 				$model2= new Situacionpolitica;
 				$model3= new Posesionesvivienda;
@@ -482,7 +483,8 @@ class DatosencuestadoController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		
+		$model->verificaDatos($id, $model->tip_per_dp_enc);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);		
 		
@@ -548,6 +550,24 @@ class DatosencuestadoController extends Controller
 
 		$this->render('admin',array(
 			'model'=>$model,
+		));
+	}
+
+	/**
+	 * Manages all models.
+	 */
+	public function actionGrupofamiliar($id)
+	{
+		$model=new Datosencuestado('search');
+		$model->unsetAttributes();  // clear any default values
+		$model1 = $this->loadModel($id);
+		if(isset($_GET['Datosencuestado']))
+			$model->attributes=$_GET['Datosencuestado'];
+
+		$this->render('admin_gf',array(
+			'model'=>$model,
+			'id'=>$id,
+			'model1'=>$model1,
 		));
 	}
 

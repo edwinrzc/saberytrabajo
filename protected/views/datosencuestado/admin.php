@@ -18,7 +18,7 @@ Yii::app()->clientScript->registerScript('search', "
 		</a>
 	</div>
 	<div class="span-2">
-		<a href="<?php echo Yii::app()->createUrl("/datosencuestado/grupofamiliar")?>">
+		<a href="<?php echo Yii::app()->createUrl("/datosencuestado/agregarfamiliar")?>">
 			<img title="Agregar Grupo Familiar" height="50px" src="<?php echo Yii::app()->request->baseUrl.'/images/grupo.jpg'; ?>">
 		</a>
 	</div>	
@@ -28,16 +28,17 @@ Yii::app()->clientScript->registerScript('search', "
 <?php 
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datosencuestado-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$model->search(0),
 	'filter'=>$model,
 	'columns'=>array(
 		'cod_par',
 		'dir_com_dp_enc',
-		'sec_dp_enc',
+		//'sec_dp_enc',
 		'pun_ref_dp_enc',
 		'pri_nom_dp_enc',
 		'pri_ape_dp_enc',
 		'ced_dp_enc',
+		'gru_fam_dp_enc',
 		array(
 				'name'=>'cod_nac_enc',
 				'value'=>'$data->nacionalidad->nom_nac_enc',
@@ -86,7 +87,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		array(
 			'class'=>'CButtonColumn',
 			'htmlOptions'=>array('class'=>'myCssClass','style'=>'width:80px'),
-			'template'=>'{view}{update}{delete}{print}',
+			'template'=>'{view}{update}{delete}{print}{grupo}',
 			'buttons'=>array(
 			//<------ BOTONES ------->//	
 			
@@ -94,9 +95,18 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		    'label'=>'Imprimir Asignación', // titulo del enlace del botón nuevo
 		    'imageUrl'=>Yii::app()->request->baseUrl.'/images/printer.png', //ruta icono para el botón
 		    //'url'=>'#', //url de la acción nueva
-		    'url'=>"CHtml::normalizeUrl(array('pdf', 'cod_dp_enc'=>\$data->cod_dp_enc))",
+		    //'url'=>"CHtml::normalizeUrl(array('pdf', 'cod_dp_enc'=>\$data->cod_dp_enc))",
+					'url'=>'Yii::app()->createUrl("/datosencuestado/pdf", array("cod_dp_enc"=>"$data->cod_dp_enc"))',
 			'options'=>array('target'=>'_blank'),
 		    ),
+			'grupo' => array( //botón para la acción nueva
+			'label'=>'Imprimir Asignación', // titulo del enlace del botón nuevo
+			'imageUrl'=>Yii::app()->request->baseUrl.'/images/group.png', //ruta icono para el botón
+			//'url'=>'#', //url de la acción nueva
+			'url'=>'Yii::app()->createUrl("/datosencuestado/grupofamiliar", array("id"=>"$data->cod_dp_enc"))',
+			//'options'=>array('style'=>'width:80px;'),
+			),
+
 
 		),
 		),

@@ -33,12 +33,15 @@
 			<tr>
 				<td>
 					<?php
+					
+						$value='';
 			            if ($model->cod_jef_fam_dp_enc!='')
 						{
-							$value=$model->jefe->ced_dp_enc;
-						}
-						else {
-							$value='';
+							if(count($value=$model->jefe)>0)
+							{
+								$value=$model->jefe->ced_dp_enc;
+							}
+							
 						}
 						
 						echo $form->hiddenField($model, 'cod_jef_fam_dp_enc');
