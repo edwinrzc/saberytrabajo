@@ -37,10 +37,10 @@ $this->menu=array(
 			'buttons'=>array(
 			//<------ BOTONES ------->//	
 			
-			'print' => array( //botón para la acción nueva
-		    'label'=>'Imprimir Asignación', // titulo del enlace del botón nuevo
-		    'imageUrl'=>Yii::app()->request->baseUrl.'/images/printer.png', //ruta icono para el botón
-		    //'url'=>'#', //url de la acción nueva
+			'print' => array( //botï¿½n para la acciï¿½n nueva
+		    'label'=>'Imprimir Asignacion', // titulo del enlace del botï¿½n nuevo
+		    'imageUrl'=>Yii::app()->request->baseUrl.'/images/printer.png', //ruta icono para el botï¿½n
+		    //'url'=>'#', //url de la acciï¿½n nueva
 		    'url'=>"CHtml::normalizeUrl(array('pdf', 'cod_pro'=>\$data->cod_pro))",
 			'options'=>array('target'=>'_blank'),
 		    ),

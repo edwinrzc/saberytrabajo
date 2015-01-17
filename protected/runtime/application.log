@@ -11461,3 +11461,49 @@ Stack trace:
 REQUEST_URI=/saberytrabajo/datosencuestado/grupofamiliar/1.html
 HTTP_REFERER=http://localhost/saberytrabajo/datosencuestado/admin.html
 ---
+2015/01/17 12:42:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/small_icons/sitemap_color.png"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/small_ic...')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/images/small_icons/sitemap_color.png
+HTTP_REFERER=http://localhost/saberytrabajo/css/icons.css
+---
+2015/01/17 12:42:18 [error] [php] htmlspecialchars(): Invalid multibyte sequence in argument (/var/www/Yii/framework/web/helpers/CHtml.php:103)
+Stack trace:
+#0 /var/www/Yii/framework/web/helpers/CHtml.php(158): renderAttributes()
+#1 /var/www/Yii/framework/web/helpers/CHtml.php(442): tag()
+#2 /var/www/Yii/framework/zii/widgets/grid/CButtonColumn.php(345): image()
+#3 /var/www/Yii/framework/zii/widgets/grid/CButtonColumn.php(319): CButtonColumn->renderButton()
+#4 /var/www/Yii/framework/zii/widgets/grid/CGridColumn.php(151): CButtonColumn->renderDataCellContent()
+#5 /var/www/Yii/framework/zii/widgets/grid/CGridView.php(616): CButtonColumn->renderDataCell()
+#6 /var/www/Yii/framework/zii/widgets/grid/CGridView.php(572): CGridView->renderTableRow()
+#7 /var/www/Yii/framework/zii/widgets/grid/CGridView.php(482): CGridView->renderTableBody()
+#8 /var/www/Yii/framework/zii/widgets/CBaseListView.php(167): CGridView->renderItems()
+#9 unknown(0): CGridView->renderSection()
+#10 /var/www/Yii/framework/zii/widgets/CBaseListView.php(150): preg_replace_callback()
+#11 /var/www/Yii/framework/zii/widgets/CBaseListView.php(135): CGridView->renderContent()
+#12 /var/www/Yii/framework/web/CBaseController.php(173): CGridView->run()
+#13 /var/www/saberytrabajo/protected/views/proyecto/admin.php(51): ProyectoController->widget()
+#14 /var/www/Yii/framework/web/CBaseController.php(126): require()
+#15 /var/www/Yii/framework/web/CBaseController.php(95): ProyectoController->renderInternal()
+#16 /var/www/Yii/framework/web/CController.php(869): ProyectoController->renderFile()
+#17 /var/www/Yii/framework/web/CController.php(782): ProyectoController->renderPartial()
+#18 /var/www/saberytrabajo/protected/controllers/ProyectoController.php(215): ProyectoController->render()
+#19 /var/www/Yii/framework/web/actions/CInlineAction.php(49): ProyectoController->actionAdmin()
+#20 /var/www/Yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#21 /var/www/Yii/framework/web/filters/CFilterChain.php(133): ProyectoController->runAction()
+#22 /var/www/saberytrabajo/protected/modules/cruge/components/CrugeAccessControlFilter.php(90): CFilterChain->run()
+#23 /var/www/Yii/framework/web/filters/CFilter.php(38): CrugeAccessControlFilter->preFilter()
+#24 /var/www/Yii/framework/web/filters/CFilterChain.php(130): CrugeAccessControlFilter->filter()
+#25 /var/www/Yii/framework/web/CController.php(291): CFilterChain->run()
+#26 /var/www/Yii/framework/web/CController.php(265): ProyectoController->runActionWithFilters()
+#27 /var/www/Yii/framework/web/CWebApplication.php(282): ProyectoController->run()
+#28 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#29 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/saberytrabajo/index.php(14): CWebApplication->run()
+REQUEST_URI=/saberytrabajo/Proyecto/admin.html
+in /var/www/saberytrabajo/protected/views/proyecto/admin.php (51)
+in /var/www/saberytrabajo/protected/controllers/ProyectoController.php (215)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeAccessControlFilter.php (90)
