@@ -54,11 +54,11 @@ return array(
 				//
 				'useEncryptedPassword' => false,
 				
-				// Algoritmo de la función hash que deseas usar
-				// Los valores admitidos están en: http://www.php.net/manual/en/function.hash-algos.php
+				// Algoritmo de la funciï¿½n hash que deseas usar
+				// Los valores admitidos estï¿½n en: http://www.php.net/manual/en/function.hash-algos.php
 				'hash' => 'md5',
 				
-				// Estos tres atributos controlan la redirección del usuario. Solo serán son usados si no
+				// Estos tres atributos controlan la redirecciï¿½n del usuario. Solo serï¿½n son usados si no
 				// hay un filtro de sesion definido (el componente MiSesionCruge), es mejor usar un filtro.
 				//  lee en la wiki acerca de:
 				//   "CONTROL AVANZADO DE SESIONES Y EVENTOS DE AUTENTICACION Y SESION"
@@ -79,7 +79,7 @@ return array(
 				'editProfileLayout'=>'//layouts/column2',
 				// en la siguiente puedes especificar el valor "ui" o "column2" para que use el layout
 				// de fabrica, es basico pero funcional.  si pones otro valor considera que cruge
-				// requerirá de un portlet para desplegar un menu con las opciones de administrador.
+				// requerirï¿½ de un portlet para desplegar un menu con las opciones de administrador.
 				//
 				'generalUserManagementLayout'=>'ui',
 				
@@ -161,7 +161,7 @@ return array(
 			'connectionString' => 'pgsql:host=localhost;port=5432;dbname=db_web_sab_tra;',
 			'emulatePrepare' => false,
 			'enableParamLogging' => true,
-			'username' => 'postgres',
+			'username' => 'postgres1',
 			'password' => '123',
 			'charset' => 'utf8',
 		),
