@@ -91,18 +91,18 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'buttons'=>array(
 			//<------ BOTONES ------->//	
 			
-			'print' => array( //botón para la acción nueva
-		    'label'=>'Imprimir Asignación', // titulo del enlace del botón nuevo
-		    'imageUrl'=>Yii::app()->request->baseUrl.'/images/printer.png', //ruta icono para el botón
-		    //'url'=>'#', //url de la acción nueva
+			'print' => array( //botï¿½n para la acciï¿½n nueva
+		    'label'=>'Imprimir Asignacion', // titulo del enlace del botï¿½n nuevo
+		    'imageUrl'=>Yii::app()->request->baseUrl.'/images/printer.png', //ruta icono para el botï¿½n
+		    //'url'=>'#', //url de la acciï¿½n nueva
 		    //'url'=>"CHtml::normalizeUrl(array('pdf', 'cod_dp_enc'=>\$data->cod_dp_enc))",
 					'url'=>'Yii::app()->createUrl("/datosencuestado/pdf", array("cod_dp_enc"=>"$data->cod_dp_enc"))',
 			'options'=>array('target'=>'_blank'),
 		    ),
-			'grupo' => array( //botón para la acción nueva
-			'label'=>'Imprimir Asignación', // titulo del enlace del botón nuevo
-			'imageUrl'=>Yii::app()->request->baseUrl.'/images/group.png', //ruta icono para el botón
-			//'url'=>'#', //url de la acción nueva
+			'grupo' => array( //botï¿½n para la acciï¿½n nueva
+			'label'=>'Imprimir Asignacion', // titulo del enlace del botï¿½n nuevo
+			'imageUrl'=>Yii::app()->request->baseUrl.'/images/group.png', //ruta icono para el botï¿½n
+			//'url'=>'#', //url de la acciï¿½n nueva
 			'url'=>'Yii::app()->createUrl("/datosencuestado/grupofamiliar", array("id"=>"$data->cod_dp_enc"))',
 			//'options'=>array('style'=>'width:80px;'),
 			),

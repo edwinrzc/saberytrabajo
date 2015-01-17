@@ -2,7 +2,7 @@
 
 // change the following paths if necessary
 date_default_timezone_set('Europe/Athens');
-$yii=dirname(__FILE__).'/../../../../yii/framework/yii.php';
+$yii=dirname(__FILE__).'/../Yii/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 
 // remove the following lines when in production mode
