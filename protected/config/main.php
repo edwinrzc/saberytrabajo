@@ -161,7 +161,7 @@ return array(
 			'connectionString' => 'pgsql:host=localhost;port=5432;dbname=db_web_sab_tra;',
 			'emulatePrepare' => false,
 			'enableParamLogging' => true,
-			'username' => 'postgres1',
+			'username' => 'postgres',
 			'password' => '123',
 			'charset' => 'utf8',
 		),
