@@ -75,9 +75,10 @@ input:focus
 
 div.form fieldset
 {
-	border: 1px solid #DDD;
+border: 1px solid #A9A9A9;
 	padding: 10px;
-	margin: 0 0 10px 0;
+	
+/*	margin: 0 0 10px 0; */
     -moz-border-radius:7px;
 }
 

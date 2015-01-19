@@ -376,7 +376,6 @@ th {
 		</a>
 	</div>	
 </div>
-<br><br>
 <br>
 <div id="mydialog"></div>
 <div><input type="hidden" name="codigo_maestro" value="" ></div>

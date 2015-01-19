@@ -136,4 +136,31 @@ class Parroquial extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function descripcion($id){
+		$data= self::model()->findByPk($id);
+		return $descripcion=$data["parroquia"];
+	
+	}
+	
+	public function descripcionterritorial($id,$opc){
+		$ordenTerr = '';
+	
+		switch ($opc) {
+			case 'E':
+				$ordenTerr = 'estado';
+				break;
+	
+			case 'M':
+				$ordenTerr = 'municipio';
+				break;
+	
+			case 'P':
+				$ordenTerr = 'parroquia';
+				break;
+		}
+		$parroquia = self::model()->findByAttributes(array('ci_parroq'=>$id));
+		return $descripcion=$parroquia[$ordenTerr];
+	
+	}
 }

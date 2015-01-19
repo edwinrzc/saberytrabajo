@@ -22,9 +22,13 @@ Yii::app()->clientScript->registerScript('search', "
 			<img title="Agregar Grupo Familiar" height="50px" src="<?php echo Yii::app()->request->baseUrl.'/images/grupo.jpg'; ?>">
 		</a>
 	</div>	
+	<div class="span-2">
+		<a href="<?php echo Yii::app()->createUrl("/datosencuestado/excel")?>">
+			<img title="EXCEL" height="50px" src="<?php echo Yii::app()->request->baseUrl.'/images/excel.png'; ?>">
+		</a>
+	</div>	
 </div>
-<br><br>
-<br>
+
 <?php 
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'datosencuestado-grid',

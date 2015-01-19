@@ -87,4 +87,10 @@ class Misionsocial extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function descripcion($id){
+		$data= self::model()->findByPk($id);
+		return $descripcion=$data["nom_mis_soc"];
+	
+	}
 }

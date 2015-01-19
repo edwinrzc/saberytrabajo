@@ -33,15 +33,12 @@
 			<tr>
 				<td>
 					<?php
-					
-						$value='';
 			            if ($model->cod_jef_fam_dp_enc!='')
 						{
-							if(count($value=$model->jefe)>0)
-							{
-								$value=$model->jefe->ced_dp_enc;
-							}
-							
+							$value=$model->jefe->ced_dp_enc;
+						}
+						else {
+							$value='';
 						}
 						
 						echo $form->hiddenField($model, 'cod_jef_fam_dp_enc');
@@ -109,7 +106,7 @@
 			                           'type' => 'POST',
 			                           'url' => CController::createUrl('datosencuestado/municipios'),
 			                           'update' => '#Datosencuestado_cod_mun'
-			                       ),'options'=>$sel,'prompt' => 'Seleccione...', 'style'=>'width:280px;'
+			                       ),'options'=>$sel,'prompt' => 'Seleccione...', 'style'=>'width:220px;'
 			                 )
 			             );
 			       ?>
@@ -137,7 +134,7 @@
 			                           'type' => 'POST',
 			                           'url' => CController::createUrl('datosencuestado/parroquia'),
 			                           'update' => '#Datosencuestado_cod_par'
-			                       ),'options'=>$sel,'prompt' => 'Seleccione...', 'style'=>'width:280px;'
+			                       ),'options'=>$sel,'prompt' => 'Seleccione...', 'style'=>'width:220px;'
 			                   )
 			             );
 			       ?>
@@ -161,7 +158,7 @@
 			       ?>
 			       <?php
 			             echo $form->dropDownList($model,'cod_par',CHtml::listData(array(''),'ci_parroq','parroquia'),
-			             						array('prompt' => 'Seleccione una Parroquia...', 'style'=>'width:280px;'
+			             						array('prompt' => 'Seleccione una Parroquia...', 'style'=>'width:220px;'
 								)
 						);
 			       ?>
@@ -239,7 +236,7 @@
 					<?php echo CHtml::dropDownList('Datosencuestado[nac_dp_enc]', $model, 
               				array('V' => 'V', 'E' => 'E'));
 					?>
-					<?php echo $form->textField($model,'ced_dp_enc',array('size'=>30)); ?>
+					<?php echo $form->textField($model,'ced_dp_enc',array('style'=>'width:160px;')); ?>
 					<?php echo $form->error($model,'ced_dp_enc'); ?>
 				</td>
 				<td colspan="2">
@@ -249,7 +246,7 @@
 			       ?>
 			       <?php
 			             echo $form->dropDownList($model,'cod_nac_enc',CHtml::listData(Nacionalidades::model()->findAll($naciona),'cod_nac_enc','nom_nac_enc'),
-			             						array('prompt' => 'Seleccione la nacionalidad...', 'style'=>'width:280px;'
+			             						array('prompt' => 'Seleccione la nacionalidad...', 'style'=>'width:220px;'
 								)
 						);
 			       ?>
@@ -268,7 +265,7 @@
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[sit_leg_dp_enc]', $model, 
               				array('N' => 'Nacionalizado', 'R' => 'Residenciado'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...', 'style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'sit_leg_dp_enc'); ?>
 				</td>
@@ -280,6 +277,10 @@
 					    'name'=>'Datosencuestado[fec_nac_dp_enc]',
 						'value'=>$model->fec_nac_dp_enc,
 					    // additional javascript options for the date picker plugin
+					    'htmlOptions'=>array(
+							'class'=>'shadowdatepicker', 'style'=>'width:210px;',
+							'readonly' => "readonly",
+					    ),
 					    'options'=>array(
 					        'showAnim'=>'fold',
 							'dateFormat' => 'yy-mm-dd', // save to db format
@@ -294,9 +295,7 @@
 							'altField' => '#self_pointing_id',
 							
 					    ),
-					    'htmlOptions'=>array(
-							'class'=>'shadowdatepicker', 'style'=>'width:280px;'
-					    ),
+					    
 					));
 					?>
 					<?php echo $form->error($model,'fec_nac_dp_enc'); ?>
@@ -321,14 +320,14 @@
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[par_nac_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...','style'=>'width:110px;'));
 					?>
 					<?php echo $form->error($model,'par_nac_dp_enc'); ?>
 				</td>
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[sex_dp_enc]', $model, 
               				array('M' => 'Masculino', 'F' => 'Femenino'),
-							array('empty' => 'Seleccione...'));
+							array('empty' => 'Seleccione...','style'=>'width:110px;'));
 					?>
 					<?php echo $form->error($model,'sex_dp_enc'); ?>
 				</td>
@@ -376,7 +375,7 @@
 				</td>
 			</tr>						
 			<tr>
-				<td>
+				<td width:20px>
 					<?php
 			             $estadicivil = new CDbCriteria;
 			             $estadicivil->order = 'nom_est_civ ASC';
@@ -392,7 +391,7 @@
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[es_ind_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos','style'=>'width:110px;'));
 					?>
 					<?php echo $form->error($model,'es_ind_dp_enc'); ?>
 				</td>
@@ -403,7 +402,7 @@
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_com_ind',CHtml::listData(Comunidadindigena::model()->findAll($estadicivil),'cod_com_ind','nom_com_ind'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:110px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -447,14 +446,14 @@
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[est_act_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos','style'=>'width:110px;'));
 					?>
 					<?php echo $form->error($model,'est_act_dp_enc'); ?>
 				</td>
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[tip_ins_dp_enc]', $model, 
               				array('P' => 'Publica', 'PV' => 'Privada'),
-							array('empty' => 'Seleccione...','disabled'=>'disabled'));
+							array('empty' => 'Seleccione...','disabled'=>'disabled','style'=>'width:110px;'));
 					?>
 					<?php echo $form->error($model,'tip_ins_dp_enc'); ?>
 				</td>
@@ -478,7 +477,7 @@
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_mot_est',CHtml::listData(Motivoestudio::model()->findAll($motivo),'cod_mot_est','nom_mot_est'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:180px;','disabled'=>'disabled'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:220px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -491,7 +490,7 @@
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_niv_ins',CHtml::listData(Nivelinstruccion::model()->findAll($nivel),'cod_niv_ins','nom_niv_ins'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','class'=>'slt_opc_campos'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:110px;','class'=>'slt_opc_campos'
 								)
 						);
 			       ?>
@@ -504,7 +503,7 @@
 			       ?>
 					<?php
 			             echo $form->dropDownList($model,'cod_car_est',CHtml::listData(Carreraestudio::model()->findAll($nivel),'cod_car_est','nom_car_est'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:110px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -544,7 +543,7 @@
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[fam_pri_lib_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos','style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'fam_pri_lib_dp_enc'); ?>
 				</td>
@@ -556,7 +555,7 @@
 					<?php
 			             echo $form->dropDownList($model,'cod_par_fam',
 								CHtml::listData(Parentescofamiliar::model()->findAll($parentesco),'cod_par_fam','nom_par_fam'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:110px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -570,7 +569,7 @@
 					<?php
 			             echo $form->dropDownList($model,'cod_cen_pen',
 								CHtml::listData(Centropenitenciario::model()->findAll($centro),'cod_cen_pen','nom_cen_pen'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:110px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -589,7 +588,7 @@
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[org_soc_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos','style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'org_soc_dp_enc'); ?>
 				</td>
@@ -601,7 +600,7 @@
 					<?php
 			             echo $form->dropDownList($model,'cod_org_soc',
 								CHtml::listData(Organizacionsocial::model()->findAll($organiza),'cod_org_soc','nom_org_soc'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:110px;','disabled'=>'disabled'
 								)
 						);
 			       ?>
@@ -619,7 +618,7 @@
 				<td>
 					<?php echo CHtml::dropDownList('Datosencuestado[mis_soc_dp_enc]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','class'=>'slt_opc_campos'));
+							array('empty' => 'Seleccione...','class'=>'slt_opc_campos','style'=>'width:220px;'));
 					?>
 					<?php echo $form->error($model,'mis_soc_dp_enc'); ?>
 				</td>
@@ -631,7 +630,7 @@
 					<?php
 			             echo $form->dropDownList($model,'cod_mis_soc',
 								CHtml::listData(Misionsocial::model()->findAll($mision),'cod_mis_soc','nom_mis_soc'),
-			             						array('prompt' => 'Seleccione...', 'style'=>'width:130px;','disabled'=>'disabled'
+			             						array('prompt' => 'Seleccione...', 'style'=>'width:110px;','disabled'=>'disabled'
 								)
 						);
 			       ?>

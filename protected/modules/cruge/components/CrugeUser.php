@@ -94,10 +94,10 @@ class CrugeUser extends CBaseUserIdentity implements IUserIdentity
 
             switch ($this->errorCode) {
                 case self::ERROR_USERNAME_INVALID:
-                    $this->_lastErrorDescr = "usuario o correo invalido";
+                    $this->_lastErrorDescr = "Usuario o Contraseña incorrecta";
                     break;
                 case self::ERROR_PASSWORD_INVALID:
-                    $this->_lastErrorDescr = "clave invalida";
+                    $this->_lastErrorDescr = "Usuario o Contraseña incorrecta";
                     break;
                 default:
                     $this->_lastErrorDescr = "error desconocido";

@@ -95,7 +95,7 @@ $pdf = Yii::createComponent('application.extensions.mpdf.mpdf');
 
 <table border="1" cellpadding="5" style="border-collapse: collapse">
 <tr>
-		<th  width="10%" >¿Es indigena?:</th> 
+		<th  width="10%" >ï¿½Es indigena?:</th> 
  		<td align="center" width="10%" >'.$model->es_ind_dp_enc.'</td>
  		<th  width="10%" >Comunidad indigena:</th> 
  		<td align="center" width="10%" >'.$model_indigena->nom_com_ind.'</td>
@@ -108,7 +108,7 @@ $pdf = Yii::createComponent('application.extensions.mpdf.mpdf');
 <tr>
 		<th  width="10%" >Correo electronico:</th> 
  		<td align="center" width="10%" >'.$model->mail_dp_enc.'</td>
- 		<th  width="10%" >Tel. Habitación:</th> 
+ 		<th  width="10%" >Tel. Habitaciï¿½n:</th> 
  		<td align="center" width="10%" >'.$model->tel_hab_dp_enc.'</td>
  </tr>
 </table>  
@@ -118,7 +118,7 @@ $pdf = Yii::createComponent('application.extensions.mpdf.mpdf');
 		
  		<th  width="10%" >Celular:</th> 
  		<td align="center"  width="10%" >'.$model->tel_cel_dp_enc.'</td>
- 		<th  width="10%" >¿Estudia actualmente?:</th> 
+ 		<th  width="10%" >ï¿½Estudia actualmente?:</th> 
  		<td align="center"  width="10%" >'.$model->est_act_dp_enc.'</td>
  		<th  width="10%" >Tipo de institucion:</th> 
  		<td align="center"  width="10%" >'.$model->tip_ins_dp_enc.'</td>
@@ -139,7 +139,7 @@ $pdf = Yii::createComponent('application.extensions.mpdf.mpdf');
 		
  		<th  width="10%" >Carrera de Estudio:</th> 
  		<td align="center"  width="10%" >'.$model_carreraestudio->nom_car_est.'</td>
- 		<th  width="10%" >Ultimo año cursado:</th> 
+ 		<th  width="10%" >Ultimo aï¿½o cursado:</th> 
  		<td align="center"  width="10%" >'.$model->ult_gra_cur_dp_enc.'</td>
  		<th  width="10%" >Titulo Obtenido:</th> 
  		<td align="center"  width="10%" >'.$model->tit_obt_dp_enc.'</td>
@@ -162,18 +162,18 @@ $pdf = Yii::createComponent('application.extensions.mpdf.mpdf');
 <tr>
 		<th  width="10%" >Centro Penitenciario:</th> 
  		<td align="center"  width="10%" >'.$model_penitenciaria->nom_cen_pen.'</td>
-		<th  width="10%" >¿Pertenece a una organización?:</th> 
+		<th  width="10%" >ï¿½Pertenece a una organizaciï¿½n?:</th> 
  		<td align="center"  width="10%" >'.$model->org_soc_dp_enc.'</td>
  </tr>
 </table>
 
 <table border="1" cellpadding="5" style="border-collapse: collapse">
 <tr>
-		<th  width="10%" >Organización social:</th> 
+		<th  width="10%" >Organizaciï¿½n social:</th> 
  		<td align="center"  width="10%" >'.$model_organizacion->nom_org_soc.'</td>
- 		<th  width="10%" >¿Pertene a una misión?:</th> 
+ 		<th  width="10%" >ï¿½Pertene a una misiï¿½n?:</th> 
  		<td align="center"  width="10%" >'.$model->mis_soc_dp_enc.'</td>
- 		<th  width="10%" >Misión social:</th> 
+ 		<th  width="10%" >Misiï¿½n social:</th> 
  		<td align="center"  width="10%" >'.$model_mision->nom_mis_soc.'</td>
  </tr>
 </table>
@@ -193,7 +193,7 @@ $mpdf->mirrorMargins = 1;   // Use different Odd/Even headers and footers and mi
 
 
 $header= '<img  src="'.Yii::app()->baseUrl.'/../images/banner-cintillo.png" />';
-$footer= '<font size=1>Generado a través del Sistema de FFM {DATE j/m/Y h:m a} por el Usuario: ' .Yii::app()->user->name.' | Fuente: OSTI - 2014 | Licencia: GPL/GNU | Página&nbsp;{PAGENO}&nbsp;/&nbsp;{nbpg}</font>';
+$footer= '<font size=1>Generado a travï¿½s del Sistema de FFM {DATE j/m/Y h:m a} por el Usuario: ' .Yii::app()->user->name.' | Fuente: OSTI - 2014 | Licencia: GPL/GNU | Pï¿½gina&nbsp;{PAGENO}&nbsp;/&nbsp;{nbpg}</font>';
 
 $mpdf->SetHTMLHeader($header); 
 $mpdf->SetHTMLFooter($footer);

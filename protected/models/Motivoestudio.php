@@ -93,4 +93,10 @@ class Motivoestudio extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function descripcion($id){
+		$data= self::model()->findByPk($id);
+		return $descripcion=$data["nom_mot_est"];
+	
+	}
 }

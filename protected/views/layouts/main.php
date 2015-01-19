@@ -20,10 +20,16 @@ $base = Yii::app()->request->baseUrl;
     <link rel="stylesheet" type="text/css" href="<?php echo $base; ?>/css/icons.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $base; ?>/css/tables.css" />
 	
+	
     <?php	
 	  $cs = Yii::app()->getClientScript();
 	  Yii::app()->clientScript->registerCoreScript('jquery');
+	  echo Yii::app()->bootstrap->register();
+	  echo Yii::app()->bootstrap->registerAllCss();
+	  echo Yii::app()->bootstrap->registerCoreScripts();
 	?>
+
+	
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -33,7 +39,7 @@ $base = Yii::app()->request->baseUrl;
 <div class="container" id="page">
 	<div id="topnav">
 		<div class="topnav_text">
-			<a href='#'>Home</a> |  
+			<a href='<?php print Yii::app()->createUrl('/site/index');?>'>Inicio</a> 
 			<?php if(!Yii::app()->user->isGuest)
 			{
 			?> 
@@ -41,7 +47,7 @@ $base = Yii::app()->request->baseUrl;
 			<?php 
 			}
 			?>
-			<a href='<?php print Yii::app()->user->ui->logoutUrl;?>'>Logout</a> 
+			<a href='<?php print Yii::app()->user->ui->logoutUrl;?>'>Desconectar</a> 
 		</div>
 	</div>
 	<div id="header">

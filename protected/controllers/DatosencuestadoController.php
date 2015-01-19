@@ -35,7 +35,7 @@ class DatosencuestadoController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','pdf'),
+				'actions'=>array('admin','delete','pdf','excel'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -44,10 +44,15 @@ class DatosencuestadoController extends Controller
 		);
 	}
 
+	public function actionExcel()
+	{
+		Yii::app()->request->sendFile('listado.xls',$this->renderPartial('excel',array('model'=>$_SESSION['datos_filtrados']),'application/vnd.ms-excel;charset=UTF-8',true));
+	
+	}
 	
 	public function actionPdf($cod_dp_enc)
 	{
-		// <-------------- Obtiene y trae el código de la persona -------------->> //
+		// <-------------- Obtiene y trae el cï¿½digo de la persona -------------->> //
 		//print_r($model_cargo);die;
 	
 		$data=Datosencuestado::model()->findByPk($cod_dp_enc);

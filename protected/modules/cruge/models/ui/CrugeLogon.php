@@ -57,7 +57,7 @@ class CrugeLogon extends CFormModel
         // ademas de cargar sus campos de perfil (flag=true)
         $this->_model = Yii::app()->user->um->loadUser($this[$arg], true);
         if ($this->_model == null) {
-            $this->addError($arg, CrugeTranslator::t('logon', 'User not found'));
+            $this->addError($arg, CrugeTranslator::t(''));
         }
     }
 
@@ -75,8 +75,8 @@ class CrugeLogon extends CFormModel
         // la etiqueta $label cambiara depende de como este configuado el sistema
         //
         return array(
-            'username' => $this->_getUsernameLabel(),
-            'password' => ucfirst(CrugeTranslator::t('logon', 'Password') . ":"),
+            'username' => 'Usuario',
+            'password' => ucfirst(CrugeTranslator::t('logon', 'Contraseña') . ":"),
             'rememberMe' => ucfirst(CrugeTranslator::t('logon', 'Remember this machine') . ":"),
             'verifyCode' => ucfirst(CrugeTranslator::t('logon', 'Security code') . ":"),
         );

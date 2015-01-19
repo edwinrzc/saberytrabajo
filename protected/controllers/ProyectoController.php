@@ -52,25 +52,28 @@ class ProyectoController extends Controller
 
 	public function actionPdf($cod_pro)
 	{
-		// <-------------- Obtiene y trae el código de la persona -------------->> //
+		// <-------------- Obtiene y trae el cÃ³digo de la persona -------------->> //
 		//print_r($model_cargo);die;
 	
 		$data=Proyecto::model()->findByPk($cod_pro);
 	
 	
-		//$model_organizacion = Organizacionsocial::model()->findByPk($data['cod_org_soc']);
-		//$model_mision = Misionsocial::model()->findByPk($data['cod_mis_soc']);
+	//	$model_estado = Estadal::model()->findByAttributes($data['cod_edo']);
+	//	$model_municipio = Municipal::model()->findByPk($data['cod_mun']);
+		$model_parroquia = Parroquial::model()->findByAttributes(array('ci_parroq'=>$data['cod_par']));
 	
 	
 		//print_r($model_plan_corporativo);die;
 	
 		// <-------------- Llamado a los distintos modelos del sistema -------------->> //
 		$this->render('pdf',array('model'=>$this->loadModel($cod_pro),
-				// 'model_organizacion'=>$model_organizacion,
+							   	//  'model_estado'=>$model_estado,
+							   	//  'model_municipio'=>$model_municipio,
+							   	  'model_parroquia'=>$model_parroquia,
+							   	  
 	
-	
-	
-				true
+					            
+	        true
 		));
 	}
 	/**

@@ -28,9 +28,11 @@
 )); ?>
 
 	<fieldset class="boxBody">
+	<br><br>
 			<div class="row" style="display:block;width: 400px;" >
 			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/ffm.png" style="margin-left: 30px;" height="70" ></img>
 		</div>
+	<br><br>
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username'); ?>

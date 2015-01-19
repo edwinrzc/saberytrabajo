@@ -18,8 +18,6 @@ Yii::app()->clientScript->registerScript('search', "
 </a>
 </div>
 </div>
-<br><br>
-<br>
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
 'id'=>'datosencuestado-grid',

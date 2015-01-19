@@ -1,6 +1,7 @@
 <?php
 $pdf = Yii::createComponent('application.extensions.mpdf.mpdf');
-//print_r($model);die;
+
+//print_r($model_empleado);die;
 
    $html.=' 
 
@@ -13,57 +14,67 @@ $pdf = Yii::createComponent('application.extensions.mpdf.mpdf');
 
  <table border="1" cellpadding="5" style="border-collapse: collapse">
  <tr>
- 		<th  width="100%" >Código PDVSA:</th> 
- 		<td align="center" width="100%" >'.$model->cod_pdvsa_pro.'</td> 
- 		<th  width="100%" >Nombre del proyecto:</th> 
- 		<td align="center" width="100%" >'.$model->nom_pro.'</td>
- 		<th  width="100%" >Estatus del proyecto:</th> 
- 		<td align="center" width="100%" >'.$model->est_pro.'</td>
+ 		<th  width="100px" >CÃ³digo PDVSA:</th> 
+ 		<td align="left" width="150px" >'.$model->cod_pdvsa_pro.'</td> 
+ 		<th  width="100px" >Nombre del proyecto:</th> 
+ 		<td align="left" width="120px" >'.$model->nom_pro.'</td>
+ 		<th  width="150px" >Estatus del proyecto:</th> 
+
+  ';
+
+  $estatus = array('A'=>'Activo','P'=>'Paralizado');
+  $valest = 'Sin Estatus';
+
+  if (!empty($model->est_pro))
+  {
+  	$valest = $estatus[$model->est_pro];
+  }
+
+  $html.='
+
+ 		<td align="left" width="120px" >'.$valest.'</td>
+ 		';
+
+  $html.='
+
+ 		
 </tr>
 </table>
 
  <table border="1" cellpadding="5" style="border-collapse: collapse">
  <tr>
- 		<th  width="100%" >Estado:</th> 
- 		<td align="center"  width="100%" >'.$model->cod_edo.'</td align="center">
- 		<th  width="100%" >Municipio:</th> 
- 		<td align="center"  width="100%" >'.$model->cod_mun.'</td align="center">
- 		<th  width="100%" >Parroquia:</th> 
- 		<td align="center"  width="100%" >'.$model->cod_par.'</td align="center">
+ 		<th  width="100px" >Estado:</th> 
+ 		<td align="left"  width="150px" >'.$model_parroquia->estado.'</td align="center">
+ 		<th  width="100px" >Municipio:</th> 
+ 		<td align="left"  width="120px" >'.$model_parroquia->municipio.'</td align="center">
+ 		<th  width="150px" >Parroquia:</th> 
+ 		<td align="left"  width="120px" >'.$model_parroquia->parroquia.'</td align="center">
 </tr>
 </table>
 
 <table border="1" cellpadding="5" style="border-collapse: collapse">
 <tr>
-		<th  width="100%" >Sector:</th> 
- 		<td align="center"  width="100%" >'.$model->sec_pro.'</td align="center">
- 		<th  width="100%" >Dirección exacta:</th> 
- 		<td align="center"  width="100%" >'.$model->dir_exa_pro.'</td align="center">
- 		<th  width="100%" >Punto de referencia:</th> 
- 		<td align="center"  width="100%" >'.$model->pun_ref_pro.'</td align="center">
+		<th  width="100px" >Sector:</th> 
+ 		<td align="left"  width="150px" >'.$model->sec_pro.'</td align="center">
+ 		<th  width="100px" >DirecciÃ³n exacta:</th> 
+ 		<td align="left"  width="120px" >'.$model->dir_exa_pro.'</td align="center">
+ 		<th  width="150px" >Punto de referencia:</th> 
+ 		<td align="left"  width="120px" >'.$model->pun_ref_pro.'</td align="center">
 
  </tr>
 </table>
 
 <table border="1" cellpadding="5" style="border-collapse: collapse">
 <tr>
-		<th  width="100%" >Viviendas Asignadas:</th> 
- 		<td align="center"  width="100%" >'.$model->viv_asi_pro.'</td align="center">
- 		<th  width="100%" >Latitud:</th> 
- 		<td align="center"  width="100%" >'.$model->lat_pro.'</td align="center">
- 		<th  width="100%" >Longitud:</th> 
- 		<td align="center"  width="100%" >'.$model->lon_pro.'</td align="center">
+		<th width="170px"  >Viviendas Asignadas:</th> 
+ 		<td align="left"   >'.$model->viv_asi_pro.'</td align="center">
+ 		<th >ObservaciÃ³n:</th> 
+ 		<td align="left"  width="430px" >'.$model->obs_pro.'</td>
 
  </tr>
 </table>
 
-<table border="1" cellpadding="5" style="border-collapse: collapse">
-<tr>
-		<th>Observación:</th> 
- 		<td align="center"  width="100%" >'.$model->obs_pro.'</td>
 
- </tr>
-</table>
 
 <br><br>
 
@@ -73,12 +84,12 @@ $pdf = Yii::createComponent('application.extensions.mpdf.mpdf');
         <th colspan="2">VIVIENDAS DEL PROYECTO</th>         
  </tr>
 <tr style="background-color:#F3975A;">
-		<th colspan="2" >Tipo de Construcción</th>
+		<th colspan="2" >Tipo de ConstrucciÃ³n</th>
 </tr>
 
 <tr style="background-color:#B1CEDA;">
 		<th  width="140%" >Tipo de Vivienda</th> 
- 		<th  width="100%" >Nº de Vivienda</th> 
+ 		<th  width="100%" >NÂº de Vivienda</th> 
  </tr>
 
 <tr>
@@ -105,7 +116,7 @@ $pdf = Yii::createComponent('application.extensions.mpdf.mpdf');
 
 <tr style="background-color:#B1CEDA;">
 		<th  width="140%" >Tipo de Estructura</th> 
- 		<th  width="100%" >Nº de Vivienda</th> 
+ 		<th  width="100%" >NÂº de Vivienda</th> 
  </tr>
 
 <tr>
@@ -140,8 +151,8 @@ $mpdf->mirrorMargins = 1;   // Use different Odd/Even headers and footers and mi
 
 
 
-//$header= '<img  src="'.Yii::app()->baseUrl.'/../images/banner-cintillo.png" />';
-$footer= '<font size=1>Generado a través del Sistema de FFM {DATE j/m/Y h:m a} por el Usuario: ' .Yii::app()->user->name.' | Fuente: OSTI - 2014 | Licencia: GPL/GNU | Página&nbsp;{PAGENO}&nbsp;/&nbsp;{nbpg}</font>';
+//$header= '<img  src="'.Yii::app()->baseUrl.'/../ images/banner-cintillo.png" />';
+$footer= '<font size=1>Generado a travÃ©s del Sistema de FFM {DATE j/m/Y h:m a} por el Usuario: ' .Yii::app()->user->name.' | Fuente: OSTI - 2014 | Licencia: GPL/GNU | PÃ¡gina&nbsp;{PAGENO}&nbsp;/&nbsp;{nbpg}</font>';
 
 $mpdf->SetHTMLHeader($header); 
 $mpdf->SetHTMLFooter($footer);
@@ -152,3 +163,4 @@ $mpdf->Output('Datos.pdf','I');
 
 exit;
 ?>
+

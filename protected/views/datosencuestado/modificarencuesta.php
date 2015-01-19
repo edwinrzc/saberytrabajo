@@ -389,7 +389,6 @@ th {
 		</a>
 	</div>	
 </div>
-<br><br>
 <br>
 <div id="mydialog"></div>
 <?php
