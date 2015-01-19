@@ -1,5 +1,5 @@
 <?php
-
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
@@ -9,6 +9,7 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'FFM',
 	'defaultController' => 'cruge/ui/login',
+	'theme'=>'bootstrap', // requires you to copy the theme under your themes directory
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -54,11 +55,11 @@ return array(
 				//
 				'useEncryptedPassword' => false,
 				
-				// Algoritmo de la funci�n hash que deseas usar
-				// Los valores admitidos est�n en: http://www.php.net/manual/en/function.hash-algos.php
+				// Algoritmo de la función hash que deseas usar
+				// Los valores admitidos están en: http://www.php.net/manual/en/function.hash-algos.php
 				'hash' => 'md5',
 				
-				// Estos tres atributos controlan la redirecci�n del usuario. Solo ser�n son usados si no
+				// Estos tres atributos controlan la redirección del usuario. Solo serán son usados si no
 				// hay un filtro de sesion definido (el componente MiSesionCruge), es mejor usar un filtro.
 				//  lee en la wiki acerca de:
 				//   "CONTROL AVANZADO DE SESIONES Y EVENTOS DE AUTENTICACION Y SESION"
@@ -79,7 +80,7 @@ return array(
 				'editProfileLayout'=>'//layouts/column2',
 				// en la siguiente puedes especificar el valor "ui" o "column2" para que use el layout
 				// de fabrica, es basico pero funcional.  si pones otro valor considera que cruge
-				// requerir� de un portlet para desplegar un menu con las opciones de administrador.
+				// requerirá de un portlet para desplegar un menu con las opciones de administrador.
 				//
 				'generalUserManagementLayout'=>'ui',
 				
@@ -102,6 +103,9 @@ return array(
 	// application components
 	'components'=>array(
 	
+		'bootstrap'=>array(
+	            'class'=>'application.extensions.bootstrap.components.Bootstrap', // assuming you extracted bootstrap under extensions
+	        ),
 	
 		'user'=>array(
 				'allowAutoLogin'=>true,
@@ -130,14 +134,14 @@ return array(
 			),*/
 			// uncomment the following to enable URLs in path-format
 			
-		'urlManager'=>array(
+		/*'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-		),
+		),*/
 		
 		
 		'urlManager'=>array(
@@ -175,7 +179,7 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',					
-   					'levels'=>'error, info, rbac,warning', // <--- agregar 'rbac'
+   					'levels'=>'error, info, rbac', // <--- agregar 'rbac'
 				),
 				// uncomment the following to show log messages on web pages
 				/*
