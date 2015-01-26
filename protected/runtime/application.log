@@ -6176,3 +6176,676 @@ in /var/www/saberytrabajo/index.php (14)
 REQUEST_URI=/saberytrabajo/datosencuestado/admin.html
 HTTP_REFERER=http://localhost/saberytrabajo/Proyecto/admin.html
 ---
+2015/01/20 02:34:02 [error] [exception.CrugeException.401] action_datosencuestado_admin<br/>401
+REQUEST_URI=/saberytrabajo/datosencuestado/admin.html
+HTTP_REFERER=http://localhost/saberytrabajo/Proyecto/admin.html
+---
+2015/01/21 05:34:01 [error] [exception.CrugeException.401] action_datosencuestado_admin<br/>401
+REQUEST_URI=/saberytrabajo/datosencuestado/admin.html
+HTTP_REFERER=http://localhost/saberytrabajo/Proyecto/admin.html
+---
+2015/01/22 02:59:41 [error] [exception.CrugeException.401] action_datosencuestado_admin<br/>401
+REQUEST_URI=/saberytrabajo/datosencuestado/admin.html
+HTTP_REFERER=http://localhost/saberytrabajo/Proyecto/admin.html
+---
+2015/01/25 01:53:38 [error] [exception.CrugeException.401] action_datosencuestado_admin<br/>401
+REQUEST_URI=/saberytrabajo/datosencuestado/admin.html
+HTTP_REFERER=http://localhost/saberytrabajo/Proyecto/admin.html
+---
+2015/01/26 00:52:10 [error] [exception.CrugeException.401] action_datosencuestado_admin<br/>401
+REQUEST_URI=/saberytrabajo/datosencuestado/admin.html
+HTTP_REFERER=http://localhost/saberytrabajo/Proyecto/admin.html
+---
+2015/01/26 03:13:19 [error] [exception.CrugeException.401] action_datosencuestado_admin<br/>401
+REQUEST_URI=/saberytrabajo/datosencuestado/admin.html
+---
+2015/01/26 03:13:22 [info] [application] UiController
+actionLogin
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (136)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 03:13:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/reset.css"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/reset.css')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/css/reset.css
+HTTP_REFERER=http://localhost/saberytrabajo/
+---
+2015/01/26 03:13:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "csss/foundation.css"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('csss/foundation...')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/csss/foundation.css
+HTTP_REFERER=http://localhost/saberytrabajo/
+---
+2015/01/26 03:13:29 [info] [application] UiController
+actionLogin
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (136)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 03:13:30 [info] [application] CrugeUserManager::loadUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (251)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 03:13:30 [info] [application] CrugeFactory::getICrugeStoredUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (297)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+2015/01/26 03:13:30 [info] [application] CrugeFactory::getICrugeStoredUser
+ buscando por 'username' a admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (310)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+2015/01/26 03:13:30 [info] [application] CrugeFactory::getICrugeStoredUser
+ **USUARIO HA SIDO HALLADO** admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (324)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+2015/01/26 03:13:30 [info] [application] CrugeLogon
+authenticate()
+
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (66)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 03:13:30 [info] [application] CrugeUser::__construct
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (74)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (770)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (67)
+2015/01/26 03:13:30 [info] [application] CrugeUser::authenticate
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (80)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 03:13:30 [info] [application] CrugeUser::authenticate
+authmode es:
+default
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (85)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 03:13:30 [info] [application] levantando clases de autenticacion de:
+/var/www/saberytrabajo/protected/modules/cruge/models/auth
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (410)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (277)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (470)
+2015/01/26 03:13:30 [info] [application] findfile: AlternateAuthDemo.php, isPhp?YES
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (417)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (277)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (470)
+2015/01/26 03:13:30 [info] [application] findfile: CrugeAuthDefault.php, isPhp?YES
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (417)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (277)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (470)
+2015/01/26 03:13:30 [info] [application] CrugeUser::_performAuth
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (117)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+2015/01/26 03:13:30 [info] [application] CrugeAuthDefault::authenticate
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (64)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+2015/01/26 03:13:30 [info] [application] CrugeUserManager::loadUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (251)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+2015/01/26 03:13:30 [info] [application] CrugeFactory::getICrugeStoredUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (297)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+2015/01/26 03:13:30 [info] [application] CrugeFactory::getICrugeStoredUser
+ buscando por 'username' a admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (310)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+2015/01/26 03:13:30 [info] [application] CrugeFactory::getICrugeStoredUser
+ **USUARIO HA SIDO HALLADO** admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (324)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+2015/01/26 03:13:30 [info] [application] CrugeAuthDefault::authenticate Returned User:
+{"iduser":1,"regdate":null,"actdate":null,"logondate":"1421556522","username":"admin","email":"edwinrzc@gmail.com","password":"admin","authkey":null,"state":1,"totalsessioncounter":0,"currentsessioncounter":0}
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (73)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+2015/01/26 03:13:30 [info] [application] CrugeAuthDefault
+authenticate returns:
+0
+ boolean result is:1
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (105)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+2015/01/26 03:13:30 [info] [application] CrugeUser::authenticate
+_performAuth es true
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (91)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 03:13:30 [info] [application] CrugeLogon::login
+intento iniciar sesion. duration=0, username=admin
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (109)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 03:13:30 [info] [application] CrugeWebUser
+login
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (349)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+2015/01/26 03:13:30 [info] [application] CrugeFactory
+getICrugeSessionFilter
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (365)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (420)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (355)
+2015/01/26 03:13:30 [info] [application] CrugeFactory
+getICrugeSessionFilter
+new instance for: DefaultSessionFilter
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (379)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (420)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (355)
+2015/01/26 03:13:30 [info] [application] CrugeWebUser
+filtro->startSession
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (373)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+2015/01/26 03:13:30 [info] [application] CrugeSession::findLast iduser=1
+curSession:{"idsession":124,"iduser":1,"created":"1421556476","expire":"1421567276","status":1,"ipaddress":"127.0.0.1","usagecount":2,"lastusage":"1421556522","logoutdate":null,"ipaddressout":null}
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (107)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (51)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (407)
+2015/01/26 03:13:30 [info] [application] CrugeSession. validateSession. causa: sesion expirada. date.now=1422234810
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (142)
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (112)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (51)
+2015/01/26 03:13:30 [info] [application] CrugeSession::findLast
+result:[sesion encontrada][sesion no validada]
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (122)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (51)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (407)
+2015/01/26 03:13:30 [info] [application] CrugeUserManager::createSession. user=#1
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (449)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (71)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (374)
+2015/01/26 03:13:30 [info] [application] CrugeWebUser
+filtro->startSession OK
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (375)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+2015/01/26 03:13:30 [info] [application] CrugeSession::store() #125
+result=1
+errorinfo:
+json: {"status":1,"usagecount":1,"iduser":1,"created":1422234810,"lastusage":1422234810,"expire":1422245610,"ipaddress":"127.0.0.1","idsession":"125","logoutdate":null,"ipaddressout":null}
+
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (67)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (124)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (377)
+2015/01/26 03:13:30 [info] [application] DefaultSessionFilter.onLogin
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (133)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (383)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+2015/01/26 03:13:30 [info] [application] CrugeStoredUser::save
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeStoredUser.php (171)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (384)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (137)
+2015/01/26 03:13:30 [info] [application] CrugeStoredUser::save returns: [1]
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeStoredUser.php (178)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (384)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (137)
+2015/01/26 03:13:30 [info] [application] UiController
+CrugeLogon->login() returns true
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (146)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 03:38:14 [info] [application] UiController
+actionLogin
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (136)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 03:38:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/reset.css"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/reset.css')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/css/reset.css
+HTTP_REFERER=http://localhost/saberytrabajo/
+---
+2015/01/26 03:38:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "csss/foundation.css"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('csss/foundation...')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/csss/foundation.css
+HTTP_REFERER=http://localhost/saberytrabajo/
+---
+2015/01/26 04:18:09 [info] [application] UiController
+actionLogin
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (136)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 04:18:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/reset.css"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/reset.css')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/css/reset.css
+HTTP_REFERER=http://localhost/saberytrabajo/
+---
+2015/01/26 04:18:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "csss/foundation.css"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('csss/foundation...')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/csss/foundation.css
+HTTP_REFERER=http://localhost/saberytrabajo/
+---
+2015/01/26 04:18:14 [info] [application] UiController
+actionLogin
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (136)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 04:18:14 [info] [application] CrugeUserManager::loadUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (251)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 04:18:14 [info] [application] CrugeFactory::getICrugeStoredUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (297)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+2015/01/26 04:18:14 [info] [application] CrugeFactory::getICrugeStoredUser
+ buscando por 'username' a admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (310)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+2015/01/26 04:18:14 [info] [application] CrugeFactory::getICrugeStoredUser
+ **USUARIO HA SIDO HALLADO** admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (324)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+2015/01/26 04:18:14 [info] [application] CrugeLogon
+authenticate()
+
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (66)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 04:18:14 [info] [application] CrugeUser::__construct
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (74)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (770)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (67)
+2015/01/26 04:18:14 [info] [application] CrugeUser::authenticate
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (80)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 04:18:14 [info] [application] CrugeUser::authenticate
+authmode es:
+default
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (85)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 04:18:14 [info] [application] levantando clases de autenticacion de:
+/var/www/saberytrabajo/protected/modules/cruge/models/auth
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (410)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (277)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (470)
+2015/01/26 04:18:14 [info] [application] findfile: AlternateAuthDemo.php, isPhp?YES
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (417)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (277)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (470)
+2015/01/26 04:18:14 [info] [application] findfile: CrugeAuthDefault.php, isPhp?YES
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (417)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (277)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (470)
+2015/01/26 04:18:14 [info] [application] CrugeUser::_performAuth
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (117)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+2015/01/26 04:18:14 [info] [application] CrugeAuthDefault::authenticate
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (64)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+2015/01/26 04:18:14 [info] [application] CrugeUserManager::loadUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (251)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+2015/01/26 04:18:14 [info] [application] CrugeFactory::getICrugeStoredUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (297)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+2015/01/26 04:18:14 [info] [application] CrugeFactory::getICrugeStoredUser
+ buscando por 'username' a admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (310)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+2015/01/26 04:18:14 [info] [application] CrugeFactory::getICrugeStoredUser
+ **USUARIO HA SIDO HALLADO** admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (324)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+2015/01/26 04:18:14 [info] [application] CrugeAuthDefault::authenticate Returned User:
+{"iduser":1,"regdate":null,"actdate":null,"logondate":"1422236302","username":"admin","email":"edwinrzc@gmail.com","password":"admin","authkey":null,"state":1,"totalsessioncounter":0,"currentsessioncounter":0}
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (73)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+2015/01/26 04:18:14 [info] [application] CrugeAuthDefault
+authenticate returns:
+0
+ boolean result is:1
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (105)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+2015/01/26 04:18:14 [info] [application] CrugeUser::authenticate
+_performAuth es true
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (91)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 04:18:14 [info] [application] CrugeLogon::login
+intento iniciar sesion. duration=0, username=admin
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (109)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 04:18:14 [info] [application] CrugeWebUser
+login
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (349)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+2015/01/26 04:18:14 [info] [application] CrugeFactory
+getICrugeSessionFilter
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (365)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (420)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (355)
+2015/01/26 04:18:14 [info] [application] CrugeFactory
+getICrugeSessionFilter
+new instance for: DefaultSessionFilter
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (379)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (420)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (355)
+2015/01/26 04:18:14 [info] [application] CrugeWebUser
+filtro->startSession
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (373)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+2015/01/26 04:18:14 [info] [application] CrugeSession::findLast iduser=1
+curSession:{"idsession":125,"iduser":1,"created":"1422234810","expire":"1422245610","status":1,"ipaddress":"127.0.0.1","usagecount":2,"lastusage":"1422236302","logoutdate":null,"ipaddressout":null}
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (107)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (51)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (407)
+2015/01/26 04:18:14 [info] [application] CrugeSession::findLast
+result:[sesion encontrada][sesion validada]
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (122)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (51)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (407)
+2015/01/26 04:18:14 [info] [application] DefaultSessionFilter. Reutilizando sesion: 125
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (80)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (374)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+2015/01/26 04:18:14 [info] [application] CrugeWebUser
+filtro->startSession OK
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (375)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+2015/01/26 04:18:14 [info] [application] CrugeSession::store() #125
+result=1
+errorinfo:
+json: {"idsession":125,"iduser":1,"created":"1422234810","expire":"1422245610","status":1,"ipaddress":"127.0.0.1","usagecount":3,"lastusage":1422238694,"logoutdate":null,"ipaddressout":null}
+
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (67)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (124)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (377)
+2015/01/26 04:18:14 [info] [application] DefaultSessionFilter.onLogin
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (133)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (383)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+2015/01/26 04:18:14 [info] [application] CrugeStoredUser::save
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeStoredUser.php (171)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (384)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (137)
+2015/01/26 04:18:14 [info] [application] CrugeStoredUser::save returns: [1]
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeStoredUser.php (178)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (384)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (137)
+2015/01/26 04:18:14 [info] [application] UiController
+CrugeLogon->login() returns true
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (146)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 04:20:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/mpdf.css"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/mpdf.css')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/css/mpdf.css
+---
+2015/01/26 04:20:49 [info] [application] UiController
+actionLogin
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (136)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 04:20:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/reset.css"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/reset.css')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/css/reset.css
+HTTP_REFERER=http://localhost/saberytrabajo/
+---
+2015/01/26 04:20:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "csss/foundation.css"' in /var/www/Yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/Yii/framework/web/CWebApplication.php(141): CWebApplication->runController('csss/foundation...')
+#1 /var/www/Yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/saberytrabajo/index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/saberytrabajo/csss/foundation.css
+HTTP_REFERER=http://localhost/saberytrabajo/
+---
+2015/01/26 04:20:54 [info] [application] UiController
+actionLogin
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (136)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 04:20:54 [info] [application] CrugeUserManager::loadUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (251)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 04:20:54 [info] [application] CrugeFactory::getICrugeStoredUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (297)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+2015/01/26 04:20:54 [info] [application] CrugeFactory::getICrugeStoredUser
+ buscando por 'username' a admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (310)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+2015/01/26 04:20:54 [info] [application] CrugeFactory::getICrugeStoredUser
+ **USUARIO HA SIDO HALLADO** admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (324)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (58)
+2015/01/26 04:20:54 [info] [application] CrugeLogon
+authenticate()
+
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (66)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 04:20:54 [info] [application] CrugeUser::__construct
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (74)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (770)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (67)
+2015/01/26 04:20:54 [info] [application] CrugeUser::authenticate
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (80)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 04:20:54 [info] [application] CrugeUser::authenticate
+authmode es:
+default
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (85)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 04:20:54 [info] [application] levantando clases de autenticacion de:
+/var/www/saberytrabajo/protected/modules/cruge/models/auth
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (410)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (277)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (470)
+2015/01/26 04:20:54 [info] [application] findfile: AlternateAuthDemo.php, isPhp?YES
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (417)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (277)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (470)
+2015/01/26 04:20:54 [info] [application] findfile: CrugeAuthDefault.php, isPhp?YES
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (417)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (277)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (470)
+2015/01/26 04:20:54 [info] [application] CrugeUser::_performAuth
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (117)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+2015/01/26 04:20:54 [info] [application] CrugeAuthDefault::authenticate
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (64)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+2015/01/26 04:20:54 [info] [application] CrugeUserManager::loadUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (251)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+2015/01/26 04:20:54 [info] [application] CrugeFactory::getICrugeStoredUser
+usernameOrEmail=admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (297)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+2015/01/26 04:20:54 [info] [application] CrugeFactory::getICrugeStoredUser
+ buscando por 'username' a admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (310)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+2015/01/26 04:20:54 [info] [application] CrugeFactory::getICrugeStoredUser
+ **USUARIO HA SIDO HALLADO** admin
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (324)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (252)
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (68)
+2015/01/26 04:20:54 [info] [application] CrugeAuthDefault::authenticate Returned User:
+{"iduser":1,"regdate":null,"actdate":null,"logondate":"1422238694","username":"admin","email":"edwinrzc@gmail.com","password":"admin","authkey":null,"state":1,"totalsessioncounter":0,"currentsessioncounter":0}
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (73)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+2015/01/26 04:20:54 [info] [application] CrugeAuthDefault
+authenticate returns:
+0
+ boolean result is:1
+in /var/www/saberytrabajo/protected/modules/cruge/models/auth/CrugeAuthDefault.php (105)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (120)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (90)
+2015/01/26 04:20:54 [info] [application] CrugeUser::authenticate
+_performAuth es true
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUser.php (91)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (68)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (140)
+2015/01/26 04:20:54 [info] [application] CrugeLogon::login
+intento iniciar sesion. duration=0, username=admin
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (109)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+in /var/www/saberytrabajo/index.php (14)
+2015/01/26 04:20:54 [info] [application] CrugeWebUser
+login
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (349)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+2015/01/26 04:20:54 [info] [application] CrugeFactory
+getICrugeSessionFilter
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (365)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (420)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (355)
+2015/01/26 04:20:54 [info] [application] CrugeFactory
+getICrugeSessionFilter
+new instance for: DefaultSessionFilter
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (379)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (420)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (355)
+2015/01/26 04:20:54 [info] [application] CrugeWebUser
+filtro->startSession
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (373)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+2015/01/26 04:20:54 [info] [application] CrugeSession::findLast iduser=1
+curSession:{"idsession":125,"iduser":1,"created":"1422234810","expire":"1422245610","status":1,"ipaddress":"127.0.0.1","usagecount":3,"lastusage":"1422238694","logoutdate":null,"ipaddressout":null}
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (107)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (51)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (407)
+2015/01/26 04:20:54 [info] [application] CrugeSession::findLast
+result:[sesion encontrada][sesion validada]
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (122)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeFactory.php (51)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (407)
+2015/01/26 04:20:54 [info] [application] DefaultSessionFilter. Reutilizando sesion: 125
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (80)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (374)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+2015/01/26 04:20:54 [info] [application] CrugeWebUser
+filtro->startSession OK
+
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (375)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (141)
+2015/01/26 04:20:54 [info] [application] CrugeSession::store() #125
+result=1
+errorinfo:
+json: {"idsession":125,"iduser":1,"created":"1422234810","expire":"1422245610","status":1,"ipaddress":"127.0.0.1","usagecount":4,"lastusage":1422238854,"logoutdate":null,"ipaddressout":null}
+
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeSession.php (67)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (124)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (377)
+2015/01/26 04:20:54 [info] [application] DefaultSessionFilter.onLogin
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (133)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeWebUser.php (383)
+in /var/www/saberytrabajo/protected/modules/cruge/models/ui/CrugeLogon.php (110)
+2015/01/26 04:20:54 [info] [application] CrugeStoredUser::save
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeStoredUser.php (171)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (384)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (137)
+2015/01/26 04:20:54 [info] [application] CrugeStoredUser::save returns: [1]
+in /var/www/saberytrabajo/protected/modules/cruge/models/data/CrugeStoredUser.php (178)
+in /var/www/saberytrabajo/protected/modules/cruge/components/CrugeUserManager.php (384)
+in /var/www/saberytrabajo/protected/modules/cruge/models/filters/DefaultSessionFilter.php (137)
+2015/01/26 04:20:54 [info] [application] UiController
+CrugeLogon->login() returns true
+
+in /var/www/saberytrabajo/protected/modules/cruge/controllers/UiController.php (146)
+in /var/www/saberytrabajo/index.php (14)
