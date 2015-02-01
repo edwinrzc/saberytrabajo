@@ -5,12 +5,13 @@
 	<meta name="language" content="es" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/structure.css" />
-	 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/csss/foundation.css" />
+
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
+
 
 <?php if(Yii::app()->user->hasFlash('loginflash')): ?>
 <div class="flash-error">
@@ -27,31 +28,37 @@
 	),
 )); ?>
 
-	<fieldset class="boxBody">
-	<br><br>
-			<div class="row" style="display:block;width: 400px;" >
+	<fieldset class="boxBody"><br><br>
+			<div class="row">
 			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/ffm.png" style="margin-left: 30px;" height="70" ></img>
-		</div>
-	<br><br>
+		</div><br><br>
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username'); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row"></span>
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
-<br>
+	<br>
 
-	<div class="row buttons">
-		<?php Yii::app()->user->ui->tbutton(CrugeTranslator::t('Ingresar', "Ingresar")); ?>
-		
+<!--	
+	<div class="row buttons" align="center">
+		<?php Yii::app()->user->ui->tbutton(CrugeTranslator::t('logon', "Ingresar")); ?>
+
 	</div>
+-->
 
+	<center>
+		<div class="row buttons">
+			<?php echo CHtml::submitButton('Ingresar',array('class'=>'small gray nice button radius')); ?>
+		</div>
+	</center>
+	<br>
 </fieldset>
 	<?php
 		//	si el componente CrugeConnector existe lo usa:

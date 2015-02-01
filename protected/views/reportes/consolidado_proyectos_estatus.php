@@ -1,14 +1,15 @@
+
 <div style="float: left;">
-	<h3>Consolidados de Proyectos por Estado</h3>
+	<h3>Consolidados de Proyectos por Estatus</h3>
 </div>
 <div align="right">
-	<a href="<?php print Yii::app()->createUrl("/reportes/excel")?>"  title="Exportar Excel">                       
+	<a href="<?php print Yii::app()->createUrl("/reportes/excel_estatus")?>"  title="Exportar Excel">                       
       <button type="button" class="btn btn-primary">
         <span class="excel"> </span> EXCEL
       </button>
     </a>
 
-      <a href="<?php print Yii::app()->createUrl("/reportes/pdf")?>" title="Exportar PDF" target='_blank'> 
+      <a href="<?php print Yii::app()->createUrl("/reportes/pdf_estatus")?>" title="Exportar PDF" target='_blank'> 
       <button type="button" class="btn btn-danger">
          <span class="pdf"></span> PDF
       </button>
@@ -22,13 +23,13 @@
 
 <?php 
 
-$data= Reportes::consolidado_proyectos();
+$data= Reportes::consolidado_proyectos_estatus();
 
 
 //print_r($data);die;
 
 $this->widget('zii.widgets.grid.CGridView', array(
-    'id' => 'reporte-grid',
+    'id' => 'reporte1-grid',
     'dataProvider' => $data,
     'columns' => array(
  
@@ -38,17 +39,17 @@ $this->widget('zii.widgets.grid.CGridView', array(
             //'value'=>'$data["MAIN_ID"]', //in the case we want something custom
         ),
         array(
-            'header' => 'Cant. Proyectos',
+            'header' => 'Activo',
             'name' => 'valor_1',
             //'value'=>'$data["title"]', //in the case we want something custom
         ),
         array(
-            'header' => 'Cant. Viviendas a Construir',
+            'header' => 'Paralizado',
             'name' => 'valor_2',
             //'value'=>'$data["title"]', //in the case we want something custom
         ),
         array(
-            'header' => 'Cant. Viviendas Asignadas',
+            'header' => 'Total',
             'name' => 'valor_3',
             //'value'=>'$data["title"]', //in the case we want something custom
         )
@@ -56,3 +57,5 @@ $this->widget('zii.widgets.grid.CGridView', array(
 ));
 
  ?>
+
+

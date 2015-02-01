@@ -1,5 +1,5 @@
 <div class="form">
-<h1><?php echo ucwords(CrugeTranslator::t('admin', 'Manage Users'));?></h1>
+<h1><?php echo ucwords(CrugeTranslator::t('admin', 'Administrar Usuarios'));?></h1>
 <?php 
 /*
 	para darle los atributos al CGridView de forma de ser consistente con el sistema Cruge

@@ -273,62 +273,62 @@ class CrugeUi extends CComponent
     public function getAdminItems()
     {
         return array(
-            array('label' => CrugeTranslator::t('admin', 'User Manager')),
+            array('label' => CrugeTranslator::t('admin', 'Administrar Usuarios')),
             array(
-                'label' => CrugeTranslator::t('admin', 'Update Profile')
+                'label' => CrugeTranslator::t('admin', 'Actualizar Perfil')
             ,
                 'url' => $this->getEditProfileUrl()
             ),
             array(
-                'label' => CrugeTranslator::t('admin', 'Create User')
+                'label' => CrugeTranslator::t('admin', 'Crear Usuario')
             ,
                 'url' => $this->getUserManagementCreateUrl()
             ),
             array(
-                'label' => CrugeTranslator::t('admin', 'Manage Users')
+                'label' => CrugeTranslator::t('admin', 'Administrar Usuario')
             ,
                 'url' => $this->getUserManagementAdminUrl()
             ),
-            array('label' => CrugeTranslator::t('admin', 'Custom Fields')),
+            array('label' => CrugeTranslator::t('admin', 'Campos Personalizados')),
             array(
-                'label' => CrugeTranslator::t('admin', 'List Profile Fields')
+                'label' => CrugeTranslator::t('admin', 'Lista de Perfiles')
             ,
                 'url' => $this->getFieldsAdminListUrl()
             ),
             array(
-                'label' => CrugeTranslator::t('admin', 'Create Profile Field')
+                'label' => CrugeTranslator::t('admin', 'Crear Campos de Perfiles')
             ,
                 'url' => $this->getFieldsAdminCreateUrl()
             ),
-            array('label' => CrugeTranslator::t('admin', 'Roles and Assignments')),
+            array('label' => CrugeTranslator::t('admin', 'Roles y Asignaciones')),
             array(
                 'label' => CrugeTranslator::t('admin', 'Roles')
             ,
                 'url' => $this->getRbacListRolesUrl()
             ),
             array(
-                'label' => CrugeTranslator::t('admin', 'Tasks')
+                'label' => CrugeTranslator::t('admin', 'Tareas')
             ,
                 'url' => $this->getRbacListTasksUrl()
             ),
             array(
-                'label' => CrugeTranslator::t('admin', 'Operations')
+                'label' => CrugeTranslator::t('admin', 'Operaciones')
             ,
                 'url' => $this->getRbacListOpsUrl()
             ),
             array(
-                'label' => CrugeTranslator::t('admin', 'Assign Roles to Users')
+                'label' => CrugeTranslator::t('admin', 'Asignación de Roles')
             ,
                 'url' => $this->getRbacUsersAssignmentsUrl()
             ),
-            array('label' => CrugeTranslator::t('admin', 'System')),
+            array('label' => CrugeTranslator::t('admin', 'Sistema')),
             array(
-                'label' => CrugeTranslator::t('admin', 'Sessions')
+                'label' => CrugeTranslator::t('admin', 'Sesiones')
             ,
                 'url' => $this->getSessionAdminUrl()
             ),
             array(
-                'label' => CrugeTranslator::t('admin', 'System Variables')
+                'label' => CrugeTranslator::t('admin', 'Variables de Sistema')
             ,
                 'url' => $this->getSystemUpdateUrl()
             ),
@@ -336,84 +336,84 @@ class CrugeUi extends CComponent
     }
 
     /*
-		una utilidad para usar una extension como EMenu para mostrar menues
-		verticales.
-		$this->widget('EMenu', array(
-			'theme'=>'adobe',
-			'items'=>Yii::app()->user->ui->adminItemsAlternative
-		));
+        una utilidad para usar una extension como EMenu para mostrar menues
+        verticales.
+        $this->widget('EMenu', array(
+            'theme'=>'adobe',
+            'items'=>Yii::app()->user->ui->adminItemsAlternative
+        ));
     */
     public function getAdminItemsAlternative()
     {
         return array(
             array('label' => CrugeTranslator::t('admin', 'User Manager'),'items'=>array(
-				array(
-					'label' => CrugeTranslator::t('admin', 'Update Profile')
-				,
-					'url' => $this->getEditProfileUrl()
-				),
-				array(
-					'label' => CrugeTranslator::t('admin', 'Create User')
-				,
-					'url' => $this->getUserManagementCreateUrl()
-				),
-				array(
-					'label' => CrugeTranslator::t('admin', 'Manage Users')
-				,
-					'url' => $this->getUserManagementAdminUrl()
-				)
-			)),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'Update Profile')
+                ,
+                    'url' => $this->getEditProfileUrl()
+                ),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'Create User')
+                ,
+                    'url' => $this->getUserManagementCreateUrl()
+                ),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'Manage Users')
+                ,
+                    'url' => $this->getUserManagementAdminUrl()
+                )
+            )),
             array('label' => CrugeTranslator::t('admin', 'Custom Fields'),'items'=>array(
-				array(
-					'label' => CrugeTranslator::t('admin', 'List Profile Fields')
-				,
-					'url' => $this->getFieldsAdminListUrl()
-				),
-				array(
-					'label' => CrugeTranslator::t('admin', 'Create Profile Field')
-				,
-					'url' => $this->getFieldsAdminCreateUrl()
-				)
-			)),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'List Profile Fields')
+                ,
+                    'url' => $this->getFieldsAdminListUrl()
+                ),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'Create Profile Field')
+                ,
+                    'url' => $this->getFieldsAdminCreateUrl()
+                )
+            )),
             array('label' => CrugeTranslator::t('admin', 'Roles and Assignments'),'items'=>array(
-				array(
-					'label' => CrugeTranslator::t('admin', 'Roles')
-				,
-					'url' => $this->getRbacListRolesUrl()
-				),
-				array(
-					'label' => CrugeTranslator::t('admin', 'Tasks')
-				,
-					'url' => $this->getRbacListTasksUrl()
-				),
-				array(
-					'label' => CrugeTranslator::t('admin', 'Operations')
-				,
-					'url' => $this->getRbacListOpsUrl()
-				),
-				array(
-					'label' => CrugeTranslator::t('admin', 'Assign Roles to Users')
-				,
-					'url' => $this->getRbacUsersAssignmentsUrl()
-				),
-			)),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'Roles')
+                ,
+                    'url' => $this->getRbacListRolesUrl()
+                ),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'Tasks')
+                ,
+                    'url' => $this->getRbacListTasksUrl()
+                ),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'Operations')
+                ,
+                    'url' => $this->getRbacListOpsUrl()
+                ),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'Assign Roles to Users')
+                ,
+                    'url' => $this->getRbacUsersAssignmentsUrl()
+                ),
+            )),
             array('label' => CrugeTranslator::t('admin', 'System'),'items'=>array(
-				array(
-					'label' => CrugeTranslator::t('admin', 'Sessions')
-				,
-					'url' => $this->getSessionAdminUrl()
-				),
-				array(
-					'label' => CrugeTranslator::t('admin', 'System Variables')
-				,
-					'url' => $this->getSystemUpdateUrl()
-				),
-			)),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'Sessions')
+                ,
+                    'url' => $this->getSessionAdminUrl()
+                ),
+                array(
+                    'label' => CrugeTranslator::t('admin', 'System Variables')
+                ,
+                    'url' => $this->getSystemUpdateUrl()
+                ),
+            )),
         );
     }
 
 
-    /*	acumula los errores obtenidos durante el request para su posterior visualizacion con displayErrorConsole
+    /*  acumula los errores obtenidos durante el request para su posterior visualizacion con displayErrorConsole
 
         este metodo es llamado desde CrugeWebUser::checkAccess cuando el flag
         CrugeModule::rbacSetupEnabled esta habilitado, el objetivo es informar que el $itemName
@@ -488,7 +488,7 @@ class CrugeUi extends CComponent
     public function superAdminNote()
     {
         return "<div class='is-superadmin-note'>" .
-            CrugeTranslator::t('admin', '*** You are working as Super Administrator ***') .
+            CrugeTranslator::t('admin', '*** Estas trabajando como Super Administrador ***') .
             "</div>";
     }
 

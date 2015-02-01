@@ -6,7 +6,7 @@ class ReportesController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column1';
+	public $layout='//layouts/column_vi';
 
 	/**
 	 * @return array action filters
@@ -36,7 +36,8 @@ class ReportesController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','consolidado_proyectos','pdf','excel'),
+				'actions'=>array('admin','delete','pdf','excel','pdf_estatus','excel_estatus',
+								 'consolidado_proyectos','consolidado_proyectos_estatus','consolidados'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -60,7 +61,19 @@ class ReportesController extends Controller
     {
 
         $this->render('consolidado_proyectos',array('id'=>''));
+    }   
+
+    public function actionConsolidado_proyectos_estatus()
+    {
+
+        $this->render('consolidado_proyectos_estatus',array('id'=>''));
     }        
+
+    public function actionConsolidados()
+    {
+
+        $this->render('consolidados',array('id'=>''));
+    }    
 
 
     
@@ -100,7 +113,21 @@ class ReportesController extends Controller
     {
         $data= Reportes::consolidado_proyectos();
 
-        Yii::app()->request->sendFile('listado.xls',$this->renderPartial('excel',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+        Yii::app()->request->sendFile('consolidado_proyectos.xls',$this->renderPartial('excel',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+        
+    }  
+
+    public function actionPdf_estatus()
+    {
+        $this->render('pdf_estatus');
+    }
+
+
+    public function actionExcel_estatus()
+    {
+        $data= Reportes::consolidado_proyectos_estatus();
+
+        Yii::app()->request->sendFile('consolidado_proyectos_estatus.xls',$this->renderPartial('excel_estatus',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
         
     }  
 	
