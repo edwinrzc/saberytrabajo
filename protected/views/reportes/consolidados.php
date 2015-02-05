@@ -6,8 +6,8 @@ $this->widget('zii.widgets.jui.CJuiAccordion',array(
         'Consolidado de Proyectos por Estado'=>$this->renderPartial('consolidado_proyectos',null,true),
         'Consolidado de Proyectos por Estatus'=>$this->renderPartial('consolidado_proyectos_estatus',null,true),
         'Consolidado de Familias'=>$this->renderPartial('consolidado_proyectos',null,true),
-        'Consolidado de Tipos de Viviendas'=>$this->renderPartial('consolidado_proyectos',null,true),
-        'Consolidado Tenencias de Viviendas'=>$this->renderPartial('consolidado_proyectos',null,true),
+        'Consolidado de Tipos de Viviendas'=>$this->renderPartial('consolidado_tipo_vivienda',null,true),
+        'Consolidado Tenencias de Viviendas'=>$this->renderPartial('consolidado_tenencia_vivienda',null,true),
         'Consolidado Tenencias del Terreno'=>$this->renderPartial('consolidado_proyectos',null,true),
         'Consolidado de Proyectos por Estado'=>$this->renderPartial('consolidado_proyectos',null,true),
         'Consolidado por Zona de Ubicación de la Vivienda'=>$this->renderPartial('consolidado_proyectos',null,true),
@@ -30,4 +30,3 @@ $this->widget('zii.widgets.jui.CJuiAccordion',array(
     ),
 ));
 ?>
-<br>
