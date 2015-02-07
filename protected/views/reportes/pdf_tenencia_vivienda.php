@@ -23,19 +23,19 @@ $total_tenencia=0;
     </tr></table>
 
     <br>
-        <table  align="center" width="45%" border="1" style="border-collapse: collapse">
+        <table  align="center" width="50%" border="1" style="border-collapse: collapse">
             <tr  style="background-color:#F10E1D;">
-                <th  width="40%" >&nbsp;ESTADOS</th>
-                <th  width="25%" >&nbsp;PROPIA</th>
-                <th  width="25%" >&nbsp;ALQUILADA</th>
-                <th  width="25%" >&nbsp;PAGANDOSE</th>
-                <th  width="25%" >&nbsp;CONSERJE</th>
-                <th  width="25%" >&nbsp;CUIDANDO</th>
-                <th  width="25%" >&nbsp;PRESTADA</th>
-                <th  width="25%" >&nbsp;INVADIDA</th>
-                <th  width="25%" >&nbsp;COMODATO</th>
-                <th  width="25%" >&nbsp;ALOJAMIENTO</th>
-                <th  width="25%" >&nbsp;TOTAL</th>
+                <th  width="35%" >&nbsp;ESTADOS</th>
+                <th  width="20%" >&nbsp;PROPIA</th>
+                <th  width="20%" >&nbsp;ALQUILADA</th>
+                <th  width="20%" >&nbsp;PAGANDOSE</th>
+                <th  width="20%" >&nbsp;CONSERJE</th>
+                <th  width="20%" >&nbsp;CUIDANDO</th>
+                <th  width="20%" >&nbsp;PRESTADA</th>
+                <th  width="20%" >&nbsp;INVADIDA</th>
+                <th  width="20%" >&nbsp;COMODATO</th>
+                <th  width="20%" >&nbsp;ALOJAMIENTO</th>
+                <th  width="15%" >&nbsp;TOTAL</th>
 
             </tr>';
          $i=0;

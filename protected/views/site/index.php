@@ -19,7 +19,7 @@
 <br>
 <div class="dashboardIcons span-16 offset2">
      <?php 
-    if(!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('admin'))):?>
+    if(!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('Administrador'))): ?>
     <div class="dashIcon span-3">
         <a href="<?php print Yii::app()->createUrl('/viviendo');?>">
             <img src="<?php echo $base; ?>/images/big_icons/icon-house2.png" alt="Viviendas" />
@@ -32,7 +32,7 @@
     endif;
     ?>
     <?php 
-    if(!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('admin'))):?>
+    if(!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('Administrador'))): ?>
     <div class="dashIcon span-3">
         <a href="<?php print Yii::app()->createUrl('cruge/ui/usermanagementadmin');?>"
             title="Panel de Seguridad" >
@@ -47,7 +47,7 @@
     ?>
     
     <?php 
-    if(!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('admin'))):?>
+    if(!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('Administrador'))): ?>
     <div class="dashIcon span-3">
         <a  href="<?php print Yii::app()->createUrl('/visualizador/index');?>">
             <img src="<?php echo $base; ?>/images/big_icons/icon-earth.png" alt="Visualizador" />

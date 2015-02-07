@@ -1,5 +1,5 @@
 <div style="float: left;">
-	<h3>Consolidados de Tipos de VIviendas</h3>
+	<h3>Consolidados de Tipos de Viviendas</h3>
 </div>
 <div align="right">
 	<a href="<?php print Yii::app()->createUrl("/reportes/excel_tipo_vivienda")?>"  title="Exportar Excel">                       

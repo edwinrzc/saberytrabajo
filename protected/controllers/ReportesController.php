@@ -24,6 +24,9 @@ class ReportesController extends Controller
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
+	
+	/* COMENTADO LOS ACCESSRULES DEL FRAMEWORK, PARA QUE TENGA EL CONTROL EL CRUGE
+	 
 	public function accessRules()
 	{
 		return array(
@@ -47,7 +50,8 @@ class ReportesController extends Controller
 			),
 		);
 	}
-
+	
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -59,6 +63,10 @@ class ReportesController extends Controller
 		));
 	}
 
+	/**
+	 * ACCIONES DE LOS CONSOLIDADOS
+	 */
+	
     public function actionConsolidado_proyectos()
     {
 
@@ -82,6 +90,54 @@ class ReportesController extends Controller
 
         $this->render('consolidado_tenencia_vivienda',array('id'=>''));
     }     
+    
+    public function actionConsolidado_tenencia_terreno()
+    {
+    
+    	$this->render('consolidado_tenencia_terreno',array('id'=>''));
+    }
+    
+    public function actionConsolidado_empleo_familia()
+    {
+    
+    	$this->render('consolidado_empleo_familia',array('id'=>''));
+    }
+    
+    public function actionConsolidado_servicio_agua()
+    {
+    
+    	$this->render('consolidado_servicio_agua',array('id'=>''));
+    }
+    
+    public function actionConsolidado_servicio_electrico()
+    {
+    
+    	$this->render('consolidado_servicio_electrico',array('id'=>''));
+    }
+    
+    public function actionConsolidado_servicio_internet()
+    {
+    
+    	$this->render('consolidado_servicio_internet',array('id'=>''));
+    }
+    
+    public function actionConsolidado_servicio_telefonico()
+    {
+    
+    	$this->render('consolidado_servicio_telefonico',array('id'=>''));
+    }
+    
+    public function actionConsolidado_sexo_familia()
+    {
+    
+    	$this->render('consolidado_sexo_familia',array('id'=>''));
+    }
+    
+    public function actionConsolidado_zona_ubicacion()
+    {
+    
+    	$this->render('consolidado_zona_ubicacion',array('id'=>''));
+    }
 
     public function actionConsolidados()
     {
@@ -89,7 +145,9 @@ class ReportesController extends Controller
         $this->render('consolidados',array('id'=>''));
     }    
 
-
+	/**
+	 * FIN DE LAS ACCIONES DE LOS CONSOLIDADOS
+	 */
     
 	/**
 	 * Lists all models.
@@ -117,12 +175,80 @@ class ReportesController extends Controller
 		));
 	}*/
 
+	/**
+	 * ACCIONES PDF
+	 */
+	
+	
 	public function actionPdf()
     {
         $this->render('pdf');
     }
 
-
+    public function actionPdf_estatus()
+    {
+    	$this->render('pdf_estatus');
+    }
+    
+    public function actionPdf_tipo_vivienda()
+    {
+    	$this->render('pdf_tipo_vivienda');
+    }
+    
+    public function actionPdf_tenencia_vivienda()
+    {
+    	$this->render('pdf_tenencia_vivienda');
+    }
+    
+    public function actionPdf_tenencia_terreno()
+    {
+    	$this->render('pdf_tenencia_terreno');
+    }
+    
+    public function actionPdf_empleo_familia()
+    {
+    	$this->render('pdf_empleo_familia');
+    }
+    
+    public function actionPdf_servicio_agua()
+    {
+    	$this->render('pdf_servicio_agua');
+    }
+    
+    public function actionPdf_servicio_electrico()
+    {
+    	$this->render('pdf_servicio_electrico');
+    }
+    
+    public function actionPdf_servicio_internet()
+    {
+    	$this->render('pdf_servicio_internet');
+    }
+    
+    public function actionPdf_servicio_telefonico()
+    {
+    	$this->render('pdf_servicio_telefonico');
+    }
+    
+    public function actionPdf_sexo_familia()
+    {
+    	$this->render('pdf_sexo_familia');
+    }
+    
+    public function actionPdf_zona_ubicacion()
+    {
+    	$this->render('pdf_zona_ubicacion');
+    }
+    
+    /**
+     * FIN DE PDFS
+     */
+    
+    /**
+     * ACCIONES EXCEL
+     */
+    
+    
     public function actionExcel()
     {
         $data= Reportes::consolidado_proyectos();
@@ -130,12 +256,6 @@ class ReportesController extends Controller
         Yii::app()->request->sendFile('consolidado_proyectos.xls',$this->renderPartial('excel',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
         
     }  
-
-    public function actionPdf_estatus()
-    {
-        $this->render('pdf_estatus');
-    }
-
 
     public function actionExcel_estatus()
     {
@@ -145,12 +265,6 @@ class ReportesController extends Controller
         
     }  
 
-    public function actionPdf_tipo_vivienda()
-    {
-        $this->render('pdf_tipo_vivienda');
-    }
-
-
     public function actionExcel_tipo_vivienda()
     {
         $data= Reportes::consolidado_tipo_vivienda();
@@ -159,12 +273,6 @@ class ReportesController extends Controller
         
     }  
 
-    public function actionPdf_tenencia_vivienda()
-    {
-        $this->render('pdf_tenencia_vivienda');
-    }
-
-
     public function actionExcel_tenencia_vivienda()
     {
         $data= Reportes::consolidado_tenencia_vivienda();
@@ -172,7 +280,76 @@ class ReportesController extends Controller
         Yii::app()->request->sendFile('consolidado_tenencia_vivienda.xls',$this->renderPartial('excel_tenencia_vivienda',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
         
     }  
+    
+    public function actionExcel_tenencia_terreno()
+    {
+    	$data= Reportes::consolidado_tenencia_terreno();
+    
+    	Yii::app()->request->sendFile('consolidado_tenencia_terreno.xls',$this->renderPartial('excel_tenencia_terreno',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+    
+    }
+    
+    public function actionExcel_empleo_familia()
+    {
+    	$data= Reportes::consolidado_empleo_familia();
+    
+    	Yii::app()->request->sendFile('consolidado_empleo_familia.xls',$this->renderPartial('excel_empleo_familia',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+    
+    }
+    
+    public function actionExcel_servicio_agua()
+    {
+    	$data= Reportes::consolidado_servicio_agua();
+    
+    	Yii::app()->request->sendFile('consolidado_servicio_agua.xls',$this->renderPartial('excel_servicio_agua',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+    
+    }
+    
+    public function actionExcel_servicio_electrico()
+    {
+    	$data= Reportes::consolidado_servicio_electrico();
+    
+    	Yii::app()->request->sendFile('consolidado_servicio_electrico.xls',$this->renderPartial('excel_servicio_electrico',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+    
+    }
+    
+    public function actionExcel_servicio_internet()
+    {
+    	$data= Reportes::consolidado_servicio_internet();
+    
+    	Yii::app()->request->sendFile('consolidado_servicio_internet.xls',$this->renderPartial('excel_servicio_internet',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+    
+    }
+    
+    public function actionExcel_servicio_telefonico()
+    {
+    	$data= Reportes::consolidado_servicio_telefonico();
+    
+    	Yii::app()->request->sendFile('consolidado_servicio_telefonico.xls',$this->renderPartial('excel_servicio_telefonico',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+    
+    }
+    
+    public function actionExcel_sexo_familia()
+    {
+    	$data= Reportes::consolidado_sexo_familia();
+    
+    	Yii::app()->request->sendFile('consolidado_sexo_familia.xls',$this->renderPartial('excel_sexo_familia',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+    
+    }
+    
+    public function actionExcel_zona_ubicacion()
+    {
+    	$data= Reportes::consolidado_zona_ubicacion();
+    
+    	Yii::app()->request->sendFile('consolidado_zona_ubicacion.xls',$this->renderPartial('excel_zona_ubicacion',array('model'=>$data),'application/vnd.ms-excel;charset=UTF-8',true));
+    
+    }
 	
+    /**
+     * FIN EXCEL 
+     */
+    
+    
 	public function loadModel($id)
 	{
 		$model=Persona::model()->findByPk($id);
