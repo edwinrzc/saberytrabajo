@@ -231,3 +231,29 @@ LANGUAGE  'plpgsql';
 
 
    --SELECT f_verificaDatos (29, 'GF')
+   
+   -- Table: viviendo.mvv_unidades_produccion
+
+-- DROP TABLE viviendo.mvv_unidades_produccion;
+
+CREATE TABLE viviendo.mvv_unidades_produccion
+(
+  cod_uni_pro serial NOT NULL, -- Código de la Unidad de Producción
+  cod_par character varying(6), -- Código de la Parroquia
+  dir_loc_pro character varying(150), -- Localidad de la Unidad de Producción
+  dir_uni_pro character varying(150), -- Dirección de la Unidad de Producción
+  the_geom geometry(Point,4326),
+  CONSTRAINT mvv_unidades_produccion_pkey PRIMARY KEY (cod_uni_pro )
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE viviendo.mvv_unidades_produccion
+  OWNER TO postgres;
+COMMENT ON TABLE viviendo.mvv_unidades_produccion
+  IS 'Tabla de las unidades de producción';
+COMMENT ON COLUMN viviendo.mvv_unidades_produccion.cod_uni_pro IS 'Código de la Unidad de Producción';
+COMMENT ON COLUMN viviendo.mvv_unidades_produccion.cod_par IS 'Código de la Parroquia';
+COMMENT ON COLUMN viviendo.mvv_unidades_produccion.dir_loc_pro IS 'Localidad de la Unidad de Producción';
+COMMENT ON COLUMN viviendo.mvv_unidades_produccion.dir_uni_pro IS 'Dirección de la Unidad de Producción';
+   
