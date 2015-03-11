@@ -1,259 +1,39 @@
--- Table: viviendo.mvv_dp_encuestado
+-- Function: public.f_completa_datos_personales()
 
--- DROP TABLE viviendo.mvv_dp_encuestado;
+-- DROP FUNCTION public.f_completa_datos_personales();
 
-CREATE TABLE viviendo.mvv_dp_encuestado
-(
-  cod_dp_enc serial NOT NULL, -- Codigo datos personales encuestado
-  cod_par character varying(6), -- Codigo de la parroquia
-  dir_com_dp_enc character varying(150), -- Direccion completa de la encuesta
-  sec_dp_enc character varying(80), -- Sector localidad
-  pun_ref_dp_enc character varying(80), -- Punto de referencia
-  pri_nom_dp_enc character varying(40) NOT NULL, -- Primer nombre del encuestado
-  seg_nom_dp_enc character varying(40), -- Segundo nombre del encuestado
-  pri_ape_dp_enc character varying(40) NOT NULL, -- Primer apellido del encuestado
-  seg_ape_dp_enc character varying(40), -- Segundo apellido del encuestado
-  nac_dp_enc character varying(1) NOT NULL, -- Nacionalidad, campo con dos opciones: V es igual a venezolano y E es igual a extranjero
-  ced_dp_enc integer NOT NULL, -- Cedula de identidad del encuestado
-  cod_nac_enc integer NOT NULL, -- Codigo nacionalidad encuestado
-  sit_leg_dp_enc character(3) DEFAULT 'N/A'::bpchar, -- Situacion legal del encuestado las opciones pueden ser: N que es igual a Nacionalizado, R que es igual a residenciado o N/A no aplica
-  fec_nac_dp_enc date, -- Fecha de nacimiento del encuestado
-  lug_nac_dp_enc character varying(50), -- Lugar de nacimiento del encuestado
-  par_nac_dp_enc character(1), -- Partida de nacimiento del encuestado, Opciones S es igua a Si y N es igual No
-  sex_dp_enc character(1), -- Sexo del encuestado, opciones M es igual a Masculino y F es igual a Femenino
-  est_emb_dp_enc character(1) DEFAULT 'N'::bpchar, -- Estado de empresa, opciones S es igual Si y N es igual No
-  sem_emb_dp_enc numeric, -- Semanas de embarazo
-  asi_ctrl_emb_dp_enc character(1), -- Si asiste a control de embarazo, opciones S si es Si y N si es No
-  cod_est_civ integer, -- Codigo del estado civil del encuestado
-  es_ind_dp_enc character(1), -- Si es indigena el encuestado, opciones S si es Si y N si es No
-  cod_com_ind integer, -- Codigo comunidad indigena
-  mail_dp_enc character varying(100), -- Correo electronico del encuestado
-  tel_hab_dp_enc character varying(16), -- Telefono de habitacion del contacto
-  tel_cel_dp_enc character varying(16), -- Telefono celular del encuestado
-  est_act_dp_enc character(1), -- Si estudia actualmente el encuestado, Opciones S  es igual Si y N es igual No
-  tip_ins_dp_enc character(2), -- Tipo de institucion donde estudia el encuestado, opciones P si es publica y PV si es Privada
-  cod_mot_est integer, -- Codigo del motivo por el cual no estudia el encuestado
-  cod_niv_ins integer, -- Codigo del nivel de instruccion del encuestado
-  tip_per_dp_enc character(2), -- Tipo de persona encuestada, opciones si es JF es igual a Jefe de Familia y si es GF es igual a grupo familiar
-  cod_est_per_dp_enc integer, -- Codigo de estatus de la persona encuestada
-  fec_reg_dp_enc time with time zone DEFAULT now(), -- Fecha de Registro del encuestado
-  cod_car_est integer, -- Codigo de la carrera de estudio
-  ult_gra_cur_dp_enc character varying(11), -- Ultimo grado cursado
-  tit_obt_dp_enc character varying(60), -- Titulo obtenido del encuestado
-  fam_pri_lib_dp_enc character(1), -- Familiar privado de libertad, opciones S es igual a Si y N es igual a No
-  cod_par_fam integer, -- Codigo parentesco familiar
-  cod_cen_pen integer, -- Codigo centro penitenciario
-  org_soc_dp_enc character(1), -- Organizacion social, opciones S igual a Si y N es igual a No
-  cod_org_soc integer, -- Codigo de la organizacion social
-  mis_soc_dp_enc character(1), -- Mision social, opciones S es igual a Si y N es igual No
-  cod_mis_soc integer, -- Codigo mision social
-  cod_jef_fam_dp_enc integer, -- Codigo del jefe familiar
-  cod_par_jef_fam_dp_enc integer, -- Codigo del parentesco con el jefe familiar
-  gru_fam_dp_enc integer DEFAULT 0, -- Grupo familiar del jefe de familia
-  CONSTRAINT "PK_dp_encuestado" PRIMARY KEY (cod_dp_enc),
-  CONSTRAINT "FK_carrera_estudio_a_dp_encuestado" FOREIGN KEY (cod_car_est)
-      REFERENCES viviendo.mvv_carrera_estudio (cod_car_est) MATCH SIMPLE
-      ON UPDATE RESTRICT ON DELETE RESTRICT,
-  CONSTRAINT "FK_centro_penitenciario_a_dp_encuestado" FOREIGN KEY (cod_cen_pen)
-      REFERENCES viviendo.mvv_centro_penitenciario (cod_cen_pen) MATCH SIMPLE
-      ON UPDATE RESTRICT ON DELETE RESTRICT,
-  CONSTRAINT "FK_comunidad_indigena_a_dp_encuestado" FOREIGN KEY (cod_com_ind)
-      REFERENCES viviendo.mvv_comunidad_indigena (cod_com_ind) MATCH SIMPLE
-      ON UPDATE RESTRICT ON DELETE RESTRICT,
-  CONSTRAINT "FK_estado_civil_a_dp_encuestado" FOREIGN KEY (cod_est_civ)
-      REFERENCES viviendo.mvv_estado_civil (cod_est_civ) MATCH SIMPLE
-      ON UPDATE RESTRICT ON DELETE RESTRICT,
-  CONSTRAINT "FK_jefe_familiar" FOREIGN KEY (cod_jef_fam_dp_enc)
-      REFERENCES viviendo.mvv_dp_encuestado (cod_dp_enc) MATCH SIMPLE
-      ON UPDATE CASCADE ON DELETE CASCADE,
-  CONSTRAINT "FK_mision_social_a_dp_encuestado" FOREIGN KEY (cod_mis_soc)
-      REFERENCES viviendo.mvv_mision_social (cod_mis_soc) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "FK_motivo_estudio_a_dp_encuestado" FOREIGN KEY (cod_mot_est)
-      REFERENCES viviendo.mvv_motivo_estudio (cod_mot_est) MATCH SIMPLE
-      ON UPDATE RESTRICT ON DELETE RESTRICT,
-  CONSTRAINT "FK_nacionalida_a_dp_encuestado" FOREIGN KEY (cod_nac_enc)
-      REFERENCES viviendo.mvv_nacionalidad_encuestado (cod_nac_enc) MATCH SIMPLE
-      ON UPDATE RESTRICT ON DELETE RESTRICT,
-  CONSTRAINT "FK_nivel_instruccion_a_dp_encuestado" FOREIGN KEY (cod_niv_ins)
-      REFERENCES viviendo.mvv_nivel_instruccion (cod_niv_ins) MATCH SIMPLE
-      ON UPDATE RESTRICT ON DELETE RESTRICT,
-  CONSTRAINT "FK_organizacion_social_a_dp_encuestado" FOREIGN KEY (cod_org_soc)
-      REFERENCES viviendo.mvv_organizacion_social (cod_org_soc) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "FK_parentesco_familiar" FOREIGN KEY (cod_par_jef_fam_dp_enc)
-      REFERENCES viviendo.mvv_parentesco_familiar (cod_par_fam) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "FK_parentesco_familiar_a_dp_encuestado" FOREIGN KEY (cod_par_fam)
-      REFERENCES viviendo.mvv_parentesco_familiar (cod_par_fam) MATCH SIMPLE
-      ON UPDATE RESTRICT ON DELETE RESTRICT,
-  CONSTRAINT "UK_dp_encuestado" UNIQUE (ced_dp_enc)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE viviendo.mvv_dp_encuestado
-  OWNER TO postgres;
-COMMENT ON TABLE viviendo.mvv_dp_encuestado
-  IS 'Tabla para los datos personales del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_dp_enc IS 'Codigo datos personales encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_par IS 'Codigo de la parroquia';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.dir_com_dp_enc IS 'Direccion completa de la encuesta';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.sec_dp_enc IS 'Sector localidad';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.pun_ref_dp_enc IS 'Punto de referencia';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.pri_nom_dp_enc IS 'Primer nombre del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.seg_nom_dp_enc IS 'Segundo nombre del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.pri_ape_dp_enc IS 'Primer apellido del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.seg_ape_dp_enc IS 'Segundo apellido del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.nac_dp_enc IS 'Nacionalidad, campo con dos opciones: V es igual a venezolano y E es igual a extranjero';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.ced_dp_enc IS 'Cedula de identidad del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_nac_enc IS 'Codigo nacionalidad encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.sit_leg_dp_enc IS 'Situacion legal del encuestado las opciones pueden ser: N que es igual a Nacionalizado, R que es igual a residenciado o N/A no aplica';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.fec_nac_dp_enc IS 'Fecha de nacimiento del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.lug_nac_dp_enc IS 'Lugar de nacimiento del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.par_nac_dp_enc IS 'Partida de nacimiento del encuestado, Opciones S es igua a Si y N es igual No';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.sex_dp_enc IS 'Sexo del encuestado, opciones M es igual a Masculino y F es igual a Femenino';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.est_emb_dp_enc IS 'Estado de empresa, opciones S es igual Si y N es igual No';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.sem_emb_dp_enc IS 'Semanas de embarazo';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.asi_ctrl_emb_dp_enc IS 'Si asiste a control de embarazo, opciones S si es Si y N si es No';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_est_civ IS 'Codigo del estado civil del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.es_ind_dp_enc IS 'Si es indigena el encuestado, opciones S si es Si y N si es No';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_com_ind IS 'Codigo comunidad indigena';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.mail_dp_enc IS 'Correo electronico del encuestado ';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.tel_hab_dp_enc IS 'Telefono de habitacion del contacto';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.tel_cel_dp_enc IS 'Telefono celular del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.est_act_dp_enc IS 'Si estudia actualmente el encuestado, Opciones S  es igual Si y N es igual No';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.tip_ins_dp_enc IS 'Tipo de institucion donde estudia el encuestado, opciones P si es publica y PV si es Privada';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_mot_est IS 'Codigo del motivo por el cual no estudia el encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_niv_ins IS 'Codigo del nivel de instruccion del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.tip_per_dp_enc IS 'Tipo de persona encuestada, opciones si es JF es igual a Jefe de Familia y si es GF es igual a grupo familiar';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_est_per_dp_enc IS 'Codigo de estatus de la persona encuestada';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.fec_reg_dp_enc IS 'Fecha de Registro del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_car_est IS 'Codigo de la carrera de estudio';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.ult_gra_cur_dp_enc IS 'Ultimo grado cursado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.tit_obt_dp_enc IS 'Titulo obtenido del encuestado';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.fam_pri_lib_dp_enc IS 'Familiar privado de libertad, opciones S es igual a Si y N es igual a No';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_par_fam IS 'Codigo parentesco familiar';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_cen_pen IS 'Codigo centro penitenciario';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.org_soc_dp_enc IS 'Organizacion social, opciones S igual a Si y N es igual a No';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_org_soc IS 'Codigo de la organizacion social';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.mis_soc_dp_enc IS 'Mision social, opciones S es igual a Si y N es igual No';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_mis_soc IS 'Codigo mision social';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_jef_fam_dp_enc IS 'Codigo del jefe familiar';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.cod_par_jef_fam_dp_enc IS 'Codigo del parentesco con el jefe familiar';
-COMMENT ON COLUMN viviendo.mvv_dp_encuestado.gru_fam_dp_enc IS 'Grupo familiar del jefe de familia';
-
-
-
-
-
-
-
---DROP FUNCTION verificadatos(integer);
-
-CREATE OR REPLACE FUNCTION f_verificaDatos (_id integer , _usu varchar) RETURNS int AS
-$$
+CREATE OR REPLACE FUNCTION public.f_completa_datos_personales()
+  RETURNS trigger AS
+$BODY$
 DECLARE
-        regs record;
-        _disTiempo VARCHAR[] := ARRAY['LV','SD'];
+_r record;
 BEGIN
-
-	IF _usu = 'JF' THEN
-
-		SELECT * INTO regs FROM viviendo.mvv_caracteristica_vivienda WHERE cod_dp_enc = _id;
-		IF NOT FOUND THEN
-
-			
-			INSERT INTO viviendo.mvv_caracteristica_vivienda (cod_dp_enc)
-			VALUES (_id);
-		END IF;
-
-		SELECT * INTO regs FROM viviendo.mvv_posesiones_vivienda WHERE cod_dp_enc = _id;
-		IF NOT FOUND THEN
-
-			
-			INSERT INTO viviendo.mvv_posesiones_vivienda (cod_dp_enc)
-			VALUES (_id);
-		END IF;
-
-		
-	END IF;
-        
-        SELECT * INTO regs FROM viviendo.mvv_informacion_laboral WHERE cod_dp_enc = _id;
-        IF NOT FOUND THEN
-
-		
-		INSERT INTO viviendo.mvv_informacion_laboral (cod_dp_enc)
-		VALUES (_id);
-        END IF;
-
-	FOR i IN 1..array_length(_disTiempo,1) LOOP
-
-		SELECT * INTO regs FROM viviendo.mvv_distribucion_tiempo WHERE cod_dp_enc = _id AND tip_dis_tie = _disTiempo[i];
-		IF NOT FOUND THEN 
-
-			INSERT INTO viviendo.mvv_distribucion_tiempo(cod_dp_enc, tip_dis_tie)
-			VALUES (_id, _disTiempo[i]);
-		END IF;
-
-	END LOOP;
-
-	SELECT * INTO regs FROM viviendo.mvv_condicion_salud WHERE cod_dp_enc = _id;
-        IF NOT FOUND THEN
-
-		
-		INSERT INTO viviendo.mvv_condicion_salud (cod_dp_enc)
-		VALUES (_id);
-        END IF;
-
-
-        SELECT * INTO regs FROM viviendo.mvv_alimentacion_semanal WHERE cod_dp_enc = _id;
-        IF NOT FOUND THEN
-
-		
-		INSERT INTO viviendo.mvv_alimentacion_semanal (cod_dp_enc)
-		VALUES (_id);
-        END IF;
-
-
-        SELECT * INTO regs FROM viviendo.mvv_situacion_politica WHERE cod_dp_enc = _id;
-        IF NOT FOUND THEN
-
-		
-		INSERT INTO viviendo.mvv_situacion_politica (cod_dp_enc,reg_ele_sit_pol)
-		VALUES (_id,'S');
-        END IF;
-        
-        RETURN 1;
+IF NEW.tip_per_dp_enc = 'GF' THEN
+SELECT dir_com_dp_enc,sec_dp_enc,pun_ref_dp_enc INTO _r FROM viviendo.mvv_dp_encuestado
+WHERE cod_dp_enc = NEW.cod_jef_fam_dp_enc;
+IF FOUND THEN
+NEW.dir_com_dp_enc = _r.dir_com_dp_enc;
+NEW.sec_dp_enc = _r.sec_dp_enc;
+NEW.pun_ref_dp_enc = _r.pun_ref_dp_enc;
+END IF;
+END IF;
+RETURN NEW;
 END;
-$$ 
-LANGUAGE  'plpgsql';
-
-
-   --SELECT f_verificaDatos (29, 'GF')
-   
-   -- Table: viviendo.mvv_unidades_produccion
-
--- DROP TABLE viviendo.mvv_unidades_produccion;
-
-CREATE TABLE viviendo.mvv_unidades_produccion
-(
-  cod_uni_pro serial NOT NULL, -- Código de la Unidad de Producción
-  cod_par character varying(6), -- Código de la Parroquia
-  dir_loc_pro character varying(150), -- Localidad de la Unidad de Producción
-  dir_uni_pro character varying(150), -- Dirección de la Unidad de Producción
-  the_geom geometry(Point,4326),
-  CONSTRAINT mvv_unidades_produccion_pkey PRIMARY KEY (cod_uni_pro )
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE viviendo.mvv_unidades_produccion
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.f_completa_datos_personales()
   OWNER TO postgres;
-COMMENT ON TABLE viviendo.mvv_unidades_produccion
-  IS 'Tabla de las unidades de producción';
-COMMENT ON COLUMN viviendo.mvv_unidades_produccion.cod_uni_pro IS 'Código de la Unidad de Producción';
-COMMENT ON COLUMN viviendo.mvv_unidades_produccion.cod_par IS 'Código de la Parroquia';
-COMMENT ON COLUMN viviendo.mvv_unidades_produccion.dir_loc_pro IS 'Localidad de la Unidad de Producción';
-COMMENT ON COLUMN viviendo.mvv_unidades_produccion.dir_uni_pro IS 'Dirección de la Unidad de Producción';
-   
+  
+  
+  
+  
+  -- Trigger: t_completa_datos on viviendo.mvv_dp_encuestado
+
+-- DROP TRIGGER t_completa_datos ON viviendo.mvv_dp_encuestado;
+
+CREATE TRIGGER t_completa_datos
+  BEFORE INSERT OR UPDATE
+  ON viviendo.mvv_dp_encuestado
+  FOR EACH ROW
+  EXECUTE PROCEDURE public.f_completa_datos_personales();
