@@ -4,7 +4,6 @@
 
 
 $this->menu=array(
-	array('label'=>'Listado', 'url'=>array('index')),
 	array('label'=>'Agregar', 'url'=>array('create')),
 	array('label'=>'Ver', 'url'=>array('view', 'id'=>$model->cod_pro)),
 	array('label'=>'Administrador', 'url'=>array('admin')),

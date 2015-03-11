@@ -1,7 +1,18 @@
 $(document).ready(function()
 {
 	
-	jQuery('#mydialog').dialog({'title':'Mensaje del Sistema','autoOpen':false,'modal':true});	
+	jQuery('#mydialog').dialog(
+			{
+				'title':'Mensaje del Sistema',
+				'autoOpen':false,
+				'modal':true,
+				'buttons': {
+				'Aceptar': function () 
+						   {
+								$(this).dialog("close");
+						   }
+				}
+			});	
 	
 	
 });

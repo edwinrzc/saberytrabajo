@@ -61,7 +61,7 @@
                     	  array('label'=>'<span class="icon-list"></span> Consolidados <span class="caret"></span>', 'visible'=>!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('Administrador')), 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
                             'items'=>array(
                                 array('label'=>'Consolidados', 'visible'=>!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('Administrador')),'url'=>array('/reportes/consolidados')),
-                          
+                            	array('label'=>'Reporteador', 'visible'=>!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('Administrador')),'url'=>array('/reportes/reporteador')),
                             )),
 
                     		array('label'=>'<span class="icon-wrench"></span> Configuración <span class="caret"></span>', 'visible'=>!Yii::app()->user->isGuest && Yii::app()->funcion->validarSession(array('Administrador')), 'url'=>'#','itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),

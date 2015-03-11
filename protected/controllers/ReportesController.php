@@ -14,8 +14,7 @@ class ReportesController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			array('CrugeAccessControlFilter'),
 		);
 	}
 
@@ -61,6 +60,48 @@ class ReportesController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
+	}
+	
+	public function actionReporteador()
+	{
+		$this->render('reporteador',array('id'=>''));
+	}
+	
+	public function actionFiltro()
+	{
+		$arreglo = '';
+		switch($_POST['action'])
+		{
+			case 'DP':
+				$arreglo = array('EDO'=>'Estado','MUN'=>'Municipio');
+				break;
+			case 'DE':
+				break;
+		}
+		echo CHtml::tag('option',array('value' => ''),CHtml::encode('Seleccione'),true);
+		foreach($arreglo as $id => $value)
+		{
+			echo CHtml::tag('option',array('value' => $id),CHtml::encode($value),true);
+		}
+	}
+	public function actionGenerarexcel()
+	{
+		if($_POST && $_POST['action'] == 'REPORTE')
+		{
+			$model = new Reporteclass;
+			switch ($_POST['rd_tipo_report'])
+			{
+				case 'R':
+					$model->verificarCamposArray($_POST['slt_campo_seleccionado']);
+					break;
+				case 'G':
+					$array = array_keys($model->modelo->attributeLabels());
+					//print_r($array);
+					$model->verificarCamposArray($array);
+					break;
+			}
+			Yii::app()->request->sendFile('reporte_excel.xls',$this->renderPartial('_generadorexcel',array('model'=>$model),'application/vnd.ms-excel;charset=UTF-8',true));
+		}
 	}
 
 	/**
@@ -247,6 +288,27 @@ class ReportesController extends Controller
     /**
      * ACCIONES EXCEL
      */
+    
+    public function actionSeleccion()
+    {
+    	if($_POST && $_POST['action'] == 'SELECTION')
+    	{
+    		$model = '';
+    		switch ($_POST['slt_seleccion'])
+    		{
+    			case 'DP':
+    				$model = new Reporteencuesta;
+    				break;
+    			case 'DV':
+    				break;
+    		}
+    		$data = $model->attributeLabels();
+    		foreach($data as $id => $value)
+    		{
+    			echo CHtml::tag('option',array('value' => $id),CHtml::encode($value),true);
+    		}
+    	}
+    }
     
     
     public function actionExcel()

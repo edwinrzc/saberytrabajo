@@ -3,19 +3,18 @@
 /* @var $model Datosencuestado */
 
 $this->breadcrumbs=array(
-	'Datosencuestados'=>array('index'),
+	'Encuestados'=>array('admin'),
 	$model->cod_dp_enc=>array('view','id'=>$model->cod_dp_enc),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Datosencuestado', 'url'=>array('index')),
-	array('label'=>'Create Datosencuestado', 'url'=>array('create')),
-	array('label'=>'View Datosencuestado', 'url'=>array('view', 'id'=>$model->cod_dp_enc)),
-	array('label'=>'Manage Datosencuestado', 'url'=>array('admin')),
+	array('label'=>'Crear Encuestado', 'url'=>array('create')),
+	array('label'=>'Ver Encuestado', 'url'=>array('view', 'id'=>$model->cod_dp_enc)),
+	array('label'=>'Administrador', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Datosencuestado <?php echo $model->cod_dp_enc; ?></h1>
+<h1>Actualizar Datos Encuestado <?php echo $model->cod_dp_enc; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

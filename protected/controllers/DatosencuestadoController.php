@@ -139,7 +139,8 @@ class DatosencuestadoController extends Controller
 	public function actionListarjefefamiliar()
 	{
 		$criteria = new CDbCriteria;
-		$criteria->select = "cod_dp_enc,ced_dp_enc ||'('||pri_nom_dp_enc||' '||pri_ape_dp_enc||')' AS pri_nom_dp_enc";
+		//$criteria->select = "cod_dp_enc,ced_dp_enc ||'('||pri_nom_dp_enc||' '||pri_ape_dp_enc||')' AS pri_nom_dp_enc";
+		$criteria->select = "cod_dp_enc,cod_par,ced_dp_enc ||'('||pri_nom_dp_enc||' '||pri_ape_dp_enc||')' AS pri_nom_dp_enc";
 		//$criteria->condition = "ced_dp_enc = :term ";
 		//$criteria->params = array(':term'=> $_GET['term']);
 		
@@ -153,6 +154,7 @@ class DatosencuestadoController extends Controller
 					'id' => $item->cod_dp_enc,
 					'value' => $item->pri_nom_dp_enc,
 					'label' => $item->pri_nom_dp_enc,
+					'codpar'=> $item->cod_par,
 			);
 		}
 		echo CJSON::encode($arr);

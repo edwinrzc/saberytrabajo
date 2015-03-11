@@ -3,20 +3,18 @@
 /* @var $model Datosencuestado */
 
 $this->breadcrumbs=array(
-	'Datosencuestados'=>array('index'),
+	'Encuestados'=>array('admin'),
 	$model->cod_dp_enc,
 );
 
 $this->menu=array(
-	array('label'=>'List Datosencuestado', 'url'=>array('index')),
-	array('label'=>'Create Datosencuestado', 'url'=>array('create')),
-	array('label'=>'Update Datosencuestado', 'url'=>array('update', 'id'=>$model->cod_dp_enc)),
-	array('label'=>'Delete Datosencuestado', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->cod_dp_enc),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Datosencuestado', 'url'=>array('admin')),
+	array('label'=>'Crear Encuestado', 'url'=>array('create')),
+	array('label'=>'Actualizar Encuestado', 'url'=>array('update', 'id'=>$model->cod_dp_enc)),
+	array('label'=>'Administrador', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Datosencuestado #<?php echo $model->cod_dp_enc; ?></h1>
+<h1>Ver Datos Encuestado #<?php echo $model->cod_dp_enc; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

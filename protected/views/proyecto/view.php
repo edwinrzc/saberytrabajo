@@ -4,14 +4,13 @@
 
 
 $this->menu=array(
-	array('label'=>'Listado', 'url'=>array('index')),
 	array('label'=>'Agregar', 'url'=>array('create')),
 	array('label'=>'Actualizar', 'url'=>array('update', 'id'=>$model->cod_pro)),	
 	array('label'=>'Administrador', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Proyecto #<?php echo $model->cod_pdvsa_pro; ?></h1>
+<h1>Proyecto #<?php echo $model->cod_pdvsa_pro .'&nbsp;'. $model->nom_pro; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

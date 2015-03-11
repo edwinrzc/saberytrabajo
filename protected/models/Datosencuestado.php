@@ -159,12 +159,12 @@ class Datosencuestado extends CActiveRecord
 			'est_act_dp_enc' => 'Estudia Actualmente',
 			'tip_ins_dp_enc' => 'Tipo de Institucion',
 			'cod_mot_est' => 'Motivo de no Estudio',
-			'cod_niv_ins' => 'Nivel de Instrucción',
+			'cod_niv_ins' => 'Nivel de Instrucciï¿½n',
 			'tip_per_dp_enc' => 'Tipo Persona Encuestada',
 			'cod_est_per_dp_enc' => 'Cod Est Per Dp Enc',
 			'fec_reg_dp_enc' => 'Fecha de Registro',
 			'cod_car_est' => 'Carrera de Estudio',
-			'ult_gra_cur_dp_enc' => 'Ultimo Año Cursado',
+			'ult_gra_cur_dp_enc' => 'Ultimo Aï¿½o Cursado',
 			'tit_obt_dp_enc' => 'Titulo Obtenido',
 			'fam_pri_lib_dp_enc' => 'Familiar Privado de Libertad',
 			'cod_par_fam' => 'Parentesco',
@@ -292,5 +292,10 @@ class Datosencuestado extends CActiveRecord
 			$sql = "SELECT f_verificaDatos ($id, '".$usu."')";
 			Operaciones::ejecutarSQL($sql);
 		}
+	}
+	
+	public function nombre_estado() {
+		$data= Parroquial::model()->findByAttributes(array('id'=>$this->cod_par));
+		return $data['estado'];
 	}
 }

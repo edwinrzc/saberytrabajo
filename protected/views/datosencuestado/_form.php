@@ -18,13 +18,16 @@
 		<table class="items" >
 			<tr>
 				<th colspan="3" >Datos Personales</th>
+				<input type="hidden" name="action" value="DP" />
+				<input type="hidden" name="Datosencuestado[tip_per_dp_enc]" value="<?php echo $tipo;?>" />
 			</tr>
 			<?php 
 			if($tipo == 'GF'):
 			?>
 			<tr>
 				<td>
-					<?php echo $form->labelEx($model,'cod_jef_fam_dp_enc'); ?>					
+					<?php echo $form->labelEx($model,'cod_jef_fam_dp_enc'); ?>		
+					<input type="hidden" id="Datosencuestado_cod_par" name="Datosencuestado[cod_par]" value="" />			
 				</td>
 				<td colspan="2">
 					<?php echo $form->labelEx($model,'cod_par_jef_fam_dp_enc'); ?>					
@@ -33,12 +36,10 @@
 			<tr>
 				<td>
 					<?php
-			            if ($model->cod_jef_fam_dp_enc!='')
+					$value='';
+						if ($model->cod_jef_fam_dp_enc!='' && isset($model->jefe->ced_dp_enc))
 						{
 							$value=$model->jefe->ced_dp_enc;
-						}
-						else {
-							$value='';
 						}
 						
 						echo $form->hiddenField($model, 'cod_jef_fam_dp_enc');
@@ -51,7 +52,10 @@
 							'minLength'=>'3',
 							'showAnim'=>'fold',
 							'select' => 'js:function(event, ui)
-							{ jQuery("#Datosencuestado_cod_jef_fam_dp_enc").val(ui.item["id"]); }',
+							{
+							jQuery("#Datosencuestado_cod_jef_fam_dp_enc").val(ui.item["id"]);
+							jQuery("#Datosencuestado_cod_par").val(ui.item["codpar"]);
+							}',
 							'search'=> 'js:function(event, ui)
 							{ jQuery("#Datosencuestado_cod_jef_fam_dp_enc").val(0); }'
 						),
@@ -75,12 +79,12 @@
 			</tr>
 			<?php 
 			endif;
+			if($tipo != 'GF'):
 			?>
 			<tr>
 				<td width="50%">
 					<?php echo $form->labelEx($model,'cod_edo'); ?>
-					<input type="hidden" name="action" value="DP" />
-					<input type="hidden" name="Datosencuestado[tip_per_dp_enc]" value="<?php echo $tipo;?>" />
+					
 				</td>
 				<td colspan="2"><?php echo $form->labelEx($model,'cod_mun'); ?></td>
 			</tr>
@@ -187,6 +191,9 @@
 					<?php echo $form->error($model,'pun_ref_dp_enc'); ?>
 				</td>
 			</tr>
+			<?php
+			endif;
+			?>
 			<tr>
 				<td>
 					<?php echo $form->labelEx($model,'pri_nom_dp_enc'); ?>

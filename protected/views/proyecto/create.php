@@ -4,7 +4,6 @@
 
 
 $this->menu=array(
-	array('label'=>'Listado', 'url'=>array('index')),
 	array('label'=>'Administrador', 'url'=>array('admin')),
 );
 ?>

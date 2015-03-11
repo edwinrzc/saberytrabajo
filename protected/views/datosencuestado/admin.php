@@ -35,7 +35,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'dataProvider'=>$model->search(0),
 	'filter'=>$model,
 	'columns'=>array(
-		'cod_par',
+		array(
+			'header'=>'Estado',
+			'name'=>'cod_par',
+			'value'=>'$data->nombre_estado()',
+		),
+		//'cod_par',
 		'dir_com_dp_enc',
 		//'sec_dp_enc',
 		'pun_ref_dp_enc',
