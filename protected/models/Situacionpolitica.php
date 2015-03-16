@@ -79,21 +79,21 @@ class Situacionpolitica extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'cod_dp_enc' => 'Codigo',
-			'reg_ele_sit_pol' => '¿Esta Inscrito en el Registro Electoral?',
-			'par_pol_sit_pol' => '¿Esta Inscrito en algun Partido Politico?',
-			'cod_par_pol' => 'Partido Politico',
+			'cod_dp_enc' => 'C&oacute;digo',
+			'reg_ele_sit_pol' => '&iquest;Esta Inscrito en el Registro Electoral?',
+			'par_pol_sit_pol' => '&iquest;Esta Inscrito en algun Partido Politico?',
+			'cod_par_pol' => 'Partido Pol&iacute;tico',
 			'otr_par_sit_pol' => 'Otro Partido',
-			'nom_cen_vot_sit_pol' => 'Nombre del Centro de Votacion',
+			'nom_cen_vot_sit_pol' => 'Nombre del Centro de Votaci&oacute;n',
 			'cod_edo' => 'Estado',
 			'cod_mun' => 'Municipio',
 			'cod_par' => 'Parroquia',
-			'mie_mes_sit_pol' => '¿Es o ha sido Miembro de Mesa?',
-			'tes_mes_sit_pol' => '¿Es o ha sido Testigo de Mesa?',
-			'res_par_sit_pol' => '¿Tiene alguna Responsabilidad en su Partido Politico?',
+			'mie_mes_sit_pol' => '&iquest;Es o ha sido Miembro de Mesa?',
+			'tes_mes_sit_pol' => '&iquest;Es o ha sido Testigo de Mesa?',
+			'res_par_sit_pol' => '&iquest;Tiene alguna Responsabilidad en su Partido Pol&iacute;tico?',
 			'ins_sit_pol' => 'Indique Instancia',
 			'des_res_sit_pol' => 'Indique Responsabilidad',
-			'niv_dir_sit_pol' => 'Nivel de Direccion',
+			'niv_dir_sit_pol' => 'Nivel de Direcci&oacute;n',
 		);
 	}
 

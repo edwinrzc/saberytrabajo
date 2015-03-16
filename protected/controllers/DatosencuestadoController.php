@@ -6,7 +6,7 @@ class DatosencuestadoController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column_v';
+	public $layout='//layouts/column_vi';
 
 	/**
 	 * @return array action filters
@@ -248,7 +248,7 @@ class DatosencuestadoController extends Controller
 						'model5'=>$model5,
 						'model6'=>$model6,
 						'model7'=>$model7,
-						'id'=>13,
+						'id'=>$model->cod_dp_enc,
 						'tipo'=>'GF',
 				));
 				Yii::app()->end();

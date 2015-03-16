@@ -55,7 +55,7 @@ class Informacionlaboral extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cod_dp_enc', 'required'),
+			array('cod_dp_enc, fue_ing_inf_lab', 'required'),
 			array('cod_dp_enc, cod_ocu', 'numerical', 'integerOnly'=>true),
 			array('mon_act_ext_inf_lab,ing_per_inf_lab, tot_ing_per_inf_lab,esg_ali_inf_lab, esg_med_inf_lab, esg_vic_inf_lab, esg_beb_alc_inf_lab, esg_edu_inf_lab, esg_rec_inf_lab, esg_ser_bas_inf_lab, esg_arr_inf_lab, esg_jue_aza_inf_lab, esg_fam_externo_inf_lab, esg_cre_inf_lab, esg_otr_inf_lab', 'default', 'value'=>NULL),
 			array('tra_act_inf_lab, sec_tra_inf_lab', 'length', 'max'=>1),
@@ -86,26 +86,26 @@ class Informacionlaboral extends CActiveRecord
 	{
 		return array(
 			'cod_dp_enc' => 'Cod Dp Enc',
-			'cod_ocu' => 'Ocupacion/ Oficio',
-			'tra_act_inf_lab' => '¿Trabaja?',
-			'tip_ins_inf_lab' => 'Tipo de Institucion',
+			'cod_ocu' => 'Ocupaci&oacute;n / Oficio',
+			'tra_act_inf_lab' => '&iquest;Trabaja?',
+			'tip_ins_inf_lab' => 'Tipo de Instituci&oacute;n',
 			'fue_ing_inf_lab' => 'Fuentes de Ingresos',
 			'ing_per_inf_lab' => 'Total Ingresos',
 			'act_ext_inf_lab' => 'Actividad Extra',
 			'mon_act_ext_inf_lab' => 'Monto Extra',
 			'tot_ing_per_inf_lab' => 'TOTAL INGRESOS (Ingr.Personal + Ingr. Extra)',
 			'sec_tra_inf_lab' => 'Sector Laboral',
-			'esg_ali_inf_lab' => 'Alimentacion',
+			'esg_ali_inf_lab' => 'Alimentaci&oacute;n',
 			'esg_med_inf_lab' => 'Medicina',
 			'esg_vic_inf_lab' => 'Vicios',
 			'esg_beb_alc_inf_lab' => 'Bebidas Alcoholicas',
-			'esg_edu_inf_lab' => 'Educacion',
-			'esg_rec_inf_lab' => 'Recreacion',
+			'esg_edu_inf_lab' => 'Educaci&oacute;n',
+			'esg_rec_inf_lab' => 'Recreaci&oacute;n',
 			'esg_ser_bas_inf_lab' => 'Servicios Basicos',
 			'esg_arr_inf_lab' => 'Arrendamiento',
 			'esg_jue_aza_inf_lab' => 'Juegos de Azar',
 			'esg_fam_externo_inf_lab' => 'Familiares Externos',
-			'esg_cre_inf_lab' => 'Creditos',
+			'esg_cre_inf_lab' => 'Cr&eacute;ditos',
 			'esg_otr_inf_lab' => 'Otros',
 		);
 	}

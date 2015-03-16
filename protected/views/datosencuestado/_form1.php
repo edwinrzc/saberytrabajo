@@ -14,22 +14,15 @@
 	<?php echo $form->errorSummary($model); ?>
 	
 	<div class="row">
-		<table class="tabla-int" >
-			<tr>
-				<th colspan="3" >Características de la Vivienda</th>
-			</tr>
-			<tr>
-				<td width="50%">
-					<?php echo $form->labelEx($model,'pre1_car_viv'); ?>
+		
+			
+				
+		<fieldset><LEGEND align="left">CaracterÃ­sticas de la Vivienda</LEGEND>	
+			<div class="row">
 					<input type="hidden" name="action" value="DV" />
 					<input type="hidden" name="Caracteristicavivienda[cod_dp_enc]" value="<?php echo $id;?>" />
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre2_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre1_car_viv'); ?>
 					<?php 
 							$sel1 = array('');
 							
@@ -44,11 +37,12 @@
               				array('APTO' => 'Aparatamento', 'C' => 'Casa',
 								  'QTA' => 'Quinta','RC'=>'Rancho',
 								  'RG'=>'Refugio','O'=>'Otro'),
-							array('empty' => 'Seleccione...','options'=>$sel1, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel1, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre1_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre2_car_viv'); ?>
 					<?php 
 							$sel2 = array('');
 							
@@ -65,21 +59,17 @@
 								  'CDO'=>'Cuidando','IDA'=>'Invadida',
 								  'PSE'=>'Pagandose','PDA'=>'Prestada',
 								  'PIA'=>'Propia'),
-							array('empty' => 'Seleccione...','options'=>$sel2, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel2, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre2_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				
+				</div>
+			</div>
+			
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre3_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre4_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel3 = array('');
 							
@@ -92,11 +82,12 @@
 							
 							echo CHtml::dropDownList('Caracteristicavivienda[pre3_car_viv]', $model, 
               				array('PIO' => 'Propio', 'EM' => 'Ejido-Municipal'),
-							array('empty' => 'Seleccione...','options'=>$sel3, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel3, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre3_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre4_car_viv'); ?>
 					<?php 
 							$sel4 = array('');
 							
@@ -110,21 +101,15 @@
 							echo CHtml::dropDownList('Caracteristicavivienda[pre4_car_viv]', $model, 
               				array('UDA' => 'Urbanizada', 'NUDA' => 'No Urbanizada',
 								  'RAL' => 'Rural'),
-							array('empty' => 'Seleccione...','options'=>$sel4, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel4, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre4_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre5_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre6_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel5 = array('');
 							
@@ -139,11 +124,12 @@
               				array('CO' => 'Cerro', 'CA' => 'Colina',
 								  'LA' => 'Loma','ODB'=>'Orilla de Barranco',
 								  'ODR'=>'Orilla de rio','ODQ'=>'Orilla de Quebrada'),
-							array('empty' => 'Seleccione...','options'=>$sel5, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel5, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre5_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre6_car_viv'); ?>
 					<?php 
 							$sel6 = array('');
 							
@@ -157,21 +143,15 @@
 							echo CHtml::dropDownList('Caracteristicavivienda[pre6_car_viv]', $model, 
               				array('DDLC' => 'Directamente de la calle', 'PSPOE' => 'Por senderos, Picas o Escalinatas',
 								  'ATDOVP'=>'Por otras viviendas, pasillos'),
-							array('empty' => 'Seleccione...','options'=>$sel6, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel6, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre6_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre7_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre8_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel7 = array('');
 							
@@ -186,11 +166,12 @@
               				array('ATBF' => 'Adobe, Tapia o Bahareque frisado','ATBSF' =>'Adobe, Tapia o Bahareque sin frisado',
 								  'BLFC' => 'Bloque o Ladrillo frisado (Acabado) concreto ','BLSF'=>'Bloque o Ladrillo sin frisar (No acabado)',
 								  'MAFFVS'=>'Madera, fibra de vidrio y similares','OCPTCZLS'=>'Otros'),
-							array('empty' => 'Seleccione...','options'=>$sel7, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel7, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre7_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre8_car_viv'); ?>
 					<?php 
 							$sel8 = array('');
 							
@@ -205,21 +186,15 @@
               				array('AS' => 'Asbesto y similares', 'LMZS' => 'Laminas Metalicas (Zinc o similares)',
 								  'TLA' => 'Tajali - Lamina Asfaltica','TM'=>'Teja o Madera',
 								  'PBA'=>'Platabanda','OPTS'=>'Otros (Palma, Tablas y Similares)'),
-							array('empty' => 'Seleccione...','options'=>$sel8, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel8, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre8_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre9_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre10_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel9 = array('');
 							
@@ -234,11 +209,12 @@
               				array('CLT' => 'Ceramica, Ladrillo, Terracota', 'MAYS' => 'Madera, Alfombra y similares',
 								  'CPOV' => 'Cemento Pulido o Viniles','CSP'=>'Cemento sin Pulir',
 								  'T'=>'Tierra'),
-							array('empty' => 'Seleccione...','options'=>$sel9, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel9, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre9_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre10_car_viv'); ?>
 					<?php 
 							$sel10 = array('');
 							
@@ -250,42 +226,31 @@
 							}
 							
 							echo CHtml::dropDownList('Caracteristicavivienda[pre10_car_viv]', $model, 
-              				array('PCSELH' => 'Pareja conyugal sola en la habitacion', 'PCPMDUA' => 'Pareja con personas menores de un a&ntildeo',
-								  'PCPMDUAA' => 'Pareja con personas mayores de un a&ntildeo','PSDEUH'=>'Persona sola durmiendo en una habitacion',
+              				array('PCSELH' => 'Pareja conyugal sola en la habitacion', 'PCPMDUA' => 'Pareja con personas menores de un aÃ±o',
+								  'PCPMDUAA' => 'Pareja con personas mayores de un aÃ±o','PSDEUH'=>'Persona sola durmiendo en una habitacion',
 								  'MDTPDEUH'=>'Menos de tres personas durmiendo en una habitacion','TPOMDEUMH'=>'Tres personas o mas durmiendo en una misma habitacion'),
-							array('empty' => 'Seleccione...','options'=>$sel10, 'style'=>'width:220px;','class'=>'clear-error'));
+							array('empty' => 'Seleccione...','options'=>$sel10, 'style'=>'width:330px;','class'=>'clear-error'));
 					?>
 					<?php echo $form->error($model,'pre10_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre11_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre12_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php echo $form->textField($model,'pre11_car_viv',array('size'=>40,'maxlength'=>1,'class'=>'clear-error')); ?>
 					<?php echo $form->error($model,'pre11_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre12_car_viv'); ?>
 					<?php echo $form->textField($model,'pre12_car_viv',array('size'=>40,'maxlength'=>2,'class'=>'clear-error')); ?>
 					<?php echo $form->error($model,'pre12_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre13_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre14_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel13 = array('');
 							
@@ -298,11 +263,12 @@
 							
 							echo CHtml::dropDownList('Caracteristicavivienda[pre13_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','options'=>$sel13, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel13, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre13_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre14_car_viv'); ?>
 					<?php 
 							$sel14 = array('');
 							
@@ -316,21 +282,15 @@
 							echo CHtml::dropDownList('Caracteristicavivienda[pre14_car_viv]', $model, 
               				array('AOT' => 'Acueducto o Tuberia', 'CC' => 'Camion Cisterna',
               					  'PPOV'=>'Pila Publica o Vecinos','OM'=>'Otros Medios'),
-							array('empty' => 'Seleccione...','options'=>$sel14, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel14, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre14_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre15_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre16_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel15 = array('');
 							
@@ -343,11 +303,12 @@
 							
 							echo CHtml::dropDownList('Caracteristicavivienda[pre15_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','options'=>$sel15, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel15, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre15_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre16_car_viv'); ?>
 					<?php 
 							$sel16 = array('');
 							
@@ -361,21 +322,15 @@
 							echo CHtml::dropDownList('Caracteristicavivienda[pre16_car_viv]', $model, 
               				array('TQ' => 'Tanques', 'RP' =>'Recipientes Plasticos',
               					  'TORM'=>'Tobos o Recipientes Metalicos','RDVV'=>'Recipientes de Vidrio / Vasijas'),
-							array('empty' => 'Seleccione...','options'=>$sel16, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel16, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre16_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre17_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre18_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel17 = array('');
 							
@@ -390,11 +345,12 @@
               				array('BCPDYL' => 'Bano con Poceta, Ducha y Lavamanos', 'BCP' =>'Bano con Poceta',
               					  'BCPYL'=>'Bano con Poceta y Lavamanos','EDHOL'=>'Escusado de Hoyo o Letrina',
 								  'BCPYD'=>'Bano con Poceta y Ducha','NTPOE'=>'No tiene Poceta o Escusado'),
-							array('empty' => 'Seleccione...','options'=>$sel17, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel17, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre17_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre18_car_viv'); ?>
 					<?php 
 							$sel18 = array('');
 							
@@ -408,21 +364,15 @@
 							echo CHtml::dropDownList('Caracteristicavivienda[pre18_car_viv]', $model, 
               				array('BDDLV' => 'Bano Dentro de la Vivienda', 'BFDLV' =>'Bano Fuera de la Vivienda',
               					  'LFDLV'=>'Letrina Fuera de la Vivienda'),
-							array('empty' => 'Seleccione...','options'=>$sel18, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel18, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre18_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre19_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre20_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel19 = array('');
 							
@@ -436,11 +386,12 @@
 							echo CHtml::dropDownList('Caracteristicavivienda[pre19_car_viv]', $model, 
               				array('DDLVUC' => 'Dentro de la Vivienda una Cloaca', 'RQ' =>'Rios Quebradas',
               					  'FDLVPS'=>'Fuera de la Vivienda 2 pozos Septicos'),
-							array('empty' => 'Seleccione...','options'=>$sel19, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel19, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre19_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre20_car_viv'); ?>
 					<?php 
 							$sel20 = array('');
 							
@@ -455,21 +406,15 @@
               				array('C' => 'Cloacas', 'PS' =>'Pozo Septico',
               					  'ALC'=>'A la Calle','RQ'=>'Rios Quebradas',
 								  'P'=>'Patio'),
-							array('empty' => 'Seleccione...','options'=>$sel20, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel20, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre20_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre21_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre22_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel21 = array('');
 							
@@ -482,11 +427,12 @@
 							
 							echo CHtml::dropDownList('Caracteristicavivienda[pre21_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','options'=>$sel21, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel21, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre21_car_viv'); ?>
-				</td>
-				<td colspan="2">
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre22_car_viv'); ?>
 					<?php 
 							$sel22 = array('');
 							
@@ -499,21 +445,15 @@
 							
 							echo CHtml::dropDownList('Caracteristicavivienda[pre22_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','options'=>$sel22, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel22, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre22_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td >
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre23_car_viv'); ?>
-				</td>
-				<td colspan="2">
-					<?php echo $form->labelEx($model,'pre33_car_viv'); ?>		
-				</td>				
-			</tr>
-			<tr>
-				<td>
 					<?php 
 							$sel23 = array('');
 							
@@ -526,11 +466,12 @@
 							
 							echo CHtml::dropDownList('Caracteristicavivienda[pre23_car_viv]', $model, 
               				array('S' => 'Si', 'N' => 'No'),
-							array('empty' => 'Seleccione...','options'=>$sel23, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel23, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre23_car_viv'); ?>
-				</td>
-				<td>
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre33_car_viv'); ?>
 					<?php 
 							$sel33 = array('');
 							
@@ -546,18 +487,15 @@
               					  'OF'=>'Olores Fuertes','VOS'=>'Vertederos',
 								  'SF'=>'Sonidos Fuertes','H'=>'Humo',
 								  'AS'=>'Aguas Servidas','O'=>'Otro'),
-							array('empty' => 'Seleccione...','options'=>$sel33, 'style'=>'width:220px;'));
+							array('empty' => 'Seleccione...','options'=>$sel33, 'style'=>'width:330px;'));
 					?>
 					<?php echo $form->error($model,'pre33_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3">
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
 					<?php echo $form->labelEx($model,'pre32_car_viv',array('style'=>'float:left;')); ?>
-				</td>				
-			</tr>
-			<tr>
-				<td colspan="3">
 					<?php 
 							$sel32 = array('');
 							
@@ -573,106 +511,74 @@
               					  'JP'=>'Jeep','B'=>'Bicicleta',
 								  'MT'=>'Moto','VP'=>'Vehiculo Particular',
 								  'O'=>'Otro'),
-							array('empty' => 'Seleccione...','options'=>$sel32, 'style'=>'width:220px;float:left;'));
+							array('empty' => 'Seleccione...','options'=>$sel32, 'style'=>'width:330px;float:left;'));
 					?>
 					<?php echo $form->error($model,'pre32_car_viv'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3">
-					<table class="tabla-int">
-						<tr>
-							<th colspan="2" >
-								Acceso a Centros Educativos (Distancia Aproximada en Kilómetros)
-							</th>
-						</tr>
-						<tr>
-							<td>
-								<?php echo $form->labelEx($model,'pre24_car_viv'); ?>
-							</td>
-							<td>
-								<?php echo $form->textField($model,'pre24_car_viv',array('size'=>15,'maxlength'=>3)); ?>
-								<?php echo $form->error($model,'pre24_car_viv'); ?>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<?php echo $form->labelEx($model,'pre25_car_viv'); ?>
-							</td>
-							<td>
-								<?php echo $form->textField($model,'pre25_car_viv',array('size'=>15,'maxlength'=>3)); ?>
-								<?php echo $form->error($model,'pre25_car_viv'); ?>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<?php echo $form->labelEx($model,'pre26_car_viv'); ?>
-							</td>
-							<td>
-								<?php echo $form->textField($model,'pre26_car_viv',array('size'=>15,'maxlength'=>3)); ?>
-								<?php echo $form->error($model,'pre26_car_viv'); ?>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<?php echo $form->labelEx($model,'pre27_car_viv'); ?>
-							</td>
-							<td>
-								<?php echo $form->textField($model,'pre27_car_viv',array('size'=>15,'maxlength'=>3)); ?>
-								<?php echo $form->error($model,'pre27_car_viv'); ?>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3">
-					<table class="tabla-int">
-						<tr>
-							<th colspan="2" >
-								Acceso a Centros de Salud (Distancia Aproximada en Kilómetros)
-							</th>
-						</tr>
-						<tr>
-							<td>
-								<?php echo $form->labelEx($model,'pre28_car_viv'); ?>
-							</td>
-							<td>
-								<?php echo $form->textField($model,'pre28_car_viv',array('size'=>15,'maxlength'=>3)); ?>
-								<?php echo $form->error($model,'pre28_car_viv'); ?>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<?php echo $form->labelEx($model,'pre29_car_viv'); ?>
-							</td>
-							<td>
-								<?php echo $form->textField($model,'pre29_car_viv',array('size'=>15,'maxlength'=>3)); ?>
-								<?php echo $form->error($model,'pre29_car_viv'); ?>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<?php echo $form->labelEx($model,'pre30_car_viv'); ?>
-							</td>
-							<td>
-								<?php echo $form->textField($model,'pre30_car_viv',array('size'=>15,'maxlength'=>3)); ?>
-								<?php echo $form->error($model,'pre30_car_viv'); ?>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<?php echo $form->labelEx($model,'pre31_car_viv'); ?>
-							</td>
-							<td>
-								<?php echo $form->textField($model,'pre31_car_viv',array('size'=>15,'maxlength'=>3)); ?>
-								<?php echo $form->error($model,'pre31_car_viv'); ?>
-							</td>
-						</tr>						
-					</table>
-				</td>
-			</tr>
-		</table>
+				</div>
+			</div>
+		</fieldset>
+		
+		
+		<fieldset><LEGEND align="left">Acceso a Centros Educativos (Distancia Apr&oacute;ximada en Kil&oacute;metros)</LEGEND>			
+			<div class="row">
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre24_car_viv'); ?>
+					<?php echo $form->textField($model,'pre24_car_viv',array('size'=>15,'maxlength'=>3)); ?>
+					<?php echo $form->error($model,'pre24_car_viv'); ?>
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre25_car_viv'); ?>
+					<?php echo $form->textField($model,'pre25_car_viv',array('size'=>15,'maxlength'=>3)); ?>
+					<?php echo $form->error($model,'pre25_car_viv'); ?>		
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre26_car_viv'); ?>
+					<?php echo $form->textField($model,'pre26_car_viv',array('size'=>15,'maxlength'=>3)); ?>
+					<?php echo $form->error($model,'pre26_car_viv'); ?>
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre27_car_viv'); ?>
+					<?php echo $form->textField($model,'pre27_car_viv',array('size'=>15,'maxlength'=>3)); ?>
+					<?php echo $form->error($model,'pre27_car_viv'); ?>
+				</div>
+			</div>
+			
+			
+			
+				
+		</fieldset>
+						
+								
+		<fieldset><LEGEND align="left">Acceso a Centros de Salud (Distancia Apr&oacute;ximada en Kil&oacute;metros)</LEGEND>	
+			<div class="row">
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre28_car_viv'); ?>
+					<?php echo $form->textField($model,'pre28_car_viv',array('size'=>15,'maxlength'=>3)); ?>
+					<?php echo $form->error($model,'pre28_car_viv'); ?>
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre29_car_viv'); ?>
+					<?php echo $form->textField($model,'pre29_car_viv',array('size'=>15,'maxlength'=>3)); ?>
+					<?php echo $form->error($model,'pre29_car_viv'); ?>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre30_car_viv'); ?>
+					<?php echo $form->textField($model,'pre30_car_viv',array('size'=>15,'maxlength'=>3)); ?>
+					<?php echo $form->error($model,'pre30_car_viv'); ?>
+				</div>
+				<div class="span4">
+					<?php echo $form->labelEx($model,'pre31_car_viv'); ?>
+					<?php echo $form->textField($model,'pre31_car_viv',array('size'=>15,'maxlength'=>3)); ?>
+					<?php echo $form->error($model,'pre31_car_viv'); ?>
+				</div>
+			</div>
+		</fieldset>				
 	</div>
 	<div class="row buttons">
 		<?php echo CHtml::Button($model->isNewRecord ? 'Registrar' : 'Guardar',array('id'=>'btn-datos-vivienda', 'class'=>'small blue nice button radius')); ?>

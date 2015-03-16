@@ -51,6 +51,22 @@ Yii::app()->clientScript->registerScript('form_familiar', "
 				}
 
 			break;
+			case 'Datosencuestado_nac_dp_enc':
+
+				switch(_valor)
+				{
+					case 'V':
+						bloquearDesbloquear('D','Datosencuestado_ced_dp_enc');
+						bloquearDesbloquear('B','Datosencuestado_sit_leg_dp_enc');
+						bloquearDesbloquear('B','Datosencuestado_cod_nac_enc');
+					break;
+					case 'E':
+						bloquearDesbloquear('D','Datosencuestado_cod_nac_enc');
+						bloquearDesbloquear('D','Datosencuestado_sit_leg_dp_enc');
+						bloquearDesbloquear('D','Datosencuestado_ced_dp_enc');
+					break;
+				}
+			break;
 			case 'Datosencuestado_est_act_dp_enc':
 
 				switch(_valor)
